@@ -1370,13 +1370,11 @@
     <Content Include="Assets\Images\Dark\appbar.youtube.png" />
     <Content Include="Assets\Images\Dark\appbar.zune.png" />
     <Content Include="Assets\Images\tileLogoTrans.png" />
-    <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
-    <None Include="BettrDiet.WP8_2014_03_10_11_16_06.sap" />
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
@@ -1426,7 +1424,6 @@
     <Content Include="Assets\Images\FrameThumbnail.png" />
     <Content Include="Assets\Images\LeftArrow.png" />
     <Content Include="Assets\Images\RightArrow.png" />
-    <Content Include="ToDo-MvvmCross\_ Windows Phone UI.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AppBarUtils">
@@ -1619,9 +1616,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <XliffResource Include="Resources\AppResources.de.xlf">
       <Generator>XliffResxGenerator</Generator>
