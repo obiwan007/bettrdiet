@@ -1,0 +1,221 @@
+﻿<views:MvxPhonePage
+    xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
+    x:Class="BettrDiet.WP8.Views.DailyDataEdit"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:telerikCore="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core"
+    xmlns:chart="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Chart"
+    xmlns:chartEngine="clr-namespace:Telerik.Charting;assembly=Telerik.Windows.Controls.Chart"
+    xmlns:bar="clr-namespace:BindableApplicationBar;assembly=BindableApplicationBar"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+
+    <telerikPrimitives:RadTransitionControl.Transition>
+        <telerikPrimitives:RadSlideAndSwivelTransition/>
+    </telerikPrimitives:RadTransitionControl.Transition>
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="../Resources/HubTileResources.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
+
+
+
+        <!--<Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="/Resources/HubTileResources.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>-->
+
+
+        <phone:Pivot Title="{Binding LR.Daily_title, Source={StaticResource LR}}" SelectedIndex="{Binding SelectedPivot,Mode=TwoWay}">
+            <!--Panorama item one-->
+            <phone:PivotItem Header="{Binding LR.Daily_weight, Source={StaticResource LR}}">
+
+                <Grid>
+                    <ScrollViewer>
+                        <StackPanel DataContext="{Binding CurrentDailyData}">
+                            <telerikInput:RadDatePicker OkButtonIconUri="/Assets/DateTimePickerOK.png" 
+                                                        CancelButtonIconUri="/Assets/DateTimePickerCancel.png" 
+                                                        Value="{Binding Date, Mode=TwoWay}" />
+
+                            <telerikInput:RadNumericUpDown  
+                                MaxValue="200"
+                                MinValue="30"
+                                Header="{Binding LR.Daily_weight, Source={StaticResource LR}}"
+                                ValueFormat="0.0"
+                                Value="{Binding Weight, Mode=TwoWay}" 
+                                Suffix="kg"/>
+                            <telerikInput:RadNumericUpDown  
+                                MaxValue="80"
+                                MinValue="3"
+                                Header="{Binding LR.Daily_fat, Source={StaticResource LR}}"
+                                ValueFormat="0.0"
+                                Value="{Binding FatP, Mode=TwoWay}" Suffix="%" Change="0,1"/>
+                            <telerikInput:RadNumericUpDown  
+                                MaxValue="60"
+                                MinValue="10"
+                                Header="{Binding LR.Daily_muscle, Source={StaticResource LR}}"
+                                ValueFormat="0.0"
+                                Value="{Binding MuscleP, Mode=TwoWay}" Suffix="%" Change="0,1"/>
+                            <telerikInput:RadNumericUpDown  
+                                MaxValue="60"
+                                MinValue="0"
+                                Header="{Binding LR.Daily_water, Source={StaticResource LR}}"
+                                ValueFormat="0.0"
+                                Value="{Binding WaterP, Mode=TwoWay}" Suffix="%" Change="0,1"/>
+
+                            <TextBlock Text="{Binding LR.Daily_level, Source={StaticResource LR}}"/>
+                            <StackPanel Margin="15" Orientation="Horizontal">
+                                <TextBlock Text="{Binding LR.Daily_level1, Source={StaticResource LR}}"/>
+                                <Slider  Width="340" Minimum="1" Maximum="10" 
+                                     Value="{Binding FitnessLevel,Mode=TwoWay}" 
+                                     SmallChange="1"/>
+                                <TextBlock Text="{Binding LR.Daily_level10, Source={StaticResource LR}}"/>
+                            </StackPanel>
+
+                            <TextBlock Text="{Binding LR.Daily_calories, Source={StaticResource LR}}"/> 
+                            <TextBox Text="{Binding Calories,Mode=TwoWay}" InputScope="Number"/>
+
+
+
+
+                        </StackPanel>
+
+                    </ScrollViewer>
+
+                </Grid>
+
+
+
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="{Binding LR.Daily_measure, Source={StaticResource LR}}">
+
+                <Grid>
+                    <ScrollViewer>
+                        <StackPanel DataContext="{Binding CurrentDailyData}">
+                            <TextBlock Text="{Binding LR.Daily_height, Source={StaticResource LR}}"/>
+                            <TextBox Text="{Binding Height,Mode=TwoWay}" InputScope="Number"/>
+                            <TextBlock Text="{Binding LR.Daily_neck, Source={StaticResource LR}}"/>
+                            <TextBox Text="{Binding Neck,Mode=TwoWay}" InputScope="Number"/>
+                            <TextBlock Text="{Binding LR.Daily_shoulders, Source={StaticResource LR}}"/> 
+                            <TextBox Text="{Binding Shoulders,Mode=TwoWay}" InputScope="Number"/>
+
+
+                            <TextBlock Text="{Binding LR.Daily_biceps, Source={StaticResource LR}}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" > L</TextBlock>
+                                <TextBox Width="150"  Text="{Binding Biceps_L,Mode=TwoWay}" InputScope="Number"/>
+                                <TextBlock VerticalAlignment="Center" > R</TextBlock>
+                                <TextBox Width="150" Text="{Binding Biceps_R,Mode=TwoWay}" InputScope="Number"/>
+                            </StackPanel>
+
+                            <TextBlock Text="{Binding LR.Daily_forearms, Source={StaticResource LR}}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" > R</TextBlock>
+                                <TextBox Width="150" Text="{Binding Forearm_L,Mode=TwoWay}" InputScope="Number"/>
+                                <TextBlock VerticalAlignment="Center" > L</TextBlock>
+                                <TextBox Width="150" Text="{Binding Forearm_R,Mode=TwoWay}" InputScope="Number"/>
+                            </StackPanel>
+                            <TextBlock Text="{Binding LR.Daily_wrists, Source={StaticResource LR}}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" > R</TextBlock>
+                                <TextBox Width="150" Text="{Binding Wrist_L,Mode=TwoWay}" InputScope="Number"/>
+                                <TextBlock VerticalAlignment="Center" > L</TextBlock>
+                                <TextBox Width="150" Text="{Binding Wrist_R,Mode=TwoWay}" InputScope="Number"/>
+                            </StackPanel>
+
+                            <TextBlock Text="{Binding LR.Daily_chest, Source={StaticResource LR}}"/>
+                            <TextBox Text="{Binding Chest,Mode=TwoWay}" InputScope="Number"/>
+
+                            <TextBlock Text="{Binding LR.Daily_abs, Source={StaticResource LR}}"/>
+                            <TextBox Text="{Binding Abdomen,Mode=TwoWay}" InputScope="Number"/>
+
+                            <TextBlock Text="{Binding LR.Daily_waist, Source={StaticResource LR}}"/>
+                            <TextBox Text="{Binding Waist,Mode=TwoWay}" InputScope="Number"/>
+
+                            <TextBlock Text="{Binding LR.Daily_hips, Source={StaticResource LR}}"/>
+                            <TextBox Text="{Binding Hips,Mode=TwoWay}" InputScope="Number"/>
+
+                            <TextBlock Text="{Binding LR.Daily_thighs, Source={StaticResource LR}}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" > R</TextBlock>
+                                <TextBox Width="150" Text="{Binding Thigh_L,Mode=TwoWay}" InputScope="Number"/>
+                                <TextBlock VerticalAlignment="Center" > L</TextBlock>
+                                <TextBox Width="150" Text="{Binding Thigh_R,Mode=TwoWay}" InputScope="Number"/>
+                            </StackPanel>
+
+                            <TextBlock Text="{Binding LR.Daily_calf, Source={StaticResource LR}}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" > R</TextBlock>
+                                <TextBox Width="150" Text="{Binding Calf_L,Mode=TwoWay}" InputScope="Number"/>
+                                <TextBlock VerticalAlignment="Center" > L</TextBlock>
+                                <TextBox Width="150" Text="{Binding Calf_R,Mode=TwoWay}" InputScope="Number"/>
+                            </StackPanel>
+
+
+                        </StackPanel>
+
+                    </ScrollViewer>
+                </Grid>
+
+
+            </phone:PivotItem>
+
+
+
+
+        </phone:Pivot>
+        <!--ContentPanel - place additional content here-->
+
+        <!--<ProgressBar  VerticalAlignment="Top" IsIndeterminate="{Binding Sync}"></ProgressBar>-->
+
+
+    </Grid>
+
+    <bar:Bindable.ApplicationBar>
+        <bar:BindableApplicationBar IsVisible="True" IsMenuEnabled="False">
+            <bar:BindableApplicationBar.Buttons>
+
+                <bar:BindableApplicationBarButton
+                Text="Save" IconUri="/Assets/Images/Dark/appbar.save.png"
+                Command="{Binding SaveDailyCommand}"/>
+
+
+            </bar:BindableApplicationBar.Buttons>
+
+        </bar:BindableApplicationBar>
+    </bar:Bindable.ApplicationBar>
+
+
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Assets/Images/Dark/appbar.add.png" Text="Add Consumable"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/Images/Dark/appbar.delete.png" Text="delete"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</views:MvxPhonePage>

@@ -1,0 +1,3700 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bettrfit.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bettrfit.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bettrfit.com/">
+      <s:element name="AuthenticateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authdata" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AuthData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthenticatedToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ret" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProviderId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubscriptionType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubscriptionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserFeatures" type="tns:ArrayOfFeatures" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserRoles" type="tns:ArrayOfUserRole" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFeatures">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Features" type="tns:Features" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="Features">
+        <s:restriction base="s:string">
+          <s:enumeration value="Administrator" />
+          <s:enumeration value="Nutrition" />
+          <s:enumeration value="DailyData" />
+          <s:enumeration value="Author" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfUserRole">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserRole" nillable="true" type="tns:UserRole" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserRole">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AuthenticateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthenticateUserResult" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrainingDayCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrainingDayCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetTrainingDayCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPlannedWorkouts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPlannedWorkoutsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPlannedWorkoutsResult" type="tns:ArrayOfPlannedWorkoutVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPlannedWorkoutVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PlannedWorkoutVM" nillable="true" type="tns:PlannedWorkoutVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PlannedWorkoutVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlannedFor" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="TrainingCount" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="_WorkoutTemplate_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlannedWorkoutDays" type="tns:ArrayOfPlannedWorkoutDayVM" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPublic" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPlannedWorkoutDayVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PlannedWorkoutDayVM" nillable="true" type="tns:PlannedWorkoutDayVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PlannedWorkoutDayVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Day" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlannedExerciseGroups" type="tns:ArrayOfPlannedExerciseGroupVM" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlannedFor" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlannedWorkout_id" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPlannedExerciseGroupVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PlannedExerciseGroupVM" nillable="true" type="tns:PlannedExerciseGroupVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PlannedExerciseGroupVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Index" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlannedExercises" type="tns:ArrayOfPlannedExerciseVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPlannedExerciseVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PlannedExerciseVM" nillable="true" type="tns:PlannedExerciseVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PlannedExerciseVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultReps" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultRestTime" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultTime" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultTime1" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultTime2" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultTime3" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultWeight" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Exercise_id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Index" type="s:unsignedByte" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCurrentPlannedWorkout">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentPlannedWorkoutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentPlannedWorkoutResult" type="tns:PlannedWorkoutVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetPlannedWorkout">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="p" type="tns:PlannedWorkoutVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetPlannedWorkoutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetPlannedWorkoutResult" type="tns:PlannedWorkoutVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetActivePlannedWorkout">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetActivePlannedWorkoutResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNewWorkoutplan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewWorkoutplanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewWorkoutplanResult" type="tns:PlannedWorkoutVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentTrainingDay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentTrainingDayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentTrainingDayResult" type="tns:TrainingDayVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TrainingDayVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrainingExerciseGroups" type="tns:ArrayOfTrainingExerciseGroupVM" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rating" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="TrainingDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkoutCompleted" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlannedWorkoutDay_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlannedWorkout_id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_id" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTrainingExerciseGroupVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TrainingExerciseGroupVM" nillable="true" type="tns:TrainingExerciseGroupVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TrainingExerciseGroupVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Index" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrainingExercises" type="tns:ArrayOfTrainingExerciseVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTrainingExerciseVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TrainingExerciseVM" nillable="true" type="tns:TrainingExerciseVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TrainingExerciseVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultReps" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultRestTime" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultTime" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultTime1" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultTime2" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultTime3" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultWeight" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Index" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Completed" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletionDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rating" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsedReps" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsedTime" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsedWeight" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExerciseName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Exercise_id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OneRepMax" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoneExercise_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pictures" type="tns:ArrayOfPictureVM" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExerciseDesc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsFirst" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPictureVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PictureVM" nillable="true" type="tns:PictureVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PictureVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Author" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Index" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateTrainingDay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateTrainingDayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateTrainingDayResult" type="tns:TrainingDayVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrainingDaysForWorkout">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="plannedWorkoutDayId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrainingDaysForWorkoutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTrainingDaysForWorkoutResult" type="tns:ArrayOfTrainingDayVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTrainingDayVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TrainingDayVM" nillable="true" type="tns:TrainingDayVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetWorkoutDaysForWorkout">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="plannedWorkoutId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWorkoutDaysForWorkoutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWorkoutDaysForWorkoutResult" type="tns:ArrayOfPlannedWorkoutDayVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetTrainingDay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="day" type="tns:TrainingDayVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetTrainingDayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetTrainingDayResult" type="tns:TrainingDayVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrainingDay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="dayid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrainingDayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTrainingDayResult" type="tns:TrainingDayVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FinishCurrentTrainingDay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FinishCurrentTrainingDayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FinishCurrentTrainingDayResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetTrainingExercise">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="item" type="tns:TrainingExerciseVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetTrainingExerciseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetTrainingExerciseResult" type="tns:TrainingDayVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetExerciseHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="exer" type="tns:TrainingExerciseVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetExerciseHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetExerciseHistoryResult" type="tns:ArrayOfTrainingExerciseVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserProfileResult" type="tns:UserVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lastname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nickname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Birthday" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Gender" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Height" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentWeight" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="BodyType" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="EquipmentType_ids" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Equipment_ids" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Studio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserGoals" type="tns:ArrayOfUserGoalVM" />
+          <s:element minOccurs="1" maxOccurs="1" name="MemberSince" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastLogin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="AboutMe" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hobbies" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Motto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Archievments" type="tns:ArrayOfAchievmentHistoryVM" />
+          <s:element minOccurs="1" maxOccurs="1" name="AcceptedAGB" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AcceptedAGBDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsHealthVaultUser" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUserGoalVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserGoalVM" nillable="true" type="tns:UserGoalVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserGoalVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DestinationDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FatP" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal_Endurance" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal_FatLoss" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal_Muscle" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal_Posture" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal_Strength" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="MuscleP" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="WaterP" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Weight" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Abdomen" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Biceps_L" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Biceps_R" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Calf_L" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Calf_R" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Chest" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Forearm_L" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Forearm_R" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hips" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Neck" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Shoulders" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Thigh_L" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Thigh_R" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Waist" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Wrist_L" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Wrist_R" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkoutDays" nillable="true" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkoutMinutes" nillable="true" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAchievmentHistoryVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AchievmentHistoryVM" nillable="true" type="tns:AchievmentHistoryVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AchievmentHistoryVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Achievment" type="tns:AchievmentVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AchievmentVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Image" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Points" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Video" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DependsOn" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="MetaData" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DoNotify" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="WorkoutPlanCompleted_id" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateUserProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:UserVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateUserProfileResult" type="tns:UserVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadProfilePicture">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="f" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadProfilePictureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadProfilePictureResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddLicense">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="osType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="licType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="receipt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddLicenseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddLicenseResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetValidLicenses">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetValidLicensesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetValidLicensesResult" type="tns:ArrayOfLicenseVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLicenseVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LicenseVM" nillable="true" type="tns:LicenseVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LicenseVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Receipt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LicenseType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OSType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValidFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValidTo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsValid" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ResetUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetUserResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ResetUserConfirm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newpwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetUserConfirmResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SendFeedback">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendFeedbackResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AddUserDaily">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="daily" type="tns:UserDailyVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserDailyVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Weight" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="FatP" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="MuscleP" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="WaterP" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Height" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Calories" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="FitnessLevel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Abdomen" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Biceps_L" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Biceps_R" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Calf_R" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Calf_L" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Chest" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Forearm_L" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Forearm_R" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hips" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Neck" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Shoulders" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Thigh_L" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Thigh_R" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Waist" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Wrist_L" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Wrist_R" nillable="true" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_id" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUserDailyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUserDailyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserDaily">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="daily" type="tns:UserDailyVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserDailyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateUserDailyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserDaily">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserDailyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteUserDailyResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserDaily">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserDailyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserDailyResult" type="tns:UserDailyVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserDailyRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="1" maxOccurs="1" name="indexFrom" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserDailyRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserDailyRangeResult" type="tns:ArrayOfUserDailyVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUserDailyVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserDailyVM" nillable="true" type="tns:UserDailyVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserDailyCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserDailyCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetUserDailyCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUserGoal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="goalItem" type="tns:UserGoalVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUserGoalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUserGoalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserGoal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="goalItem" type="tns:UserGoalVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserGoalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateUserGoalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserGoal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserGoalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteUserGoalResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserGoalVM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserGoalVMResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserGoalVMResult" type="tns:UserGoalVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserGoalRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="1" maxOccurs="1" name="indexFrom" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserGoalRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserGoalRangeResult" type="tns:ArrayOfUserGoalVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserGoalCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserGoalCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetUserGoalCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetExercises">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetExercisesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetExercisesResult" type="tns:ArrayOfExerciseVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfExerciseVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ExerciseVM" nillable="true" type="tns:ExerciseVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExerciseVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Author" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Link" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Video" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DifficultyLevel" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="FitnessLevel" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEntryLevel" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsObsolete" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Equipment" type="tns:ArrayOfEquipmentVM" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExerciseTypes" type="tns:ArrayOfExerciseTypeVM" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pictures" type="tns:ArrayOfPictureVM" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExerciseMuscleEffectTypes" type="tns:ArrayOfExerciseMuscleEffectTypeVM" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReference" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal_Endurance" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal_FatLoss" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal_Muscle" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal_Posture" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal_Strength" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="Priority" type="s:unsignedByte" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEquipmentVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EquipmentVM" nillable="true" type="tns:EquipmentVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EquipmentVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Picture" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Producer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Link" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Video" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EquipmentTypes" type="tns:ArrayOfEquipmentTypeVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEquipmentTypeVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EquipmentTypeVM" nillable="true" type="tns:EquipmentTypeVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EquipmentTypeVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfExerciseTypeVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ExerciseTypeVM" nillable="true" type="tns:ExerciseTypeVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExerciseTypeVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfExerciseMuscleEffectTypeVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ExerciseMuscleEffectTypeVM" nillable="true" type="tns:ExerciseMuscleEffectTypeVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExerciseMuscleEffectTypeVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Effect" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="MuscleGroup" type="tns:MuscleGroupVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MuscleGroupVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Size" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="Picture" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Link" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Video" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Antagonist_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Antagonist" type="tns:MuscleGroupVM" />
+          <s:element minOccurs="0" maxOccurs="1" name="BelongsTo_id" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="BelongsTo" type="tns:ArrayOfMuscleGroupVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMuscleGroupVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MuscleGroupVM" nillable="true" type="tns:MuscleGroupVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMuscleGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMuscleGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMuscleGroupsResult" type="tns:ArrayOfMuscleGroupVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEquipment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEquipmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEquipmentResult" type="tns:ArrayOfEquipmentVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetEquipment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="ids" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetEquipmentResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SearchFood">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="search" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ignoreCase" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="page" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchFoodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchFoodResult" type="tns:ArrayOfLebensmittelVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLebensmittelVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LebensmittelVM" nillable="true" type="tns:LebensmittelVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LebensmittelVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BE" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Calcium" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Carotin" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Eisen" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fett" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="FettGes" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="FettUnges" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fols" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Kalium" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="kCalGesamt" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="KH" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="kJoule" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Klasse" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Magnesium" nillable="true" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Natrium" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Omega3" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Omega6" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Phosphor" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Prot" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsageCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="VitA" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="VitB1" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="VitB2" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="VitB6" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="VitC" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="VitE" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Zink" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPrivate" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Asche" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="BetaCarotin" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cholin" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fiber" nillable="true" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hersteller" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Kupfer" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lut_Zea" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lycopene" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mangan" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Niacin" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Retinol" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Riboflavin" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Selen" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Thiamin" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="VitB12" nillable="true" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="DbSource" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lang" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rezept" type="tns:RezeptVM" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPlan" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlanEntries" type="tns:ArrayOfLebensmittelPlanEntryVM" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsGlutenFree" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsVegan" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsVegetarisch" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsLactoseFree" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Image" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RezeptVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPrivate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReleased" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ingredients" type="tns:ArrayOfIngredientVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfIngredientVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IngredientVM" nillable="true" type="tns:IngredientVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IngredientVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lebensmittel" type="tns:LebensmittelVM" />
+          <s:element minOccurs="1" maxOccurs="1" name="Menge" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLebensmittelPlanEntryVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LebensmittelPlanEntryVM" nillable="true" type="tns:LebensmittelPlanEntryVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LebensmittelPlanEntryVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Plan" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlanTag" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MengeForEinheit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Einheit" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddFood">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="item" type="tns:LebensmittelVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFoodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddFoodResult" type="tns:LebensmittelVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFood">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFoodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFoodResult" type="tns:LebensmittelVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFoodList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="ids" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFoodListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFoodListResult" type="tns:ArrayOfLebensmittelVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetFood">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="item" type="tns:LebensmittelVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetFoodResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetClasses">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClassesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClassesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFood">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="item" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFoodResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetConsumed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="1" maxOccurs="1" name="daytime" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConsumedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetConsumedResult" type="tns:ArrayOfLebensmittelConsumedVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLebensmittelConsumedVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LebensmittelConsumedVM" nillable="true" type="tns:LebensmittelConsumedVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LebensmittelConsumedVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mahlzeit" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Menge" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lebensmittel_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lebensmittel_Image" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlanTag" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Einheit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MengeProEinheit" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Datum" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddConsumed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="itemId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="daytime" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddConsumedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddConsumedResult" type="tns:LebensmittelConsumedVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetConsumed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="consumed" type="tns:LebensmittelConsumedVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetConsumedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetConsumedResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteConsumed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="consumedId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteConsumedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteConsumedResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSummary">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="1" maxOccurs="1" name="daytime" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSummaryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSummaryResult" type="tns:SummaryData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SummaryData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SumkJoule" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="SumkCal" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="SumFatP" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="SumKHP" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="SumProtP" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="SumFat" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="SumFatSaturated" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="SumKH" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="SumProt" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fiber" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetRecipe">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="recipe" type="tns:LebensmittelVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetRecipeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetRecipeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRecipe">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRecipeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteRecipeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewNutritionPlan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="plantype" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="calories" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewNutritionPlanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewNutritionPlanResult" type="tns:NutritionPlanVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NutritionPlanVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Days" type="tns:ArrayOfNutritionPlanDayVM" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPrivate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlanType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActivePlan" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfNutritionPlanDayVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NutritionPlanDayVM" nillable="true" type="tns:NutritionPlanDayVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NutritionPlanDayVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Entries" type="tns:ArrayOfNutritionPlanEntryVM" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DayOfWeekIndex" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WeekIndex" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NutritionPlanId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plan1PointsSum" type="tns:Plan1PointsVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfNutritionPlanEntryVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NutritionPlanEntryVM" nillable="true" type="tns:NutritionPlanEntryVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NutritionPlanEntryVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mahlzeit" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Menge" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="kCalGesamt" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fett" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Prot" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="KH" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="kJoule" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lebensmittel_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlanTag" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MengeForEinheit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Einheit" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Plan1PointsVM">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Fette" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Proteine" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Milchprodukte" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Kohlenhydrate" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Obst" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gemuese" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Snacks" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gewuerze" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="SummeKCal" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="KCal_Fette" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="KCal_Proteine" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="KCal_Kohlenhydrate" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Level" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Stufe" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activity" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BMR" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Daytimes" type="tns:ArrayOfDayTimesVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDayTimesVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DayTimesVM" nillable="true" type="tns:DayTimesVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DayTimesVM">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DayTime" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="KCal_Fette" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="KCal_Proteine" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="KCal_Kohlenhydrate" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNutritionPlanLebensmittel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="plantype" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNutritionPlanLebensmittelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNutritionPlanLebensmittelResult" type="tns:ArrayOfLebensmittelVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetNutritionPlanFavorite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="vm" type="tns:NutritionPlanFavoriteVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NutritionPlanFavoriteVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plan_id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mahlzeit" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPublic" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lebensmittel" type="tns:ArrayOfLebensmittelConsumedVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetNutritionPlanFavoriteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetNutritionPlanFavoriteResult" type="tns:NutritionPlanFavoriteVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteNutritionPlanFavorite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="vm" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteNutritionPlanFavoriteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteNutritionPlanFavoriteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNutritionPlanFavorites">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="plantype" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNutritionPlanFavoritesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNutritionPlanFavoritesResult" type="tns:ArrayOfNutritionPlanFavoriteVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNutritionPlanFavoriteVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NutritionPlanFavoriteVM" nillable="true" type="tns:NutritionPlanFavoriteVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMyNutritionPlans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyNutritionPlansResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMyNutritionPlansResult" type="tns:ArrayOfNutritionPlanVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNutritionPlanVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NutritionPlanVM" nillable="true" type="tns:NutritionPlanVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNutritionPlans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNutritionPlansResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNutritionPlansResult" type="tns:ArrayOfNutritionPlanVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyCurrentNutritionPlan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyCurrentNutritionPlanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMyCurrentNutritionPlanResult" type="tns:NutritionPlanVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyNutritionPlan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyNutritionPlanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMyNutritionPlanResult" type="tns:NutritionPlanVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRemainingPlan1Points">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRemainingPlan1PointsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRemainingPlan1PointsResult" type="tns:Plan1PointsVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyAchievmentsCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="search" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ignoreCase" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="page" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyAchievmentsCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetMyAchievmentsCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterNewUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="regdata" type="tns:RegistrationItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RegistrationItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pwd1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pwd2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mode" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsMale" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Age" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Height" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Weight" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FitnessLevel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkoutDays" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkoutMinutes" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AvailableWorkoutPlanSel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal_Posture" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkoutDaysSel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal_FatLoss" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal_Strength" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal_Muscle" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Goal_Endurance" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nickname" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegisterNewUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegisterNewUserResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lang" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetContentResult" type="tns:BlogPostVM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BlogPostVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreationTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PublishTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DePublishTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReleased" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Teaser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Headline" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Author_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Author" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BlogKeyword" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="BlogComment" type="tns:ArrayOfBlogCommentEntryVM" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsNews" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPromoted" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Keywords" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pictures" type="tns:ArrayOfPictureVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBlogCommentEntryVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BlogCommentEntryVM" nillable="true" type="tns:BlogCommentEntryVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BlogCommentEntryVM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_accessId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendHealthVaultInvite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AuthData" />
+            <s:element minOccurs="0" maxOccurs="1" name="question" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="answer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendHealthVaultInviteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendHealthVaultInviteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AuthenticateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateUser" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTrainingDayCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTrainingDayCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTrainingDayCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTrainingDayCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPlannedWorkoutsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPlannedWorkouts" />
+  </wsdl:message>
+  <wsdl:message name="GetPlannedWorkoutsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPlannedWorkoutsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentPlannedWorkoutSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrentPlannedWorkout" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentPlannedWorkoutSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrentPlannedWorkoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetPlannedWorkoutSoapIn">
+    <wsdl:part name="parameters" element="tns:SetPlannedWorkout" />
+  </wsdl:message>
+  <wsdl:message name="SetPlannedWorkoutSoapOut">
+    <wsdl:part name="parameters" element="tns:SetPlannedWorkoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetActivePlannedWorkoutSoapIn">
+    <wsdl:part name="parameters" element="tns:SetActivePlannedWorkout" />
+  </wsdl:message>
+  <wsdl:message name="SetActivePlannedWorkoutSoapOut">
+    <wsdl:part name="parameters" element="tns:SetActivePlannedWorkoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNewWorkoutplanSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNewWorkoutplan" />
+  </wsdl:message>
+  <wsdl:message name="GetNewWorkoutplanSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNewWorkoutplanResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentTrainingDaySoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrentTrainingDay" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentTrainingDaySoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrentTrainingDayResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateTrainingDaySoapIn">
+    <wsdl:part name="parameters" element="tns:CreateTrainingDay" />
+  </wsdl:message>
+  <wsdl:message name="CreateTrainingDaySoapOut">
+    <wsdl:part name="parameters" element="tns:CreateTrainingDayResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTrainingDaysForWorkoutSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTrainingDaysForWorkout" />
+  </wsdl:message>
+  <wsdl:message name="GetTrainingDaysForWorkoutSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTrainingDaysForWorkoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkoutDaysForWorkoutSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWorkoutDaysForWorkout" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkoutDaysForWorkoutSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWorkoutDaysForWorkoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetTrainingDaySoapIn">
+    <wsdl:part name="parameters" element="tns:SetTrainingDay" />
+  </wsdl:message>
+  <wsdl:message name="SetTrainingDaySoapOut">
+    <wsdl:part name="parameters" element="tns:SetTrainingDayResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTrainingDaySoapIn">
+    <wsdl:part name="parameters" element="tns:GetTrainingDay" />
+  </wsdl:message>
+  <wsdl:message name="GetTrainingDaySoapOut">
+    <wsdl:part name="parameters" element="tns:GetTrainingDayResponse" />
+  </wsdl:message>
+  <wsdl:message name="FinishCurrentTrainingDaySoapIn">
+    <wsdl:part name="parameters" element="tns:FinishCurrentTrainingDay" />
+  </wsdl:message>
+  <wsdl:message name="FinishCurrentTrainingDaySoapOut">
+    <wsdl:part name="parameters" element="tns:FinishCurrentTrainingDayResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetTrainingExerciseSoapIn">
+    <wsdl:part name="parameters" element="tns:SetTrainingExercise" />
+  </wsdl:message>
+  <wsdl:message name="SetTrainingExerciseSoapOut">
+    <wsdl:part name="parameters" element="tns:SetTrainingExerciseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetExerciseHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetExerciseHistory" />
+  </wsdl:message>
+  <wsdl:message name="GetExerciseHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetExerciseHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="GetUserProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadProfilePictureSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadProfilePicture" />
+  </wsdl:message>
+  <wsdl:message name="UploadProfilePictureSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadProfilePictureResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddLicenseSoapIn">
+    <wsdl:part name="parameters" element="tns:AddLicense" />
+  </wsdl:message>
+  <wsdl:message name="AddLicenseSoapOut">
+    <wsdl:part name="parameters" element="tns:AddLicenseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetValidLicensesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetValidLicenses" />
+  </wsdl:message>
+  <wsdl:message name="GetValidLicensesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetValidLicensesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResetUserSoapIn">
+    <wsdl:part name="parameters" element="tns:ResetUser" />
+  </wsdl:message>
+  <wsdl:message name="ResetUserSoapOut">
+    <wsdl:part name="parameters" element="tns:ResetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResetUserConfirmSoapIn">
+    <wsdl:part name="parameters" element="tns:ResetUserConfirm" />
+  </wsdl:message>
+  <wsdl:message name="ResetUserConfirmSoapOut">
+    <wsdl:part name="parameters" element="tns:ResetUserConfirmResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendFeedbackSoapIn">
+    <wsdl:part name="parameters" element="tns:SendFeedback" />
+  </wsdl:message>
+  <wsdl:message name="SendFeedbackSoapOut">
+    <wsdl:part name="parameters" element="tns:SendFeedbackResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUserDailySoapIn">
+    <wsdl:part name="parameters" element="tns:AddUserDaily" />
+  </wsdl:message>
+  <wsdl:message name="AddUserDailySoapOut">
+    <wsdl:part name="parameters" element="tns:AddUserDailyResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserDailySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUserDaily" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserDailySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUserDailyResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserDailySoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUserDaily" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserDailySoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUserDailyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDailySoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserDaily" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDailySoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserDailyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDailyRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserDailyRange" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDailyRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserDailyRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDailyCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserDailyCount" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDailyCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserDailyCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUserGoalSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUserGoal" />
+  </wsdl:message>
+  <wsdl:message name="AddUserGoalSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUserGoalResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserGoalSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUserGoal" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserGoalSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUserGoalResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserGoalSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUserGoal" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserGoalSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUserGoalResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserGoalVMSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserGoalVM" />
+  </wsdl:message>
+  <wsdl:message name="GetUserGoalVMSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserGoalVMResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserGoalRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserGoalRange" />
+  </wsdl:message>
+  <wsdl:message name="GetUserGoalRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserGoalRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserGoalCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserGoalCount" />
+  </wsdl:message>
+  <wsdl:message name="GetUserGoalCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserGoalCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetExercisesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetExercises" />
+  </wsdl:message>
+  <wsdl:message name="GetExercisesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetExercisesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMuscleGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMuscleGroups" />
+  </wsdl:message>
+  <wsdl:message name="GetMuscleGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMuscleGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEquipmentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEquipment" />
+  </wsdl:message>
+  <wsdl:message name="GetEquipmentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEquipmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetEquipmentSoapIn">
+    <wsdl:part name="parameters" element="tns:SetEquipment" />
+  </wsdl:message>
+  <wsdl:message name="SetEquipmentSoapOut">
+    <wsdl:part name="parameters" element="tns:SetEquipmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchFoodSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchFood" />
+  </wsdl:message>
+  <wsdl:message name="SearchFoodSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchFoodResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddFoodSoapIn">
+    <wsdl:part name="parameters" element="tns:AddFood" />
+  </wsdl:message>
+  <wsdl:message name="AddFoodSoapOut">
+    <wsdl:part name="parameters" element="tns:AddFoodResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFoodSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFood" />
+  </wsdl:message>
+  <wsdl:message name="GetFoodSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFoodResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFoodListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFoodList" />
+  </wsdl:message>
+  <wsdl:message name="GetFoodListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFoodListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetFoodSoapIn">
+    <wsdl:part name="parameters" element="tns:SetFood" />
+  </wsdl:message>
+  <wsdl:message name="SetFoodSoapOut">
+    <wsdl:part name="parameters" element="tns:SetFoodResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClassesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClasses" />
+  </wsdl:message>
+  <wsdl:message name="GetClassesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClassesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFoodSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteFood" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFoodSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteFoodResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConsumedSoapIn">
+    <wsdl:part name="parameters" element="tns:GetConsumed" />
+  </wsdl:message>
+  <wsdl:message name="GetConsumedSoapOut">
+    <wsdl:part name="parameters" element="tns:GetConsumedResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddConsumedSoapIn">
+    <wsdl:part name="parameters" element="tns:AddConsumed" />
+  </wsdl:message>
+  <wsdl:message name="AddConsumedSoapOut">
+    <wsdl:part name="parameters" element="tns:AddConsumedResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetConsumedSoapIn">
+    <wsdl:part name="parameters" element="tns:SetConsumed" />
+  </wsdl:message>
+  <wsdl:message name="SetConsumedSoapOut">
+    <wsdl:part name="parameters" element="tns:SetConsumedResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteConsumedSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteConsumed" />
+  </wsdl:message>
+  <wsdl:message name="DeleteConsumedSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteConsumedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSummarySoapIn">
+    <wsdl:part name="parameters" element="tns:GetSummary" />
+  </wsdl:message>
+  <wsdl:message name="GetSummarySoapOut">
+    <wsdl:part name="parameters" element="tns:GetSummaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetRecipeSoapIn">
+    <wsdl:part name="parameters" element="tns:SetRecipe" />
+  </wsdl:message>
+  <wsdl:message name="SetRecipeSoapOut">
+    <wsdl:part name="parameters" element="tns:SetRecipeResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRecipeSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteRecipe" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRecipeSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteRecipeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNewNutritionPlanSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNewNutritionPlan" />
+  </wsdl:message>
+  <wsdl:message name="GetNewNutritionPlanSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNewNutritionPlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNutritionPlanLebensmittelSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNutritionPlanLebensmittel" />
+  </wsdl:message>
+  <wsdl:message name="GetNutritionPlanLebensmittelSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNutritionPlanLebensmittelResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetNutritionPlanFavoriteSoapIn">
+    <wsdl:part name="parameters" element="tns:SetNutritionPlanFavorite" />
+  </wsdl:message>
+  <wsdl:message name="SetNutritionPlanFavoriteSoapOut">
+    <wsdl:part name="parameters" element="tns:SetNutritionPlanFavoriteResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteNutritionPlanFavoriteSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteNutritionPlanFavorite" />
+  </wsdl:message>
+  <wsdl:message name="DeleteNutritionPlanFavoriteSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteNutritionPlanFavoriteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNutritionPlanFavoritesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNutritionPlanFavorites" />
+  </wsdl:message>
+  <wsdl:message name="GetNutritionPlanFavoritesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNutritionPlanFavoritesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMyNutritionPlansSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMyNutritionPlans" />
+  </wsdl:message>
+  <wsdl:message name="GetMyNutritionPlansSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMyNutritionPlansResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNutritionPlansSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNutritionPlans" />
+  </wsdl:message>
+  <wsdl:message name="GetNutritionPlansSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNutritionPlansResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMyCurrentNutritionPlanSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMyCurrentNutritionPlan" />
+  </wsdl:message>
+  <wsdl:message name="GetMyCurrentNutritionPlanSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMyCurrentNutritionPlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMyNutritionPlanSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMyNutritionPlan" />
+  </wsdl:message>
+  <wsdl:message name="GetMyNutritionPlanSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMyNutritionPlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRemainingPlan1PointsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRemainingPlan1Points" />
+  </wsdl:message>
+  <wsdl:message name="GetRemainingPlan1PointsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRemainingPlan1PointsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMyAchievmentsCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMyAchievmentsCount" />
+  </wsdl:message>
+  <wsdl:message name="GetMyAchievmentsCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMyAchievmentsCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterNewUserSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterNewUser" />
+  </wsdl:message>
+  <wsdl:message name="RegisterNewUserSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterNewUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetContentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContent" />
+  </wsdl:message>
+  <wsdl:message name="GetContentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendHealthVaultInviteSoapIn">
+    <wsdl:part name="parameters" element="tns:SendHealthVaultInvite" />
+  </wsdl:message>
+  <wsdl:message name="SendHealthVaultInviteSoapOut">
+    <wsdl:part name="parameters" element="tns:SendHealthVaultInviteResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="AuthenticateUser">
+      <wsdl:input message="tns:AuthenticateUserSoapIn" />
+      <wsdl:output message="tns:AuthenticateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrainingDayCount">
+      <wsdl:input message="tns:GetTrainingDayCountSoapIn" />
+      <wsdl:output message="tns:GetTrainingDayCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlannedWorkouts">
+      <wsdl:input message="tns:GetPlannedWorkoutsSoapIn" />
+      <wsdl:output message="tns:GetPlannedWorkoutsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentPlannedWorkout">
+      <wsdl:input message="tns:GetCurrentPlannedWorkoutSoapIn" />
+      <wsdl:output message="tns:GetCurrentPlannedWorkoutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPlannedWorkout">
+      <wsdl:input message="tns:SetPlannedWorkoutSoapIn" />
+      <wsdl:output message="tns:SetPlannedWorkoutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetActivePlannedWorkout">
+      <wsdl:input message="tns:SetActivePlannedWorkoutSoapIn" />
+      <wsdl:output message="tns:SetActivePlannedWorkoutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewWorkoutplan">
+      <wsdl:input message="tns:GetNewWorkoutplanSoapIn" />
+      <wsdl:output message="tns:GetNewWorkoutplanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentTrainingDay">
+      <wsdl:input message="tns:GetCurrentTrainingDaySoapIn" />
+      <wsdl:output message="tns:GetCurrentTrainingDaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTrainingDay">
+      <wsdl:input message="tns:CreateTrainingDaySoapIn" />
+      <wsdl:output message="tns:CreateTrainingDaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrainingDaysForWorkout">
+      <wsdl:input message="tns:GetTrainingDaysForWorkoutSoapIn" />
+      <wsdl:output message="tns:GetTrainingDaysForWorkoutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkoutDaysForWorkout">
+      <wsdl:input message="tns:GetWorkoutDaysForWorkoutSoapIn" />
+      <wsdl:output message="tns:GetWorkoutDaysForWorkoutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetTrainingDay">
+      <wsdl:input message="tns:SetTrainingDaySoapIn" />
+      <wsdl:output message="tns:SetTrainingDaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrainingDay">
+      <wsdl:input message="tns:GetTrainingDaySoapIn" />
+      <wsdl:output message="tns:GetTrainingDaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FinishCurrentTrainingDay">
+      <wsdl:input message="tns:FinishCurrentTrainingDaySoapIn" />
+      <wsdl:output message="tns:FinishCurrentTrainingDaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetTrainingExercise">
+      <wsdl:input message="tns:SetTrainingExerciseSoapIn" />
+      <wsdl:output message="tns:SetTrainingExerciseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExerciseHistory">
+      <wsdl:input message="tns:GetExerciseHistorySoapIn" />
+      <wsdl:output message="tns:GetExerciseHistorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <wsdl:input message="tns:GetUserProfileSoapIn" />
+      <wsdl:output message="tns:GetUserProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserProfile">
+      <wsdl:input message="tns:UpdateUserProfileSoapIn" />
+      <wsdl:output message="tns:UpdateUserProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadProfilePicture">
+      <wsdl:input message="tns:UploadProfilePictureSoapIn" />
+      <wsdl:output message="tns:UploadProfilePictureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLicense">
+      <wsdl:input message="tns:AddLicenseSoapIn" />
+      <wsdl:output message="tns:AddLicenseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValidLicenses">
+      <wsdl:input message="tns:GetValidLicensesSoapIn" />
+      <wsdl:output message="tns:GetValidLicensesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetUser">
+      <wsdl:input message="tns:ResetUserSoapIn" />
+      <wsdl:output message="tns:ResetUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetUserConfirm">
+      <wsdl:input message="tns:ResetUserConfirmSoapIn" />
+      <wsdl:output message="tns:ResetUserConfirmSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFeedback">
+      <wsdl:input message="tns:SendFeedbackSoapIn" />
+      <wsdl:output message="tns:SendFeedbackSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserDaily">
+      <wsdl:input message="tns:AddUserDailySoapIn" />
+      <wsdl:output message="tns:AddUserDailySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserDaily">
+      <wsdl:input message="tns:UpdateUserDailySoapIn" />
+      <wsdl:output message="tns:UpdateUserDailySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserDaily">
+      <wsdl:input message="tns:DeleteUserDailySoapIn" />
+      <wsdl:output message="tns:DeleteUserDailySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDaily">
+      <wsdl:input message="tns:GetUserDailySoapIn" />
+      <wsdl:output message="tns:GetUserDailySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDailyRange">
+      <wsdl:input message="tns:GetUserDailyRangeSoapIn" />
+      <wsdl:output message="tns:GetUserDailyRangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDailyCount">
+      <wsdl:input message="tns:GetUserDailyCountSoapIn" />
+      <wsdl:output message="tns:GetUserDailyCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserGoal">
+      <wsdl:input message="tns:AddUserGoalSoapIn" />
+      <wsdl:output message="tns:AddUserGoalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserGoal">
+      <wsdl:input message="tns:UpdateUserGoalSoapIn" />
+      <wsdl:output message="tns:UpdateUserGoalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserGoal">
+      <wsdl:input message="tns:DeleteUserGoalSoapIn" />
+      <wsdl:output message="tns:DeleteUserGoalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGoalVM">
+      <wsdl:input message="tns:GetUserGoalVMSoapIn" />
+      <wsdl:output message="tns:GetUserGoalVMSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGoalRange">
+      <wsdl:input message="tns:GetUserGoalRangeSoapIn" />
+      <wsdl:output message="tns:GetUserGoalRangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGoalCount">
+      <wsdl:input message="tns:GetUserGoalCountSoapIn" />
+      <wsdl:output message="tns:GetUserGoalCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExercises">
+      <wsdl:input message="tns:GetExercisesSoapIn" />
+      <wsdl:output message="tns:GetExercisesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMuscleGroups">
+      <wsdl:input message="tns:GetMuscleGroupsSoapIn" />
+      <wsdl:output message="tns:GetMuscleGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEquipment">
+      <wsdl:input message="tns:GetEquipmentSoapIn" />
+      <wsdl:output message="tns:GetEquipmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetEquipment">
+      <wsdl:input message="tns:SetEquipmentSoapIn" />
+      <wsdl:output message="tns:SetEquipmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchFood">
+      <wsdl:input message="tns:SearchFoodSoapIn" />
+      <wsdl:output message="tns:SearchFoodSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFood">
+      <wsdl:input message="tns:AddFoodSoapIn" />
+      <wsdl:output message="tns:AddFoodSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFood">
+      <wsdl:input message="tns:GetFoodSoapIn" />
+      <wsdl:output message="tns:GetFoodSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFoodList">
+      <wsdl:input message="tns:GetFoodListSoapIn" />
+      <wsdl:output message="tns:GetFoodListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetFood">
+      <wsdl:input message="tns:SetFoodSoapIn" />
+      <wsdl:output message="tns:SetFoodSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClasses">
+      <wsdl:input message="tns:GetClassesSoapIn" />
+      <wsdl:output message="tns:GetClassesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFood">
+      <wsdl:input message="tns:DeleteFoodSoapIn" />
+      <wsdl:output message="tns:DeleteFoodSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConsumed">
+      <wsdl:input message="tns:GetConsumedSoapIn" />
+      <wsdl:output message="tns:GetConsumedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddConsumed">
+      <wsdl:input message="tns:AddConsumedSoapIn" />
+      <wsdl:output message="tns:AddConsumedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetConsumed">
+      <wsdl:input message="tns:SetConsumedSoapIn" />
+      <wsdl:output message="tns:SetConsumedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteConsumed">
+      <wsdl:input message="tns:DeleteConsumedSoapIn" />
+      <wsdl:output message="tns:DeleteConsumedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSummary">
+      <wsdl:input message="tns:GetSummarySoapIn" />
+      <wsdl:output message="tns:GetSummarySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetRecipe">
+      <wsdl:input message="tns:SetRecipeSoapIn" />
+      <wsdl:output message="tns:SetRecipeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecipe">
+      <wsdl:input message="tns:DeleteRecipeSoapIn" />
+      <wsdl:output message="tns:DeleteRecipeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewNutritionPlan">
+      <wsdl:input message="tns:GetNewNutritionPlanSoapIn" />
+      <wsdl:output message="tns:GetNewNutritionPlanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNutritionPlanLebensmittel">
+      <wsdl:input message="tns:GetNutritionPlanLebensmittelSoapIn" />
+      <wsdl:output message="tns:GetNutritionPlanLebensmittelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetNutritionPlanFavorite">
+      <wsdl:input message="tns:SetNutritionPlanFavoriteSoapIn" />
+      <wsdl:output message="tns:SetNutritionPlanFavoriteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNutritionPlanFavorite">
+      <wsdl:input message="tns:DeleteNutritionPlanFavoriteSoapIn" />
+      <wsdl:output message="tns:DeleteNutritionPlanFavoriteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNutritionPlanFavorites">
+      <wsdl:input message="tns:GetNutritionPlanFavoritesSoapIn" />
+      <wsdl:output message="tns:GetNutritionPlanFavoritesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyNutritionPlans">
+      <wsdl:input message="tns:GetMyNutritionPlansSoapIn" />
+      <wsdl:output message="tns:GetMyNutritionPlansSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNutritionPlans">
+      <wsdl:input message="tns:GetNutritionPlansSoapIn" />
+      <wsdl:output message="tns:GetNutritionPlansSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyCurrentNutritionPlan">
+      <wsdl:input message="tns:GetMyCurrentNutritionPlanSoapIn" />
+      <wsdl:output message="tns:GetMyCurrentNutritionPlanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyNutritionPlan">
+      <wsdl:input message="tns:GetMyNutritionPlanSoapIn" />
+      <wsdl:output message="tns:GetMyNutritionPlanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRemainingPlan1Points">
+      <wsdl:input message="tns:GetRemainingPlan1PointsSoapIn" />
+      <wsdl:output message="tns:GetRemainingPlan1PointsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyAchievmentsCount">
+      <wsdl:input message="tns:GetMyAchievmentsCountSoapIn" />
+      <wsdl:output message="tns:GetMyAchievmentsCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewUser">
+      <wsdl:input message="tns:RegisterNewUserSoapIn" />
+      <wsdl:output message="tns:RegisterNewUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContent">
+      <wsdl:input message="tns:GetContentSoapIn" />
+      <wsdl:output message="tns:GetContentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendHealthVaultInvite">
+      <wsdl:input message="tns:SendHealthVaultInviteSoapIn" />
+      <wsdl:output message="tns:SendHealthVaultInviteSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AuthenticateUser">
+      <soap:operation soapAction="http://bettrfit.com/AuthenticateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrainingDayCount">
+      <soap:operation soapAction="http://bettrfit.com/GetTrainingDayCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlannedWorkouts">
+      <soap:operation soapAction="http://bettrfit.com/GetPlannedWorkouts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentPlannedWorkout">
+      <soap:operation soapAction="http://bettrfit.com/GetCurrentPlannedWorkout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPlannedWorkout">
+      <soap:operation soapAction="http://bettrfit.com/SetPlannedWorkout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetActivePlannedWorkout">
+      <soap:operation soapAction="http://bettrfit.com/SetActivePlannedWorkout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewWorkoutplan">
+      <soap:operation soapAction="http://bettrfit.com/GetNewWorkoutplan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentTrainingDay">
+      <soap:operation soapAction="http://bettrfit.com/GetCurrentTrainingDay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTrainingDay">
+      <soap:operation soapAction="http://bettrfit.com/CreateTrainingDay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrainingDaysForWorkout">
+      <soap:operation soapAction="http://bettrfit.com/GetTrainingDaysForWorkout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkoutDaysForWorkout">
+      <soap:operation soapAction="http://bettrfit.com/GetWorkoutDaysForWorkout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetTrainingDay">
+      <soap:operation soapAction="http://bettrfit.com/SetTrainingDay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrainingDay">
+      <soap:operation soapAction="http://bettrfit.com/GetTrainingDay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinishCurrentTrainingDay">
+      <soap:operation soapAction="http://bettrfit.com/FinishCurrentTrainingDay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetTrainingExercise">
+      <soap:operation soapAction="http://bettrfit.com/SetTrainingExercise" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExerciseHistory">
+      <soap:operation soapAction="http://bettrfit.com/GetExerciseHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <soap:operation soapAction="http://bettrfit.com/GetUserProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserProfile">
+      <soap:operation soapAction="http://bettrfit.com/UpdateUserProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadProfilePicture">
+      <soap:operation soapAction="http://bettrfit.com/UploadProfilePicture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLicense">
+      <soap:operation soapAction="http://bettrfit.com/AddLicense" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValidLicenses">
+      <soap:operation soapAction="http://bettrfit.com/GetValidLicenses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetUser">
+      <soap:operation soapAction="http://bettrfit.com/ResetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetUserConfirm">
+      <soap:operation soapAction="http://bettrfit.com/ResetUserConfirm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFeedback">
+      <soap:operation soapAction="http://bettrfit.com/SendFeedback" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserDaily">
+      <soap:operation soapAction="http://bettrfit.com/AddUserDaily" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserDaily">
+      <soap:operation soapAction="http://bettrfit.com/UpdateUserDaily" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserDaily">
+      <soap:operation soapAction="http://bettrfit.com/DeleteUserDaily" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDaily">
+      <soap:operation soapAction="http://bettrfit.com/GetUserDaily" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDailyRange">
+      <soap:operation soapAction="http://bettrfit.com/GetUserDailyRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDailyCount">
+      <soap:operation soapAction="http://bettrfit.com/GetUserDailyCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserGoal">
+      <soap:operation soapAction="http://bettrfit.com/AddUserGoal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserGoal">
+      <soap:operation soapAction="http://bettrfit.com/UpdateUserGoal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserGoal">
+      <soap:operation soapAction="http://bettrfit.com/DeleteUserGoal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGoalVM">
+      <soap:operation soapAction="http://bettrfit.com/GetUserGoalVM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGoalRange">
+      <soap:operation soapAction="http://bettrfit.com/GetUserGoalRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGoalCount">
+      <soap:operation soapAction="http://bettrfit.com/GetUserGoalCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExercises">
+      <soap:operation soapAction="http://bettrfit.com/GetExercises" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMuscleGroups">
+      <soap:operation soapAction="http://bettrfit.com/GetMuscleGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEquipment">
+      <soap:operation soapAction="http://bettrfit.com/GetEquipment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetEquipment">
+      <soap:operation soapAction="http://bettrfit.com/SetEquipment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchFood">
+      <soap:operation soapAction="http://bettrfit.com/SearchFood" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFood">
+      <soap:operation soapAction="http://bettrfit.com/AddFood" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFood">
+      <soap:operation soapAction="http://bettrfit.com/GetFood" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoodList">
+      <soap:operation soapAction="http://bettrfit.com/GetFoodList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetFood">
+      <soap:operation soapAction="http://bettrfit.com/SetFood" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClasses">
+      <soap:operation soapAction="http://bettrfit.com/GetClasses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFood">
+      <soap:operation soapAction="http://bettrfit.com/DeleteFood" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConsumed">
+      <soap:operation soapAction="http://bettrfit.com/GetConsumed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddConsumed">
+      <soap:operation soapAction="http://bettrfit.com/AddConsumed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetConsumed">
+      <soap:operation soapAction="http://bettrfit.com/SetConsumed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteConsumed">
+      <soap:operation soapAction="http://bettrfit.com/DeleteConsumed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSummary">
+      <soap:operation soapAction="http://bettrfit.com/GetSummary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetRecipe">
+      <soap:operation soapAction="http://bettrfit.com/SetRecipe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecipe">
+      <soap:operation soapAction="http://bettrfit.com/DeleteRecipe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewNutritionPlan">
+      <soap:operation soapAction="http://bettrfit.com/GetNewNutritionPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNutritionPlanLebensmittel">
+      <soap:operation soapAction="http://bettrfit.com/GetNutritionPlanLebensmittel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNutritionPlanFavorite">
+      <soap:operation soapAction="http://bettrfit.com/SetNutritionPlanFavorite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNutritionPlanFavorite">
+      <soap:operation soapAction="http://bettrfit.com/DeleteNutritionPlanFavorite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNutritionPlanFavorites">
+      <soap:operation soapAction="http://bettrfit.com/GetNutritionPlanFavorites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyNutritionPlans">
+      <soap:operation soapAction="http://bettrfit.com/GetMyNutritionPlans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNutritionPlans">
+      <soap:operation soapAction="http://bettrfit.com/GetNutritionPlans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyCurrentNutritionPlan">
+      <soap:operation soapAction="http://bettrfit.com/GetMyCurrentNutritionPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyNutritionPlan">
+      <soap:operation soapAction="http://bettrfit.com/GetMyNutritionPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemainingPlan1Points">
+      <soap:operation soapAction="http://bettrfit.com/GetRemainingPlan1Points" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyAchievmentsCount">
+      <soap:operation soapAction="http://bettrfit.com/GetMyAchievmentsCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewUser">
+      <soap:operation soapAction="http://bettrfit.com/RegisterNewUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContent">
+      <soap:operation soapAction="http://bettrfit.com/GetContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendHealthVaultInvite">
+      <soap:operation soapAction="http://bettrfit.com/SendHealthVaultInvite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AuthenticateUser">
+      <soap12:operation soapAction="http://bettrfit.com/AuthenticateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrainingDayCount">
+      <soap12:operation soapAction="http://bettrfit.com/GetTrainingDayCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlannedWorkouts">
+      <soap12:operation soapAction="http://bettrfit.com/GetPlannedWorkouts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentPlannedWorkout">
+      <soap12:operation soapAction="http://bettrfit.com/GetCurrentPlannedWorkout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPlannedWorkout">
+      <soap12:operation soapAction="http://bettrfit.com/SetPlannedWorkout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetActivePlannedWorkout">
+      <soap12:operation soapAction="http://bettrfit.com/SetActivePlannedWorkout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewWorkoutplan">
+      <soap12:operation soapAction="http://bettrfit.com/GetNewWorkoutplan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentTrainingDay">
+      <soap12:operation soapAction="http://bettrfit.com/GetCurrentTrainingDay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTrainingDay">
+      <soap12:operation soapAction="http://bettrfit.com/CreateTrainingDay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrainingDaysForWorkout">
+      <soap12:operation soapAction="http://bettrfit.com/GetTrainingDaysForWorkout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkoutDaysForWorkout">
+      <soap12:operation soapAction="http://bettrfit.com/GetWorkoutDaysForWorkout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetTrainingDay">
+      <soap12:operation soapAction="http://bettrfit.com/SetTrainingDay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrainingDay">
+      <soap12:operation soapAction="http://bettrfit.com/GetTrainingDay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinishCurrentTrainingDay">
+      <soap12:operation soapAction="http://bettrfit.com/FinishCurrentTrainingDay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetTrainingExercise">
+      <soap12:operation soapAction="http://bettrfit.com/SetTrainingExercise" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExerciseHistory">
+      <soap12:operation soapAction="http://bettrfit.com/GetExerciseHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <soap12:operation soapAction="http://bettrfit.com/GetUserProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserProfile">
+      <soap12:operation soapAction="http://bettrfit.com/UpdateUserProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadProfilePicture">
+      <soap12:operation soapAction="http://bettrfit.com/UploadProfilePicture" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLicense">
+      <soap12:operation soapAction="http://bettrfit.com/AddLicense" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValidLicenses">
+      <soap12:operation soapAction="http://bettrfit.com/GetValidLicenses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetUser">
+      <soap12:operation soapAction="http://bettrfit.com/ResetUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetUserConfirm">
+      <soap12:operation soapAction="http://bettrfit.com/ResetUserConfirm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFeedback">
+      <soap12:operation soapAction="http://bettrfit.com/SendFeedback" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserDaily">
+      <soap12:operation soapAction="http://bettrfit.com/AddUserDaily" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserDaily">
+      <soap12:operation soapAction="http://bettrfit.com/UpdateUserDaily" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserDaily">
+      <soap12:operation soapAction="http://bettrfit.com/DeleteUserDaily" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDaily">
+      <soap12:operation soapAction="http://bettrfit.com/GetUserDaily" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDailyRange">
+      <soap12:operation soapAction="http://bettrfit.com/GetUserDailyRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDailyCount">
+      <soap12:operation soapAction="http://bettrfit.com/GetUserDailyCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserGoal">
+      <soap12:operation soapAction="http://bettrfit.com/AddUserGoal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserGoal">
+      <soap12:operation soapAction="http://bettrfit.com/UpdateUserGoal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserGoal">
+      <soap12:operation soapAction="http://bettrfit.com/DeleteUserGoal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGoalVM">
+      <soap12:operation soapAction="http://bettrfit.com/GetUserGoalVM" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGoalRange">
+      <soap12:operation soapAction="http://bettrfit.com/GetUserGoalRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGoalCount">
+      <soap12:operation soapAction="http://bettrfit.com/GetUserGoalCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExercises">
+      <soap12:operation soapAction="http://bettrfit.com/GetExercises" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMuscleGroups">
+      <soap12:operation soapAction="http://bettrfit.com/GetMuscleGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEquipment">
+      <soap12:operation soapAction="http://bettrfit.com/GetEquipment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetEquipment">
+      <soap12:operation soapAction="http://bettrfit.com/SetEquipment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchFood">
+      <soap12:operation soapAction="http://bettrfit.com/SearchFood" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFood">
+      <soap12:operation soapAction="http://bettrfit.com/AddFood" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFood">
+      <soap12:operation soapAction="http://bettrfit.com/GetFood" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoodList">
+      <soap12:operation soapAction="http://bettrfit.com/GetFoodList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetFood">
+      <soap12:operation soapAction="http://bettrfit.com/SetFood" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClasses">
+      <soap12:operation soapAction="http://bettrfit.com/GetClasses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFood">
+      <soap12:operation soapAction="http://bettrfit.com/DeleteFood" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConsumed">
+      <soap12:operation soapAction="http://bettrfit.com/GetConsumed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddConsumed">
+      <soap12:operation soapAction="http://bettrfit.com/AddConsumed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetConsumed">
+      <soap12:operation soapAction="http://bettrfit.com/SetConsumed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteConsumed">
+      <soap12:operation soapAction="http://bettrfit.com/DeleteConsumed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSummary">
+      <soap12:operation soapAction="http://bettrfit.com/GetSummary" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetRecipe">
+      <soap12:operation soapAction="http://bettrfit.com/SetRecipe" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecipe">
+      <soap12:operation soapAction="http://bettrfit.com/DeleteRecipe" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewNutritionPlan">
+      <soap12:operation soapAction="http://bettrfit.com/GetNewNutritionPlan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNutritionPlanLebensmittel">
+      <soap12:operation soapAction="http://bettrfit.com/GetNutritionPlanLebensmittel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNutritionPlanFavorite">
+      <soap12:operation soapAction="http://bettrfit.com/SetNutritionPlanFavorite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNutritionPlanFavorite">
+      <soap12:operation soapAction="http://bettrfit.com/DeleteNutritionPlanFavorite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNutritionPlanFavorites">
+      <soap12:operation soapAction="http://bettrfit.com/GetNutritionPlanFavorites" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyNutritionPlans">
+      <soap12:operation soapAction="http://bettrfit.com/GetMyNutritionPlans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNutritionPlans">
+      <soap12:operation soapAction="http://bettrfit.com/GetNutritionPlans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyCurrentNutritionPlan">
+      <soap12:operation soapAction="http://bettrfit.com/GetMyCurrentNutritionPlan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyNutritionPlan">
+      <soap12:operation soapAction="http://bettrfit.com/GetMyNutritionPlan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemainingPlan1Points">
+      <soap12:operation soapAction="http://bettrfit.com/GetRemainingPlan1Points" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyAchievmentsCount">
+      <soap12:operation soapAction="http://bettrfit.com/GetMyAchievmentsCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewUser">
+      <soap12:operation soapAction="http://bettrfit.com/RegisterNewUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContent">
+      <soap12:operation soapAction="http://bettrfit.com/GetContent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendHealthVaultInvite">
+      <soap12:operation soapAction="http://bettrfit.com/SendHealthVaultInvite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="http://www.bettrfit.com/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="http://www.bettrfit.com/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

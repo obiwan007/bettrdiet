@@ -1,0 +1,366 @@
+﻿<views:MvxStorePage
+    x:Name="pageRoot"
+     xmlns:views="using:Cirrious.MvvmCross.WindowsStore.Views"
+    x:Class="BettrDiet.Windows8.Views.MainView"
+    
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BettrFit.WindowsStore.Views"
+    xmlns:common="using:BettrFit.WindowsStore.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:beh="using:BettrFit.WindowsStore.Common"
+    xmlns:controls="using:BettrFit.WindowsStore.Common.Controls"    
+    xmlns:vms="using:BettrDiet.Core.ViewModels"
+    xmlns:toolkit="using:WinRTXamlToolkit.Controls"
+     xmlns:SilverlightHtmlTextBlock="clr-namespace:SilverlightHtmlTextBlock" 
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance Type=vms:MainViewModel,IsDesignTimeCreatable=True}">
+
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="format1">{0}</x:String>
+            <x:String x:Key="formatDate">{0:d}</x:String>
+            <x:String x:Key="formatKg">{0} kg</x:String>
+            <x:String x:Key="formatP">{0} %</x:String>
+            <Storyboard x:Name="Storyboard1"/>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Page.BottomAppBar>
+        <AppBar>
+            <StackPanel Orientation="Horizontal">
+                <AppBarButton Label="Refresh" Command="{Binding RefreshCommand}"
+                              AutomationProperties.AutomationId="AddAppBarButton"
+                              AutomationProperties.Name="Refresh">
+                    <SymbolIcon Symbol="Refresh"/>
+
+                </AppBarButton>
+
+                <AppBarButton Label="Refresh" Command="{Binding LogoffCommand}"
+                              AutomationProperties.AutomationId="AddAppBarButton"
+                              AutomationProperties.Name="Refresh">
+                    <SymbolIcon Symbol="OtherUser"/>
+
+                </AppBarButton>
+
+            </StackPanel>
+        </AppBar>
+    </Page.BottomAppBar>
+
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Hub x:Name="mainhub">
+            <Hub.Header>
+                <!-- Schaltfläche "Zurück" und Seitentitel -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--<Button  x:Name="backButton" Margin="0,0,39,0" Command="{Binding GoBackCommand}"
+                        Style="{StaticResource NavigationBackButtonNormalStyle}"
+                        VerticalAlignment="Top"
+                        Visibility="{Binding CanGoBack, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                        AutomationProperties.Name="Back"
+                        AutomationProperties.AutomationId="BackButton"                             
+                        AutomationProperties.ItemType="Navigation Button"/>-->
+                    <!--<TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Top"/>-->
+                    <StackPanel
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal"
+                        Grid.Column="1">
+                        <Image 
+                            Source="ms-appx:///Assets/images/Logos/bettrfitLogo50x50.png" Margin="0,0,0,0" Height="45"/>
+                        <Image 
+                            Source="ms-appx:///Assets/images/Logos/bettrfitTextBigger.png" Margin="0,0,0,0" Height="45"/>
+                    </StackPanel>
+                </Grid>
+            </Hub.Header>
+
+
+
+            <HubSection x:Name="HeroSection" Width="780" Margin="10,60,0,0" VerticalContentAlignment="Stretch">
+                <HubSection.Background>
+                    <ImageBrush ImageSource="{Binding ImageHub}" Stretch="UniformToFill" />
+                </HubSection.Background>
+                <DataTemplate>
+                    <Grid VerticalAlignment="Bottom" Width="500" Opacity="0.8" Height="133" Margin="0,0,0,0">
+                    	<Grid.Resources>
+                    		<!--<Storyboard x:Name="Storyboard1">
+                    			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock">
+                    				<EasingDoubleKeyFrame KeyTime="0" Value="90">
+                    					<EasingDoubleKeyFrame.EasingFunction>
+                    						<BackEase EasingMode="EaseOut"/>
+                    					</EasingDoubleKeyFrame.EasingFunction>
+                    				</EasingDoubleKeyFrame>
+                    				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0">
+                    					<EasingDoubleKeyFrame.EasingFunction>
+                    						<BackEase EasingMode="EaseOut"/>
+                    					</EasingDoubleKeyFrame.EasingFunction>
+                    				</EasingDoubleKeyFrame>
+                    			</DoubleAnimationUsingKeyFrames>
+                    			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock">
+                    				<EasingDoubleKeyFrame KeyTime="0" Value="0">
+                    					<EasingDoubleKeyFrame.EasingFunction>
+                    						<BackEase EasingMode="EaseOut"/>
+                    					</EasingDoubleKeyFrame.EasingFunction>
+                    				</EasingDoubleKeyFrame>
+                    				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0">
+                    					<EasingDoubleKeyFrame.EasingFunction>
+                    						<BackEase EasingMode="EaseOut"/>
+                    					</EasingDoubleKeyFrame.EasingFunction>
+                    				</EasingDoubleKeyFrame>
+                    			</DoubleAnimationUsingKeyFrames>
+                    		</Storyboard>-->
+                    	</Grid.Resources>
+                        <!--<Grid.Projection>
+                            <PlaneProjection GlobalOffsetX="-50" GlobalOffsetY="50"/>
+                        </Grid.Projection>-->
+                        <!--<toolkit:AnimatingContainer
+                            PulseScale="1.07"
+                            Margin="0,0,0,0"
+                            RadiusX="5"
+                            RadiusY="2"
+                            Duration="0:0:6">
+                            <TextBlock Margin="50,40,0,0" Style="{StaticResource HeaderTextBlockStyle}" Text="Fitness done right" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="Segoe UI Semibold" RenderTransformOrigin="0.5,0.5">
+                                <TextBlock.RenderTransform>
+                                    <CompositeTransform/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </toolkit:AnimatingContainer>-->
+                        <!--<TextBlock x:Name="textBlock" Margin="0,0,0,0" Style="{StaticResource HeaderTextBlockStyle}" Text="Fitness done right" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="Segoe UI Semibold" RenderTransformOrigin="0.5,0.5">
+                        	<TextBlock.RenderTransform>
+                        		<CompositeTransform/>
+                        	</TextBlock.RenderTransform>
+                        </TextBlock>-->
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+
+
+            <!--Menu-->
+            <HubSection Margin="20,0,0,0" Width="Auto"  VerticalContentAlignment="Stretch" >
+                <DataTemplate>
+
+                    <Grid>
+                        <TextBlock  
+                        Text="Quickinfo"
+                        x:Uid="main_menulist" RenderTransformOrigin="0,0"
+                        Margin="42,10,0,0" 
+                               UseLayoutRounding="False" 
+                        d:LayoutRounding="Auto" FontSize="40" 
+                        VerticalAlignment="Top" HorizontalAlignment="Left">
+                            <TextBlock.RenderTransform>
+                                <CompositeTransform Rotation="90"/>
+                            </TextBlock.RenderTransform></TextBlock>
+
+
+                        <ListView
+							IsEnabled="{Binding IsNetworkAvailable}"
+							Name="listMenu" ItemsSource="{Binding NavCommands}" 
+								 SelectedItem="{Binding SelectedNav,Mode=TwoWay}" 
+								 Margin="46,0,0,0">
+								 <ListView.ItemContainerTransitions>
+                                		<TransitionCollection>
+                                			<AddDeleteThemeTransition/>
+                                		</TransitionCollection>
+                                	</ListView.ItemContainerTransitions>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="5" Orientation="Horizontal">
+                                        <Grid>
+                                            <!--<Rectangle >
+                                                <Rectangle.Fill>
+                                                    <SolidColorBrush Color="{StaticResource }"/>
+                                                </Rectangle.Fill>
+                                            </Rectangle>-->
+                                            <Image Source="{Binding Img}"/>
+                                        </Grid>
+                                        <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" FontSize="{StaticResource HubSectionHeaderThemeFontSize}" 
+                                           Text="{Binding Name}"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+
+
+
+
+
+                        </ListView>
+                    </Grid>
+
+                    <!--<Grid  >
+                        <TextBlock x:Uid="main_menulist" Style="{StaticResource HeaderTextBlockStyle}" RenderTransformOrigin="0,0" Margin="0,0,-359.741,0" UseLayoutRounding="False" d:LayoutRounding="Auto" Foreground="DarkRed">
+                            <TextBlock.RenderTransform>
+                                <CompositeTransform Rotation="90"/>
+                            </TextBlock.RenderTransform>Schnellzugriff</TextBlock>
+
+                        <GridView Margin="20,0"
+                        
+                                   SelectionMode="None"
+                        ItemsSource="{Binding NavCommands}"                        
+                        IsItemClickEnabled="True">
+
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+
+                                    <TextBlock MinWidth="240"
+                                                Width="Auto"
+                                               Foreground="DarkRed"
+                                                Text="{Binding}"
+                                                TextAlignment="Left"
+                                                Style="{StaticResource SubheaderTextBlockStyle}"
+                                                HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+
+                        --><!--<ListView  beh:ItemClickToCommandBehavior.Command="{Binding NavCommand}" ItemsSource="{Binding NavCommands}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock 
+                                                Text="{Binding}"
+                                                Style="{StaticResource SubheaderTextBlockStyle}"
+                                                HorizontalAlignment="Center" />
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>--><!--
+                        <StackPanel VerticalAlignment="Bottom">
+                        <HyperlinkButton x:Uid="main_feedback"  Command="{Binding FeedbackCommand}" 
+                         Visibility="{Binding IsLogoutVisible}" Margin="0,30,10,0" HorizontalAlignment="Right" VerticalAlignment="Top">Feedback</HyperlinkButton>
+
+                        <TextBlock Text="{Binding Expiremessage}"/>
+                        </StackPanel>
+                    </Grid>-->
+
+
+                    
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection Visibility="{Binding IsLoginVisible}" x:Uid="main_optimize" Header="Optimiere" Width="Auto">
+                <DataTemplate>
+                    <Grid Width="400">
+                        <!--<controls:RichTextDisplay Xaml="{Binding OptimizeText.Text}"/>-->
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+
+            <!--<HubSection x:Uid="main_hub_achievment" Visibility="{Binding IsLogoutVisible}" Header="Achievments" VerticalContentAlignment="Stretch">
+                <DataTemplate>
+                    <toolkit:WrapPanel Orientation="Vertical">
+                        <ScrollViewer>
+                            <ItemsControl ItemsSource="{Binding Achievments}"  Width="400">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="60"/>
+                                                <ColumnDefinition Width="80"/>
+                                                <ColumnDefinition Width="150"/>
+                                                <ColumnDefinition Width="50"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock  Grid.Column="1" Text="{Binding Date,Converter={StaticResource StringFormatConverter}, ConverterParameter={StaticResource formatDate}}" Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center"/>
+                                            <TextBlock TextWrapping="Wrap" Grid.Column="2" Text="{Binding Achievment.Name}" Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center"/>
+                                            <TextBlock Margin="10,0,0,0" Grid.Column="3" Text="{Binding Achievment.Points}" Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center"/>
+                                            <Image Grid.Column="0" Source="{Binding Achievment.Image2}" Width="50"/>
+                                        </Grid>
+
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                        <StackPanel Margin="0,20,0,0">
+                            <TextBlock x:Uid="main_hub_Diary" Style="{StaticResource SubheaderTextBlockStyle}" FontFamily="Segoe UI Semibold" >Tagebuch</TextBlock>
+                            <StackPanel Margin="10,0,0,0"  Orientation="Horizontal">
+                                <TextBlock x:Uid="common_date" Width="100" Text="Datum:" Style="{StaticResource CaptionTextBlockStyle}" />
+                                <TextBlock Text="{Binding LastWeight.Date, Converter={StaticResource StringFormatConverter}, ConverterParameter={StaticResource formatDate}}" Style="{StaticResource CaptionTextBlockStyle}" />
+                            </StackPanel>
+                            <StackPanel Margin="10,0,0,0" Orientation="Horizontal">
+                                <TextBlock x:Uid="common_weight"  Width="100" Text="Gewicht:" Style="{StaticResource CaptionTextBlockStyle}" />
+                                <TextBlock Text="{Binding LastWeight.Weight, Converter={StaticResource StringFormatConverter}, ConverterParameter={StaticResource formatKg}}" Style="{StaticResource CaptionTextBlockStyle}" />
+                            </StackPanel>
+                            <StackPanel Margin="10,0,0,0" Orientation="Horizontal">
+                                <TextBlock x:Uid="common_fat"  Width="100" Text="Fett:" Style="{StaticResource CaptionTextBlockStyle}" />
+                                <TextBlock Text="{Binding LastWeight.FatP, Converter={StaticResource StringFormatConverter}, ConverterParameter={StaticResource formatP}}" Style="{StaticResource CaptionTextBlockStyle}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </toolkit:WrapPanel>
+                </DataTemplate>
+            </HubSection>-->
+
+
+            <!--<HubSection Visibility="{Binding IsLogoutVisible}"  Width="800" Header="{Binding TrainingDay.Name, Converter={StaticResource StringFormatConverter}, ConverterParameter={StaticResource format1}}">
+                <DataTemplate>
+                    <StackPanel Width="800">
+                        --><!--<WebView                             
+                            Height="80" VerticalAlignment="Top"
+                            controls:WebViewHelper.Html="{Binding TrainingDay.Description}" />--><!--
+
+                        <controls:TrainingDayControl DataContext="{Binding TrainingDay.TrainingExerciseGroups}"></controls:TrainingDayControl>
+                        --><!--<ListView Margin="0,5,0,0" Height="Auto" x:Name="OrderItemsList"
+                                    ItemsSource="{Binding TrainingDay.TrainingExerciseGroups}" SelectionMode="None"
+                                  ItemTemplate="{StaticResource TrainingExerciseGroupTemplate}"
+                                  >
+                           
+                        </ListView>--><!--
+                    </StackPanel>
+                </DataTemplate>
+            </HubSection>-->
+
+
+
+            <!--<HubSection x:Uid="main_hub3" Visibility="{Binding IsLogoutVisible}" Width="520" Header="Aktueller Wochenplan">
+                <DataTemplate>
+                    <controls:PlannedWorkoutControl DataContext="{Binding PlannedWorkout}"></controls:PlannedWorkoutControl>
+                </DataTemplate>
+            </HubSection>-->
+
+        </Hub>
+        <ProgressBar IsEnabled="{Binding Sync}" Width="Auto" VerticalAlignment="Top" IsIndeterminate="{Binding Sync}" />
+
+        <Grid Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal"
+                Grid.Row="0"
+                Margin="10,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Bottom">
+
+                <TextBlock Margin="0,20,5,0" FontSize="{StaticResource HubSectionHeaderThemeFontSize}" Text="{Binding User.Nickname}"></TextBlock>
+                <Image Source="{Binding Image}" Width="100" Height="100"></Image>
+                
+            </StackPanel>            
+            <!--<UI:AdControl ErrorOccurred="adcontrol_ErrorOccurred" Name="adcontrol" AdRefreshed="AdControl_AdRefreshed" Grid.Row="1" Width="480" VerticalAlignment="Bottom" Height="80" 
+                          ApplicationId="29080294-0fc8-4d47-b5af-b1c88308fe53" AdUnitId="10720693" />-->
+        </Grid>
+        <Grid Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            
+            <HyperlinkButton Grid.Row="0" Margin="0,0,0,70" VerticalAlignment="Bottom" Command="{Binding ShakeCommand}"
+                                         HorizontalAlignment="Right">Buy me a Shake</HyperlinkButton>
+            <HyperlinkButton Grid.Row="0" Margin="0,0,0,20" VerticalAlignment="Bottom" Command="{Binding FeedbackCommand}"
+                                         HorizontalAlignment="Right">Feedback</HyperlinkButton>
+
+
+            <!--<UI:AdControl ErrorOccurred="adcontrol_ErrorOccurred" Name="adcontrol" AdRefreshed="AdControl_AdRefreshed" Grid.Row="1" Width="480" VerticalAlignment="Bottom" Height="80" 
+                          ApplicationId="29080294-0fc8-4d47-b5af-b1c88308fe53" AdUnitId="10720693" />-->
+        </Grid>
+        <ProgressBar Visibility="{Binding Sync, Converter={StaticResource BooleanToVisibilityConverter}, Mode=TwoWay}" IsIndeterminate="{Binding Sync}" Grid.Row="2" VerticalAlignment="Top"   />
+    </Grid>
+</views:MvxStorePage>

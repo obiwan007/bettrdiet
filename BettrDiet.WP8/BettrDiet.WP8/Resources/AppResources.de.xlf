@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="de" original="AppResources.resx" tool-id="MultilingualAppToolkit" product-name="BettrDiet.WP8" product-version="1.0.0.1" build-num="0">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.2.1212.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="Resx">
+        <trans-unit id="Resx/ResourceFlowDirection" translate="yes" xml:space="preserve">
+          <source>LeftToRight</source>
+          <target state="translated">LeftToRight</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</note></trans-unit>
+        <trans-unit id="Resx/ResourceLanguage" translate="yes" xml:space="preserve">
+          <source>en-US</source>
+          <target state="translated">de</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</note></trans-unit>
+        <trans-unit id="Resx/ApplicationTitle" translate="yes" xml:space="preserve">
+          <source>MY APPLICATION</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">MEINE BEWERBUNG</target>
+        </trans-unit>
+        <trans-unit id="Resx/AppBarButtonText" translate="yes" xml:space="preserve">
+          <source>add</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Hinzufügen</target>
+        </trans-unit>
+        <trans-unit id="Resx/AppBarMenuItemText" translate="yes" xml:space="preserve">
+          <source>Menu Item</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Menüpunkt</target>
+        </trans-unit>
+        <trans-unit id="Resx/Main_achievments" translate="yes" xml:space="preserve">
+          <source>achievments</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Erfolge</target>
+        </trans-unit>
+        <trans-unit id="Resx/Main_dailydata" translate="yes" xml:space="preserve">
+          <source>daily body stats</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">tägliche Körper-Statistik</target>
+        </trans-unit>
+        <trans-unit id="Resx/Main_foodtracker" translate="yes" xml:space="preserve">
+          <source>food tracker</source>
+          <target state="translated">Ernährungstagebuch</target>
+        </trans-unit>
+        <trans-unit id="Resx/Main_goals" translate="yes" xml:space="preserve">
+          <source>goals</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ziele</target>
+        </trans-unit>
+        <trans-unit id="Resx/Main_Login" translate="yes" xml:space="preserve">
+          <source>login</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Login</target>
+        </trans-unit>
+        <trans-unit id="Resx/Main_Logout" translate="yes" xml:space="preserve">
+          <source>logout</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Logout</target>
+        </trans-unit>
+        <trans-unit id="Resx/Main_pivothealth" translate="yes" xml:space="preserve">
+          <source>your health</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ihre Gesundheit</target>
+        </trans-unit>
+        <trans-unit id="Resx/Main_pivotworkout" translate="yes" xml:space="preserve">
+          <source>workouts</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Training</target>
+        </trans-unit>
+        <trans-unit id="Resx/Main_quickinfo" translate="yes" xml:space="preserve">
+          <source>quick access</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Schnellzugriff</target>
+        </trans-unit>
+        <trans-unit id="Resx/Main_Register" translate="yes" xml:space="preserve">
+          <source>register</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Registrieren</target>
+        </trans-unit>
+        <trans-unit id="Resx/Main_settings" translate="yes" xml:space="preserve">
+          <source>Settings</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Einstellungen</target>
+        </trans-unit>
+        <trans-unit id="Resx/Main_trainingday" translate="yes" xml:space="preserve">
+          <source>my training day</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Mein Trainingstag</target>
+        </trans-unit>
+        <trans-unit id="Resx/Main_trainingdaynew" translate="yes" xml:space="preserve">
+          <source>new training day</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">neue Trainings-Tag</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_abs" translate="yes" xml:space="preserve">
+          <source>abdominals</source>
+          <target state="translated">Bauchmuskeln</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_biceps" translate="yes" xml:space="preserve">
+          <source>biceps</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Bizeps</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_calf" translate="yes" xml:space="preserve">
+          <source>calf</source>
+          <target state="translated">Waden</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_calories" translate="yes" xml:space="preserve">
+          <source>consumed calories</source>
+          <target state="translated">verbrauchte Kalorien</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_chest" translate="yes" xml:space="preserve">
+          <source>chest</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Brust</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_date" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Datum</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_fat" translate="yes" xml:space="preserve">
+          <source>fat</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Fett</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_forearms" translate="yes" xml:space="preserve">
+          <source>forearms</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Unterarme</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_height" translate="yes" xml:space="preserve">
+          <source>height</source>
+          <target state="translated">Größe</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_hips" translate="yes" xml:space="preserve">
+          <source>hips</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Hüften</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_level" translate="yes" xml:space="preserve">
+          <source>your current fitness</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ihre aktuelle fitness</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_level1" translate="yes" xml:space="preserve">
+          <source>low</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">niedrige</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_level10" translate="yes" xml:space="preserve">
+          <source>super</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Super</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_measure" translate="yes" xml:space="preserve">
+          <source>measure</source>
+          <target state="translated">Messungen</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_muscle" translate="yes" xml:space="preserve">
+          <source>muscle</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Muskel</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_neck" translate="yes" xml:space="preserve">
+          <source>neck</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Hals</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_overview" translate="yes" xml:space="preserve">
+          <source>overview</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Übersicht</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_shoulders" translate="yes" xml:space="preserve">
+          <source>shoulders</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Schultern</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_statistics" translate="yes" xml:space="preserve">
+          <source>statistics</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Statistik</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_thighs" translate="yes" xml:space="preserve">
+          <source>thighs</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Oberschenkel</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_title" translate="yes" xml:space="preserve">
+          <source>daily data edit</source>
+          <target state="translated">Daten bearbeiten</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_titleoverview" translate="yes" xml:space="preserve">
+          <source>diary</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Tagebuch</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_waist" translate="yes" xml:space="preserve">
+          <source>waist</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Taille</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_water" translate="yes" xml:space="preserve">
+          <source>water</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Wasser</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_weight" translate="yes" xml:space="preserve">
+          <source>weight</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Gewicht</target>
+        </trans-unit>
+        <trans-unit id="Resx/Daily_writsts" translate="yes" xml:space="preserve">
+          <source>wrists</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Handgelenke</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_accept" translate="yes" xml:space="preserve">
+          <source>accept</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">akzeptieren</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_account" translate="yes" xml:space="preserve">
+          <source>account</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Konto</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_agb" translate="yes" xml:space="preserve">
+          <source>privacy policy</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Datenschutzerklärung</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_age" translate="yes" xml:space="preserve">
+          <source>age</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Alter</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_body" translate="yes" xml:space="preserve">
+          <source>body</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Körper</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_days" translate="yes" xml:space="preserve">
+          <source>workouts per week</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Trainingseinheiten pro Woche</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_email" translate="yes" xml:space="preserve">
+          <source>your email adress</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ihre e-Mail-Adresse</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_emailtxt" translate="yes" xml:space="preserve">
+          <source>your email adress will be used to log you in later. you can not change it after you registered.</source>
+          <target state="translated">Ihre e-Mail-Adresse wird benoetigt, um sich später einloggen. Sie können sie nicht ändern, nachdem Sie sich registriert haben.</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_endurance" translate="yes" xml:space="preserve">
+          <source>better endurance</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">bessere Ausdauer</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_fat" translate="yes" xml:space="preserve">
+          <source>reduce fat</source>
+          <target state="translated">Fett reduzieren</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_female" translate="yes" xml:space="preserve">
+          <source>female</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">weiblich</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_height" translate="yes" xml:space="preserve">
+          <source>height</source>
+          <target state="translated">Größe</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_male" translate="yes" xml:space="preserve">
+          <source>male</source>
+          <target state="translated">Männlich</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_mins" translate="yes" xml:space="preserve">
+          <source>minutes per workout</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Minuten pro Trainingseinheit</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_muscle" translate="yes" xml:space="preserve">
+          <source>build muscle</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Muskeln aufbauen</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_nickname" translate="yes" xml:space="preserve">
+          <source>nickname</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Spitzname</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_password" translate="yes" xml:space="preserve">
+          <source>password</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Passwort</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_register" translate="yes" xml:space="preserve">
+          <source>Register Now!</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Registriere dich jetzt!</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_sex" translate="yes" xml:space="preserve">
+          <source>male or female?</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">männlich oder weiblich?</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_timing" translate="yes" xml:space="preserve">
+          <source>how much time do you have for workouts?</source>
+          <target state="translated">wie viel haben Sie für das Training?</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_title" translate="yes" xml:space="preserve">
+          <source>register</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Registrieren</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_train" translate="yes" xml:space="preserve">
+          <source>training</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ausbildung</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_trainfocus" translate="yes" xml:space="preserve">
+          <source>what is your workout goal?</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Was ist Ihr Training-Ziel?</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reg_weight" translate="yes" xml:space="preserve">
+          <source>weight</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Gewicht</target>
+        </trans-unit>
+        <trans-unit id="Resx/Goal_all" translate="yes" xml:space="preserve">
+          <source>Your Goals</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ihre Ziele</target>
+        </trans-unit>
+        <trans-unit id="Resx/Goal_edit" translate="yes" xml:space="preserve">
+          <source>Edit Goal</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ziel bearbeiten</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_average" xml:space="preserve">
+          <source>average nutrition facts</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">durchschnittliche Nährwerte</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_kh" xml:space="preserve">
+          <source>carbs</source>
+          <target state="translated">Kohlenhyd.</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_fruit" xml:space="preserve">
+          <source>fruit</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Obst</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_fat" xml:space="preserve">
+          <source>fat</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Fett</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_fiber" xml:space="preserve">
+          <source>fiber</source>
+          <target state="translated">Balaststoffe</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_fatsat" xml:space="preserve">
+          <source>saturated fats</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">gesättigte Fette</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_day" xml:space="preserve">
+          <source>day </source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Tag </target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_diary" xml:space="preserve">
+          <source>diary</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Tagebuch</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_energy" xml:space="preserve">
+          <source>energy</source>
+          <target state="translated">Brennwert</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_overview" xml:space="preserve">
+          <source>overview</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Übersicht</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_prot" xml:space="preserve">
+          <source>protein</source>
+          <target state="translated">Eiweiß</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_veg" xml:space="preserve">
+          <source>vegetables</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Gemüse</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Main_weight" xml:space="preserve">
+          <source>your latest weight</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ihre neuesten Gewicht</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_food" xml:space="preserve">
+          <source>foodlist</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">foodList</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Main_data" xml:space="preserve">
+          <source>data</source>
+          <target state="translated">aktuelle Daten</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_spice" xml:space="preserve">
+          <source>spice</source>
+          <target state="translated">Gewürze</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_snacks" xml:space="preserve">
+          <source>snacks</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Snacks</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_sollist" xml:space="preserve">
+          <source>quota/actual</source>
+          <target state="translated">Soll/Ist</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_meal" xml:space="preserve">
+          <source>meal</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Mahlzeit</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Nut_list" xml:space="preserve">
+          <source>food</source>
+          <target state="translated">Auswahl</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

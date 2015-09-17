@@ -1,0 +1,167 @@
+﻿<views:MvxPhonePage
+    x:Class="BettrDiet.WP8.Views.NutritionPlanCreate"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	    xmlns:bar="clr-namespace:BindableApplicationBar;assembly=BindableApplicationBar"
+    xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:telerikCore="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core"
+    xmlns:chart="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Chart"
+    xmlns:chartEngine="clr-namespace:Telerik.Charting;assembly=Telerik.Windows.Controls.Chart"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:my="clr-namespace:BettrDiet.WP8.Common"
+    xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+         xmlns:vms="clr-namespace:BettrDiet.Core.ViewModels;assembly=BettrDiet.Core"    
+    d:DataContext="{d:DesignInstance Type=vms:NutritionPlanCreateViewModel,IsDesignTimeCreatable=True}">
+
+    
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="../Resources/HubTileResources.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
+
+
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>-->
+
+        <phone:Pivot>
+            <phone:Pivot.Title>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                    <Image x:Name="icon1" Source="/Assets/Images/bettrdietTextBigger.png" Height="20"  HorizontalAlignment="Left"/>
+                    <TextBlock Margin="10,0,0,0" Text="{Binding NutritionPlan.Name}" 
+                               FontSize="{StaticResource PhoneFontSizeNormal}"/>
+                </StackPanel>
+            </phone:Pivot.Title>
+
+            <phone:PivotItem Header="neuer plan">
+                <Grid>
+                    <ScrollViewer Margin="0,0,0,80">
+                        <StackPanel>
+                            <telerikInput:RadListPicker SelectedIndex="{Binding SelectedPlanIndex, Mode=TwoWay}"  
+                                                ItemsSource="{Binding PlanList}">
+                            </telerikInput:RadListPicker>
+
+
+                                
+                            <!--<TextBlock  Text="{Binding NutritionPlan.Name}" Style="{StaticResource PhoneTextLargeStyle}" />-->
+                            <TextBlock TextWrapping="Wrap" Text="{Binding NutritionPlan.Description}" Style="{StaticResource PhoneTextNormalStyle}" />
+                            <!--<StackPanel Orientation="Horizontal" Margin="0,10">
+                                <TextBlock Style="{StaticResource PhoneTextNormalStyle}">Geplante Tage:</TextBlock>
+                                <TextBlock Style="{StaticResource PhoneTextNormalStyle}" Text="{Binding PlannedDays}" />
+                            </StackPanel>-->
+
+                            <TextBlock Margin="15,20,0,0" Style="{StaticResource PhoneTextNormalStyle}">Start-Datum::</TextBlock>
+                            <telerikInput:RadDatePicker 
+                                OkButtonIconUri="/Assets/DateTimePickerOK.png" 
+                                CancelButtonIconUri="/Assets/DateTimePickerCancel.png" 
+                                Value="{Binding SelectedDate, Mode=TwoWay}" />
+
+                            <TextBlock 
+                                Style="{StaticResource PhoneTextNormalStyle}">Gewünschte Zielkalorien:</TextBlock>
+                            <telerikInput:RadNumericUpDown 
+                            Grid.Column="0"
+                            Suffix="kCal" MinValue="1000" MaxValue="4000" Change="100"
+                            Value="{Binding SelectedCalories,Mode=TwoWay}" HorizontalContentAlignment="Stretch"/>
+
+
+
+                            <TextBlock Margin="15,10,10,0" Style="{StaticResource PhoneTextNormalStyle}" Text="{Binding CalcString}"
+                                           TextWrapping="Wrap"/>
+                            
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <TextBlock Style="{StaticResource PhoneTextNormalStyle}" Width="250">Grundumsatz liegt bei ca.:</TextBlock>
+                                <TextBlock Style="{StaticResource PhoneTextNormalStyle}" TextAlignment="Right"  Width="70"  Text="{Binding BMR,Mode=TwoWay}" />
+                                <TextBlock Style="{StaticResource PhoneTextNormalStyle}">kCal/Tag</TextBlock>
+                            </StackPanel>
+                            
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock Style="{StaticResource PhoneTextNormalStyle}" Width="250">Gesamtumsatz liegt bei ca.:</TextBlock>
+                                <TextBlock Style="{StaticResource PhoneTextNormalStyle}" TextAlignment="Right" Width="70" Text="{Binding ACT,Mode=TwoWay}" />
+                                <TextBlock Style="{StaticResource PhoneTextNormalStyle}">kCal/Tag</TextBlock>
+                            </StackPanel>
+
+                               
+
+
+                        </StackPanel>
+                    </ScrollViewer>
+                    <telerikPrimitives:RadImageButton  
+                                BorderThickness="3" 
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                                RestStateImageSource="/Assets/Images/Dark/appbar.save.png"
+                                Command="{Binding NutritionPlanCreateCommand}"
+                                IsEnabled="{Binding canCreatePlan}"
+                                ButtonShape="Ellipse" />
+                   
+                </Grid>
+            </phone:PivotItem>
+
+        </phone:Pivot>
+
+        <!--<ProgressBar VerticalAlignment="Top" IsIndeterminate="{Binding Sync}"></ProgressBar>-->
+        <!--<ProgressBar Margin="0,0,0,180"
+                     VerticalAlignment="Bottom" IsIndeterminate="{Binding Sync}"/>-->
+
+
+    </Grid>
+
+
+    <!--<bar:Bindable.ApplicationBar>
+        <bar:BindableApplicationBar
+            IsMenuEnabled="False">
+            <bar:BindableApplicationBar.Buttons>
+
+                <bar:BindableApplicationBarButton
+                Text="Favorites" IconUri="/Assets/Images/Dark/appbar.star.add.png"
+                Command="{Binding CreateNewPlanCommand}"
+                   />
+
+                <bar:BindableApplicationBarButton
+                Text="Delete" IconUri="/Assets/Images/Dark/appbar.delete.png"
+                Command="{Binding DeleteConsumedCommand}"
+                    IsEnabled="{Binding canDeleteConsumed,Mode=TwoWay}"/>
+
+                <bar:BindableApplicationBarButton
+                Text="Copy" IconUri="/Assets/Images/copy_round.png"
+                Command="{Binding CopyConsumedCommand}"
+                    IsEnabled="{Binding canCopyConsumed,Mode=TwoWay}"/>
+
+                <bar:BindableApplicationBarButton
+                Text="Paste" IconUri="/Assets/Images/paste_round.png"
+                Command="{Binding PasteConsumedCommand}"
+                    IsEnabled="{Binding canPasteConsumed,Mode=TwoWay}"/>
+
+
+
+            </bar:BindableApplicationBar.Buttons>
+
+            <bar:BindableApplicationBar.MenuItems>
+                <bar:BindableApplicationBarMenuItem
+                    Text="Neuer Ernährungsplan"
+                    Command="{Binding CreateNewPlanCommand}"/>
+            </bar:BindableApplicationBar.MenuItems>
+
+
+        </bar:BindableApplicationBar>
+    </bar:Bindable.ApplicationBar>-->
+</views:MvxPhonePage>
+

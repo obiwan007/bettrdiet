@@ -1,0 +1,26 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/BettrDiet/BettrDiet.Core/bin/Debug
+/BettrDiet.Portable/Common/bin/Debug
+/BettrDiet.Portable/Common/obj/Debug
+/BettrDiet.WP8/.vs
+/BettrDiet.WP8/BettrDiet.Windows8/obj/Debug
+*.vspscc
+*.pfx
+/BettrDiet.WP8/BettrDiet.WP8/Assets/Images/8684442_l.jpg
+/BettrDiet.WP8/BettrDiet.WP8/Assets/Images/8460417_l.jpg
+/BettrDiet.WP8/BettrDiet.WP8/Assets/Images/21315909_l.jpg
+/BettrDiet.WP8/BettrDiet.WP8/Assets/Images/21142620_l.jpg
+/BettrDiet.WP8/BettrDiet.WP8/Assets/Images/20599536_l.jpg
+/BettrDiet.WP8/BettrDiet.WP8/Assets/Images/19259869_l.jpg
+/BettrDiet.WP8/BettrDiet.WP8/Assets/Images/18344583_l.jpg
+/BettrDiet.WP8/BettrDiet.WP8/Assets/Images/15282406_l.jpg
+/BettrDiet.WP8/BettrDiet.WP8/Assets/Images/11324686_l.jpg
+/BettrDiet.WP8/BettrDiet.WP8/Assets/Images/CompanyLogo.png
+/BettrDiet.WP8/BettrDiet.WP8/Assets/Images/bettrdietTextBigger.png
+/BettrDiet.WP8/BettrDiet.WP8/Assets/Images/bettrdietLogoTextBigger.png
+/BettrDiet.WP8/lib/RCWP/2013.3.1317.3040
+/BettrDiet.WP8/MvvmCross.WindowsPhone1/Lib
+/BettrDiet.WP8/packages

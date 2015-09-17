@@ -1,0 +1,252 @@
+﻿<views:MvxPhonePage xmlns:UI="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI" 
+    x:Class="BettrDiet.WP8.Views.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	 xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
+        xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:telerikCore="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core"
+    xmlns:chart="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Chart"
+    xmlns:chartEngine="clr-namespace:Telerik.Charting;assembly=Telerik.Windows.Controls.Chart"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:abu="clr-namespace:AppBarUtils;assembly=AppBarUtils"
+
+    
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True" Margin="0,2,0,-2"
+    
+    xmlns:vms="clr-namespace:BettrDiet.Core.ViewModels;assembly=BettrDiet.Core"    
+    d:DataContext="{d:DesignInstance Type=vms:MainViewModel,IsDesignTimeCreatable=True}"    
+    >
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <telerikPrimitives:RadTransitionControl.Transition>
+            <telerikPrimitives:RadSlideAndSwivelTransition/>
+        </telerikPrimitives:RadTransitionControl.Transition>
+
+        
+
+
+        <!-- LOCALIZATION NOTE:
+            To localize the displayed strings copy their values to appropriately named
+            keys in the app's neutral language resource file (AppResources.resx) then
+            replace the hard-coded text value between the attributes' quotation marks
+            with the binding clause whose path points to that string name.
+
+            For example:
+
+                Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
+
+            This binding points to the template's string resource named "ApplicationTitle".
+
+            Adding supported languages in the Project Properties tab will create a
+            new resx file per language that can carry the translated values of your
+            UI strings. The binding in these examples will cause the value of the
+            attributes to be drawn from the .resx file that matches the
+            CurrentUICulture of the app at run time.
+         -->
+        <phone:Panorama Grid.Row="0" Grid.RowSpan="2">
+
+            <i:Interaction.Triggers>
+                <abu:SelectedPanoItemChangedTrigger>
+                    <abu:SwitchAppBarAction>
+                        <abu:AppBar Id="0"
+                                    Mode="Minimized">
+                            <!--<abu:AppBar.MenuItems>
+                                <abu:AppBarMenuItem Text="clear" Command="{Binding SampleCommand}"/>
+                            </abu:AppBar.MenuItems>-->
+                            <abu:AppBarButton IconUri="/Assets/Images/Dark/appbar.refresh.png"
+                                              Command="{Binding RefreshCommand}"
+                                              IsEnabled="{Binding IsNotRefreshing, Mode=TwoWay}"
+                                              Text="Refresh">
+
+                            </abu:AppBarButton>
+
+                            <abu:AppBar.MenuItems>
+
+                                <abu:AppBarMenuItem Text="AGB + Privacy" Command="{Binding ShowAGBCommand}"/>
+                                <abu:AppBarMenuItem Text="Info" Command="{Binding ShowInfoCommand}"/>
+                                <abu:AppBarMenuItem Text="Logout" Command="{Binding LogoffCommand}"/>
+                            </abu:AppBar.MenuItems>
+
+                        </abu:AppBar>
+
+                        <abu:AppBar Id="1">
+                            <abu:AppBarButton
+                                Text="Favorites" IconUri="/Assets/Images/Dark/appbar.refresh.png"
+                                Command="{Binding RefreshCommand}"/>
+                            <abu:AppBar.MenuItems>
+
+                                <abu:AppBarMenuItem Text="AGB + Privacy" Command="{Binding ShowAGBCommand}"/>
+                                <abu:AppBarMenuItem Text="Info" Command="{Binding ShowInfoCommand}"/>
+                                <abu:AppBarMenuItem Text="Logout" Command="{Binding LogoffCommand}"/>
+                            </abu:AppBar.MenuItems>
+                        </abu:AppBar>
+
+
+
+                    </abu:SwitchAppBarAction>
+                </abu:SelectedPanoItemChangedTrigger>
+            </i:Interaction.Triggers>
+
+            <phone:Panorama.Title>
+                <StackPanel Orientation="Horizontal" Margin="0,80,0,0">
+                    <Image x:Name="icon1" Source="/Assets/Images/bettrdietLogoTextBigger.png" Height="70" HorizontalAlignment="Left"/>
+                    <!--<TextBlock Text="my application" FontStyle="Italic" FontSize="40" VerticalAlignment="Center" Margin="0,-40,0,0" />-->
+                </StackPanel>
+            </phone:Panorama.Title>
+
+
+            <phone:Panorama.Background>
+                <ImageBrush  ImageSource="/Assets/Images/21315909_l.jpg" Opacity="0.5" Stretch="UniformToFill">
+                </ImageBrush>
+            </phone:Panorama.Background>
+
+
+            <phone:PanoramaItem  Width="480" Orientation="Horizontal">
+                <Grid>
+                    <TextBlock  
+                        Text="{Binding LR.Main_quickinfo, Source={StaticResource LR}}"
+                        x:Uid="main_menulist" RenderTransformOrigin="0,0"
+                        Margin="42,10,0,0" 
+                               UseLayoutRounding="False" 
+                        d:LayoutRounding="Auto" FontSize="40" 
+                        VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+                        </TextBlock.Foreground>
+                        <TextBlock.RenderTransform>
+                            <CompositeTransform Rotation="90"/>
+                        </TextBlock.RenderTransform></TextBlock>
+
+
+                    <ListBox 
+                        IsEnabled="{Binding IsNetworkAvailable}"
+                        Name="listMenu" ItemsSource="{Binding NavCommands}" 
+                             SelectedItem="{Binding SelectedNav,Mode=TwoWay}" 
+                             SelectionChanged="ListBox_SelectionChanged_1" Margin="46,0,0,0">
+
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="5" Orientation="Horizontal">
+                                    <Grid>
+                                        <Rectangle >
+                                            <Rectangle.Fill>
+                                                <SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+                                            </Rectangle.Fill>
+                                        </Rectangle>
+                                        <Image Source="{Binding Img}"/>
+                                    </Grid>
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" FontSize="{StaticResource PhoneFontSizeLarge}" 
+                                           Text="{Binding Name}"/>
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+
+
+
+
+
+                    </ListBox>
+                </Grid>
+            </phone:PanoramaItem>
+
+            <phone:PanoramaItem  Header="{Binding LR.Main_data, Source={StaticResource LR}}" Width="480" Orientation="Horizontal">
+                <Grid>
+                    <StackPanel>                       
+                        <TextBlock 
+                            Style="{StaticResource PhoneTextGroupHeaderStyle}"
+                            Text="{Binding LatestWeight}"></TextBlock>
+
+                        <TextBlock 
+                            Style="{StaticResource PhoneTextGroupHeaderStyle}"
+                            Text="{Binding LatestCals}"></TextBlock>
+                    </StackPanel>
+
+                </Grid>
+            </phone:PanoramaItem>
+
+
+            <!--Panorama item one-->
+
+
+
+        </phone:Panorama>
+
+
+       
+        <telerikPrimitives:RadWindow 
+            IsFullScreen="True"            
+            IsOpen="{Binding IsNetworkNotAvailable, Mode=TwoWay}"
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                        Background="{StaticResource PhoneBackgroundBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <Image Margin="0,20,0,0" 
+                       Grid.Row="0" Source="/Assets/Images/bettrdietLogoTextBigger.png" Height="70" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Row="1" 
+                           VerticalAlignment="Center"
+                           TextWrapping="Wrap" Style="{StaticResource PhoneTextGroupHeaderStyle}">Momentan ist kein Netzwerk verfügbar.</TextBlock>
+            </Grid>
+
+
+        </telerikPrimitives:RadWindow>
+
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel
+                Grid.Row="0"
+                Margin="10,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <Image Source="{Binding Image}" Width="100" Height="100"></Image>
+                <TextBlock Text="{Binding User.Nickname}"></TextBlock>
+            </StackPanel>
+            <HyperlinkButton Grid.Row="0" Margin="0,0,0,70" VerticalAlignment="Bottom" Command="{Binding ShakeCommand}"
+                                         HorizontalAlignment="Right">Buy me a Shake</HyperlinkButton>
+            <HyperlinkButton Grid.Row="0" Margin="0,0,0,20" VerticalAlignment="Bottom" Command="{Binding FeedbackCommand}"
+                                         HorizontalAlignment="Right">Feedback</HyperlinkButton>
+
+            <UI:AdControl ErrorOccurred="adcontrol_ErrorOccurred" Name="adcontrol" AdRefreshed="AdControl_AdRefreshed" Grid.Row="1" Width="480" VerticalAlignment="Bottom" Height="80" 
+                          ApplicationId="29080294-0fc8-4d47-b5af-b1c88308fe53" AdUnitId="10720693" />
+        </Grid>
+       
+    </Grid>
+
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Default" IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton x:Name="refreshButton" Click="refreshIconButton_Click" 
+                                            IconUri="/Assets/Images/Dark/appbar.refresh.png" Text="Refresh"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="AGB + Privacy" Click="AGBMenuItem_Click"/>
+                <shell:ApplicationBarMenuItem Text="Info" Click="Info_Click"/>
+                <shell:ApplicationBarMenuItem Text="Logout" Click="Logout_Click"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</views:MvxPhonePage>
+

@@ -1,0 +1,902 @@
+﻿<views:MvxStorePage 
+    xmlns:chart="using:Telerik.UI.Xaml.Controls.Chart" 
+    xmlns:chartEngine="using:Telerik.UI.Xaml.Controls.Chart" 
+    xmlns:telerikInput="using:Telerik.UI.Xaml.Controls.Input"
+    xmlns:views="using:Cirrious.MvvmCross.WindowsStore.Views"
+    x:Name="pageRoot"
+    x:Class="BettrDiet.Windows8.Views.NutritionPlanMain"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BettrDiet.Windows8.Views"
+    xmlns:common="using:BettrDiet.Windows8.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vms="clr-namespace:BettrDiet.Core.ViewModels;assembly=BettrDiet.Core"
+    xmlns:rate="using:MetroRate"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <CollectionViewSource
+            x:Name="groupedItemsViewSource"
+            Source="{Binding LebensmittelListe}"
+            IsSourceGrouped="true"
+ />
+
+        <x:String x:Key="ChevronGlyph">&#xE26B;</x:String>
+
+        <!-- TODO: Diese Zeile löschen, wenn der Schlüssel "AppName" in "App.xaml" deklariert ist -->
+        <x:String x:Key="AppName">My Application</x:String>
+
+        <DataTemplate x:Key="Standard250x250ItemTemplate">
+            <Grid HorizontalAlignment="Left" Width="250" Height="250">
+                <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}">
+                    <Image Source="{Binding Image}" Stretch="UniformToFill" />
+                </Border>
+                <StackPanel VerticalAlignment="Bottom" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
+                    <TextBlock Text="Hallo" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextBlockStyle}" Height="60" Margin="15,0,15,0" />
+
+                    <TextBlock Text="{Binding Title}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextBlockStyle}" Height="60" Margin="15,0,15,0" />
+                    <TextBlock Text="{Binding Subtitle}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap" Margin="15,0,15,10" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="LebensmittelItemTemplate">
+            <Grid Height="Auto" Margin="6" Width="520">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Width="120" Source="{Binding Image}" Stretch="UniformToFill" />
+
+                <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0" Width="390">
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap" />
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="{Binding kJoule}" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="NoWrap" />
+                        <TextBlock Text=" kJoule " Style="{StaticResource BodyTextBlockStyle}" TextWrapping="NoWrap" />
+                        <TextBlock Margin="10,0,0,0" Text="{Binding kCalGesamt}" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="NoWrap" />
+                        <TextBlock Text=" kCal " Style="{StaticResource BodyTextBlockStyle}" TextWrapping="NoWrap" />
+                        
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Fett: " Style="{StaticResource BodyTextBlockStyle}"/>
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Fett}" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="NoWrap" />
+                        <TextBlock Text="g  Eiweiß: " Style="{StaticResource BodyTextBlockStyle}"/>                        
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Prot}" Style="{StaticResource BodyTextBlockStyle}"  />
+                        <TextBlock Text="g  KH: " Style="{StaticResource BodyTextBlockStyle}"/>
+                        <TextBlock Margin="10,0,0,0" Text="{Binding KH}" Style="{StaticResource BodyTextBlockStyle}" />
+                        <TextBlock Text="g" Style="{StaticResource BodyTextBlockStyle}"/>
+                    </StackPanel>
+                    <TextBlock Margin="0,0,60,10" HorizontalAlignment="Right" Text="{Binding Klasse}" TextAlignment="Right" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="NoWrap" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <Style x:Key="LebensmittelListStyle" TargetType="GridView">
+            <!--<Setter Property="LayoutMode" Value="List" />
+        <Setter Property="FontFamily" Value="Times New Roman" />-->
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <UserControl>
+                            <Border x:Name="MyBorder" Background="Transparent">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal" />
+                                        <VisualState x:Name="Selected">
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Grid Height="Auto" Margin="6">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="120" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Grid.Column="0" Width="120" Source="{Binding Image}" Stretch="UniformToFill" />
+
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
+                                        <TextBlock Text="{Binding Name}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap" />
+                                        <StackPanel Orientation="Horizontal" Width="400">
+                                            <TextBlock Text="{Binding kJoule}" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="NoWrap" />
+                                            <TextBlock Text=" kJoule " Style="{StaticResource BodyTextBlockStyle}" TextWrapping="NoWrap" />
+                                            <TextBlock Margin="10,0,0,0" Text="{Binding kCalGesamt}" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="NoWrap" />
+                                            <TextBlock Text=" kCal " Style="{StaticResource BodyTextBlockStyle}" TextWrapping="NoWrap" />
+                                            <TextBlock Margin="10,0,0,0" HorizontalAlignment="Right" Text="{Binding Klasse}" TextAlignment="Right" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="NoWrap" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Fett}" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="NoWrap" />
+                                            <TextBlock Margin="10,0,0,0" Text="{Binding Prot}" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60" />
+                                            <TextBlock Margin="10,0,0,0" Text="{Binding KH}" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </UserControl>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="StandardConsumedTemplate">
+            <Grid Height="Auto" Margin="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Width="100" Height="100" Source="{Binding Lebensmittel_Image}" Stretch="UniformToFill" />
+                <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Menge}" Style="{StaticResource BodyTextBlockStyle}" />
+                        <TextBlock Margin="10,0,0,0" Text="g" Style="{StaticResource BodyTextBlockStyle}" />
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Name}" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Fat}" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60" TextWrapping="NoWrap" />
+                        <TextBlock Text="g Fett" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60" TextWrapping="NoWrap" Margin="10,0,0,0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Prot}" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60" TextWrapping="NoWrap" />
+                        <TextBlock Text="g Eiweiß" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60" TextWrapping="NoWrap" Margin="10,0,0,0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding KH}" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60" TextWrapping="NoWrap" />
+                        <TextBlock Text="g Kohlenhydrate" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60" TextWrapping="NoWrap" Margin="10,0,0,0" />
+                    </StackPanel>
+                    <TextBlock Margin="0,0,10,0" HorizontalAlignment="Right" Text="{Binding Lebensmittel.Klasse}" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <chart:ChartPalette x:Key="CustomPalette">
+            <chart:ChartPalette.FillEntries>
+                <chart:PaletteEntryCollection>
+                    <SolidColorBrush Color="Yellow"></SolidColorBrush>
+                    <SolidColorBrush Color="Brown"></SolidColorBrush>
+                    <SolidColorBrush Color="Red"></SolidColorBrush>
+                    <SolidColorBrush Color="Red"></SolidColorBrush>
+                </chart:PaletteEntryCollection>
+            </chart:ChartPalette.FillEntries>
+            <chart:ChartPalette.StrokeEntries>
+                <chart:PaletteEntryCollection>
+                    <SolidColorBrush Color="Black"></SolidColorBrush>
+                    <SolidColorBrush Color="Black"></SolidColorBrush>
+                    <SolidColorBrush Color="Black"></SolidColorBrush>
+                    <SolidColorBrush Color="OrangeRed"></SolidColorBrush>
+                </chart:PaletteEntryCollection>
+            </chart:ChartPalette.StrokeEntries>
+        </chart:ChartPalette>
+
+
+    </Page.Resources>
+
+    <views:MvxStorePage.BottomAppBar>
+        <AppBar>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <AppBarButton HorizontalAlignment="Stretch" Label="Favorites" VerticalAlignment="Stretch" Icon="Favorite" />
+                    <AppBarButton Command="{Binding DeleteConsumedCommand, Mode=OneWay}" HorizontalAlignment="Stretch" Label="Delete" VerticalAlignment="Stretch" Icon="Delete" />
+                    <AppBarSeparator />
+                    <AppBarButton Command="{Binding RefreshCommand, Mode=OneWay}" HorizontalAlignment="Stretch" Label="Refresh" VerticalAlignment="Stretch" Icon="Refresh" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" />
+            </Grid>
+        </AppBar>
+    </views:MvxStorePage.BottomAppBar>
+
+    <!--
+        Dieser Raster fungiert als Stammbereich für die Seite.
+    -->
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" d:DataContext="{d:DesignData /SampleData/NutritionPlanMainViewModelSampleData.xaml}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition />
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Hub>
+            <Hub.Header>
+                <!-- Schaltfläche "Zurück" und Seitentitel -->
+                <Grid>
+                    <Grid.ChildrenTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition />
+                        </TransitionCollection>
+                    </Grid.ChildrenTransitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button  x:Name="backButton" Margin="-1,-1,39,0" Command="{Binding BackCommand}"
+                        Style="{StaticResource NavigationBackButtonNormalStyle}"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Back"
+                        AutomationProperties.AutomationId="BackButton"
+                        AutomationProperties.ItemType="Navigation Button" />
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <TextBlock x:Name="pageTitle" Text="Ernährungsplan" Style="{StaticResource HeaderTextBlockStyle}" 
+                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Top" />
+                        <TextBlock Margin="30,0,0,0" Text="{Binding NutritionPlan.Name}" Style="{StaticResource HeaderTextBlockStyle}" 
+                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Top" />
+                    </StackPanel>
+                </Grid>
+            </Hub.Header>
+
+            <HubSection Width="280" Margin="0,0,00,0">
+                <HubSection.Background>
+                    <ImageBrush Opacity="0.3" Stretch="UniformToFill" ImageSource="ms-appx:///Assets/Images/19259869_l.jpg" />
+                </HubSection.Background>
+            </HubSection>
+            <HubSection Width="500" Header="Übersicht">
+                <DataTemplate>
+                    <Grid>
+                        <ScrollViewer>
+                            <StackPanel>
+                                <telerikInput:RadDatePicker
+                                    Value="{Binding CurrentDate, Mode=TwoWay}"
+                                    MinValue="{Binding MinDate,Mode=TwoWay}"
+                                    MaxValue="{Binding MaxDate,Mode=TwoWay}" />
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock   Style="{StaticResource TitleTextBlockStyle}"  Text="Tag"></TextBlock>
+                                    <TextBlock Margin="5,0,0,0"  Style="{StaticResource TitleTextBlockStyle}"  Text="{Binding NutritionPlanDayIndex}"></TextBlock>
+                                </StackPanel>
+                                <TextBlock  Style="{StaticResource TitleTextBlockStyle}"  Padding="0,0,0,20" TextWrapping="Wrap" Text="{Binding NutritionPlanDay.Description}"></TextBlock>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"  Text="Fat"
+                                       Width="100" HorizontalAlignment="Center"></TextBlock>
+                                    
+                                    <rate:RatingsControl
+                                        HorizontalAlignment="Left"
+                                        NumberOfStars="{Binding NutritionPlanDay.Plan1PointsSum.Fette}"
+                                        Value="{Binding RemainingPlanPoints.Fette, Mode=TwoWay}"
+                                        StarForegroundColor="Yellow"
+                                        BackgroundColor="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                                        StarOutlineColor="Black"
+                                        VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                         Style="{StaticResource TitleTextBlockStyle}" 
+                                         Text="Prot"
+                                         Width="100" HorizontalAlignment="Center"></TextBlock>
+
+                                    <rate:RatingsControl
+                                        HorizontalAlignment="Left"
+                                        NumberOfStars="{Binding NutritionPlanDay.Plan1PointsSum.Proteine}"
+                                        Value="{Binding RemainingPlanPoints.Proteine, Mode=TwoWay}"
+                                        StarForegroundColor="Red"
+                                        BackgroundColor="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                                        StarOutlineColor="Black"
+                                        VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                         Style="{StaticResource TitleTextBlockStyle}" 
+                                            Text="KH" Width="100" HorizontalAlignment="Center" />
+                                    <rate:RatingsControl
+                                        HorizontalAlignment="Left"
+                                        NumberOfStars="{Binding NutritionPlanDay.Plan1PointsSum.Kohlenhydrate}"
+                                        Value="{Binding RemainingPlanPoints.Kohlenhydrate, Mode=TwoWay}"
+                                        StarForegroundColor="Brown"
+                                        BackgroundColor="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                                        StarOutlineColor="Black"
+                                        VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                         Style="{StaticResource TitleTextBlockStyle}" 
+                                            Text="Diary" Width="100" HorizontalAlignment="Center" />
+                                    <rate:RatingsControl
+                                        HorizontalAlignment="Left"
+                                        NumberOfStars="{Binding NutritionPlanDay.Plan1PointsSum.Milchprodukte}"
+                                        Value="{Binding RemainingPlanPoints.Milchprodukte, Mode=TwoWay}"
+                                        StarForegroundColor="Gray"
+                                        BackgroundColor="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                                        StarOutlineColor="Black"
+                                        VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                         Style="{StaticResource TitleTextBlockStyle}" 
+                                            Text="Vegetables" Width="100" HorizontalAlignment="Center" />
+                                    <rate:RatingsControl
+                                        HorizontalAlignment="Left"
+                                        NumberOfStars="{Binding NutritionPlanDay.Plan1PointsSum.Gemuese}"
+                                        Value="{Binding RemainingPlanPoints.Gemuese, Mode=TwoWay}"
+                                        StarForegroundColor="Green"
+                                        BackgroundColor="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                                        StarOutlineColor="Black"
+                                        VerticalAlignment="Center" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        Style="{StaticResource TitleTextBlockStyle}" 
+                                        Text="Fruit" Width="100" HorizontalAlignment="Center" />
+                                    <rate:RatingsControl
+                                        HorizontalAlignment="Left"
+                                        NumberOfStars="{Binding NutritionPlanDay.Plan1PointsSum.Obst}"
+                                        Value="{Binding RemainingPlanPoints.Obst, Mode=TwoWay}"
+                                        StarForegroundColor="Violet"
+                                        BackgroundColor="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                                        StarOutlineColor="Black"
+                                        VerticalAlignment="Center" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        Style="{StaticResource TitleTextBlockStyle}" 
+                                        Text="Spice" Width="100" HorizontalAlignment="Center" />
+                                    <rate:RatingsControl
+                                        HorizontalAlignment="Left"
+                                        NumberOfStars="{Binding NutritionPlanDay.Plan1PointsSum.Gewuerze}"
+                                        Value="{Binding RemainingPlanPoints.Gewuerze, Mode=TwoWay}"
+                                        StarForegroundColor="LightPink"
+                                        BackgroundColor="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                                        StarOutlineColor="Black"
+                                        VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        Style="{StaticResource TitleTextBlockStyle}" 
+                                        Text="Snacks" Width="100" HorizontalAlignment="Center" />
+                                    <rate:RatingsControl
+                                        HorizontalAlignment="Left"
+                                        NumberOfStars="{Binding NutritionPlanDay.Plan1PointsSum.Snacks}"
+                                        Value="{Binding RemainingPlanPoints.Snacks, Mode=TwoWay}"
+                                        StarForegroundColor="Orange"
+                                        BackgroundColor="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                                        StarOutlineColor="Black"
+                                        VerticalAlignment="Center" />
+                                </StackPanel>
+
+                                <TextBlock
+                                Padding="0,30,0,10"
+                                Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0"
+                                       Text="Soll/Ist" Style="{StaticResource SubheaderTextBlockStyle}" Margin="0,5,5,5" />
+
+                                <chart:RadCartesianChart Height="200" x:Name="chart" DataContext="{Binding}"
+>
+                                    <chart:RadCartesianChart.VerticalAxis>
+                                        <chart:CategoricalAxis />
+                                    </chart:RadCartesianChart.VerticalAxis>
+
+                                    <chart:RadCartesianChart.HorizontalAxis>
+                                        <chart:LinearAxis ShowLabels="False" />
+                                    </chart:RadCartesianChart.HorizontalAxis>
+
+                                    <chart:RadCartesianChart.Series>
+                                        <chart:BarSeries CombineMode="Stack"
+                                                 ItemsSource="{Binding Verbraucht}">
+                                                
+                                            <chart:BarSeries.CategoryBinding>
+                                                <chart:PropertyNameDataPointBinding PropertyName="Cat"/>
+                                            </chart:BarSeries.CategoryBinding>
+                                            <chart:BarSeries.ValueBinding>
+                                                <chart:PropertyNameDataPointBinding  PropertyName="Val"/>
+                                            </chart:BarSeries.ValueBinding>
+                                            <chart:BarSeries.PointTemplates>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Rectangle Fill="Brown" />
+                                                        <TextBlock TextAlignment="Center" Margin="10,0,0,0" Foreground="Black"
+                                                           Text="{Binding DataContext.SummaryConsumedDay.SumKH, ElementName=pageRoot}" />
+                                                    </Grid>
+                                                </DataTemplate>
+
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Rectangle Fill="Red" />
+                                                        <TextBlock TextAlignment="Center" Margin="10,0,0,0" Foreground="Black"
+                                                           Text="{Binding DataContext.SummaryConsumedDay.SumProt, ElementName=pageRoot}" />
+                                                    </Grid>
+                                                </DataTemplate>
+
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Rectangle Fill="Yellow" />
+                                                        <TextBlock TextAlignment="Center" Margin="10,0,0,0" Foreground="Black"
+                                                           Text="{Binding DataContext.SummaryConsumedDay.SumFat, ElementName=pageRoot}" />
+                                                    </Grid>
+                                                </DataTemplate>
+
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Rectangle Fill="Aquamarine" />
+                                                        <TextBlock TextAlignment="Center" Margin="10,0,0,0" Foreground="Black"
+                                                           Text="{Binding DataContext.SummaryConsumedDay.SumkCal, ElementName=pageRoot}" />
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </chart:BarSeries.PointTemplates>
+
+                                            
+                                <!--<chart:BarSeries.DataPoints>
+                                        <chartEngine:CategoricalDataPoint Value="50" Category="KH" />
+                                        <chartEngine:CategoricalDataPoint Value="50" Category="Eiweiß" />
+                                        <chartEngine:CategoricalDataPoint Value="50" Category="Fett" />
+                                        <chartEngine:CategoricalDataPoint Value="{Binding DataContext.SummaryConsumedDay.SumkCal, ElementName=pageRoot}" Category="kCal" />
+                                    </chart:BarSeries.DataPoints>-->
+                                
+                                        </chart:BarSeries>
+                                        <chart:BarSeries CombineMode="Stack"
+                                                  ItemsSource="{Binding Uebrig}">
+                                            <chart:BarSeries.CategoryBinding>
+                                                <chart:PropertyNameDataPointBinding PropertyName="Cat"/>
+                                            </chart:BarSeries.CategoryBinding>
+                                            <chart:BarSeries.ValueBinding>
+                                                <chart:PropertyNameDataPointBinding  PropertyName="Val"/>
+                                            </chart:BarSeries.ValueBinding>
+                                            
+                                            <chart:BarSeries.PointTemplates>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Rectangle Fill="LightGray" />
+                                                        <TextBlock TextAlignment="Center" Margin="10,0,0,0" Foreground="Black"
+                                                           Text="{Binding DataContext.DiffPlanPoints.SumKH, ElementName=pageRoot}"></TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Rectangle Fill="LightGray" />
+                                                        <TextBlock TextAlignment="Center" Margin="10,0,0,0" Foreground="Black"
+                                                           Text="{Binding DataContext.DiffPlanPoints.SumProt, ElementName=pageRoot}"></TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Rectangle Fill="LightGray" />
+                                                        <TextBlock TextAlignment="Center" Margin="10,0,0,0" Foreground="Black"
+                                                           Text="{Binding DataContext.DiffPlanPoints.SumFat, ElementName=pageRoot}"></TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Rectangle Fill="LightGray" />
+                                                        <TextBlock TextAlignment="Center" Margin="10,0,0,0" Foreground="Black"
+                                                           Text="{Binding DataContext.DiffPlanPoints.SummeKCal, ElementName=pageRoot}" />
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </chart:BarSeries.PointTemplates>
+
+                                            <!--<chart:BarSeries.DataPoints>
+                                                <chartEngine:CategoricalDataPoint Value="100" Category="KH" />
+                                                <chartEngine:CategoricalDataPoint Value="100" Category="Eiweiß" />
+                                                <chartEngine:CategoricalDataPoint Value="100" Category="Fett" />
+                                                <chartEngine:CategoricalDataPoint Value="100" Category="kCal" />
+                                            </chart:BarSeries.DataPoints>-->
+                                        </chart:BarSeries>
+                                    </chart:RadCartesianChart.Series>
+                                </chart:RadCartesianChart>
+
+                                <Grid Margin="0,20,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
+                                Padding="0,0,0,20"
+                                Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0"
+                                       Text="Nährwerte" Style="{StaticResource SubheaderTextBlockStyle}" Margin="0,5,5,5" />
+
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Energy" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="1" TextAlignment="Right" FontSize="24" Text="{Binding SummaryConsumedDay.SumkJoule}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="1" TextAlignment="Left" Text=" kJoule" Style="{StaticResource TitleTextBlockStyle}" />
+
+                                    <TextBlock Grid.Column="0" Grid.Row="2" Text="" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="2" TextAlignment="Right" FontSize="24"  Text="{Binding SummaryConsumedDay.SumkCal}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="2" TextAlignment="Left" Text=" kCal" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="3" TextAlignment="Right" FontSize="24"  Text="{Binding RemainingPlanPoints.SummeKCal}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="3" TextAlignment="Left" Text=" kCal (soll)" Style="{StaticResource TitleTextBlockStyle}" />
+
+                                    <TextBlock Grid.Column="0" Grid.Row="4" Text="Prot" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="4" TextAlignment="Right" Text="{Binding SummaryConsumedDay.SumProt}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="4" TextAlignment="Left" Text=" g" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="3" Grid.Row="4" TextAlignment="Right" Text="{Binding SummaryConsumedDay.SumProtP}" Style="{StaticResource TitleTextBlockStyle}" Grid.ColumnSpan="2" Margin="0,0,23,0" />
+                                    <TextBlock Grid.Column="4" Grid.Row="4" TextAlignment="Left" Text=" %" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="5" TextAlignment="Right" Text="{Binding RemainingPlanPoints.SumProt}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="5" TextAlignment="Left" Text=" g (soll)" Style="{StaticResource TitleTextBlockStyle}" />
+
+                                    <TextBlock Grid.Column="0" Grid.Row="6" Text="KH" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="6" TextAlignment="Right" Text="{Binding SummaryConsumedDay.SumKH}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="6" TextAlignment="Left" Text=" g" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="3" Grid.Row="6" TextAlignment="Right" Text="{Binding SummaryConsumedDay.SumKHP}" Style="{StaticResource TitleTextBlockStyle}" Grid.ColumnSpan="2" Margin="0,0,23,0" />
+                                    <TextBlock Grid.Column="4" Grid.Row="6" TextAlignment="Left" Text=" %" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="7" TextAlignment="Right" Text="{Binding RemainingPlanPoints.SumKH}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="7" TextAlignment="Left" Text=" g (soll)" Style="{StaticResource TitleTextBlockStyle}" />
+
+                                    <TextBlock Grid.Column="0" Grid.Row="8" Text="Fat" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="8" TextAlignment="Right" Text="{Binding SummaryConsumedDay.SumFat}" Style="{StaticResource TitleTextBlockStyle}" Margin="2,0,3,0" />
+                                    <TextBlock Grid.Column="2" Grid.Row="8" TextAlignment="Left" Text=" g" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="3" Grid.Row="8" TextAlignment="Right" Text="{Binding SummaryConsumedDay.SumFatP}" Style="{StaticResource TitleTextBlockStyle}" Grid.ColumnSpan="2" Margin="0,0,23,0" />
+                                    <TextBlock Grid.Column="4" Grid.Row="8" TextAlignment="Left" Text=" %" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="9" TextAlignment="Right" Text="{Binding RemainingPlanPoints.SumFat}" Style="{StaticResource TitleTextBlockStyle}" Margin="2,0,3,0" />
+                                    <TextBlock Grid.Column="2" Grid.Row="9" TextAlignment="Left" Text=" g (soll)" Style="{StaticResource TitleTextBlockStyle}" />
+
+                                    <TextBlock Grid.Column="0" Grid.Row="10" Text="Fatsat" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="10" TextAlignment="Right" Text="{Binding SummaryConsumedDay.SumFatSaturated}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="10" TextAlignment="Left" Text=" g" Style="{StaticResource TitleTextBlockStyle}" />
+
+                                    <TextBlock Grid.Column="0" Grid.Row="11" Text="Fiber" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="11" TextAlignment="Right" Text="{Binding SummaryConsumedDay.Fiber}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="11" TextAlignment="Left" Text=" g" Style="{StaticResource TitleTextBlockStyle}" />
+                                </Grid>
+
+                                <StackPanel Orientation="Horizontal" Margin="30,20,0,0">
+
+                                    <chart:RadPieChart Width="200" Height="200"
+                                                       ClipToBounds="False"
+                                                       Palette="{StaticResource CustomPalette}"
+                                                       >
+                                        <chart:PieSeries                                             ShowLabels="True"
+                                            
+                                            ItemsSource="{Binding Macros}">
+                                            <chart:PieSeries.ValueBinding>
+                                                <chart:PropertyNameDataPointBinding PropertyName="Value"/>
+                                            </chart:PieSeries.ValueBinding>
+
+                                            <!--<chart:PieSeries.SliceStyles>
+                                                <Style TargetType="Path">
+                                                    <Setter Property="Fill" Value="Yellow" />
+                                                </Style>
+
+                                                <Style TargetType="Path">
+                                                    <Setter Property="Fill" Value="Brown" />
+                                                </Style>
+
+                                                <Style TargetType="Path">
+                                                    <Setter Property="Fill" Value="Red" />
+                                                </Style>
+
+                                                <Style TargetType="Path">
+                                                    <Setter Property="Fill" Value="Purple" />
+                                                </Style>
+
+                                                <Style TargetType="Path">
+                                                    <Setter Property="Fill" Value="Green" />
+                                                </Style>
+                                            </chart:PieSeries.SliceStyles>-->
+
+                                            
+                                    <!--<chart:PieSeries.DataPoints>
+                                <chartEngine:PieDataPoint Value="1" />
+                                <chartEngine:PieDataPoint Value="1" />
+                                <chartEngine:PieDataPoint Value="1" />
+                            </chart:PieSeries.DataPoints>-->
+
+                                    <!--<chart:PieSeries.LabelTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding}" FontSize="16" FontWeight="Bold" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </chart:PieSeries.LabelTemplate>-->
+                                    
+                                        </chart:PieSeries>
+                                    </chart:RadPieChart>
+                                    
+                                    
+                                    <StackPanel Margin="20,20,0,0">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Ellipse Width="11"
+                                         Height="11"
+                                         Margin="0, 0, 7, 0"
+                                         Fill="Red"
+
+                                         StrokeThickness="2" />
+                                            <TextBlock Text="Prot" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Ellipse Width="11"
+                                         Height="11"
+                                         Margin="0, 0, 7, 0"
+                                         Fill="Brown"
+
+                                         StrokeThickness="2" />
+                                            <TextBlock Text="KH" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Ellipse Width="11"
+                                         Height="11"
+                                         Margin="0, 0, 7, 0"
+                                         Fill="Yellow"
+
+                                         StrokeThickness="2" />
+                                            <TextBlock Text="Fat" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Width="540" Header="Mahlzeit" DataContext="{Binding}">
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch" Width="450">
+
+                        <!--Visibility="{Binding SelectFavorite, Converter={StaticResource BooleanToVisibilityConverter}, Mode=TwoWay}"-->
+                        <!--<telerikInput:RadListPicker
+                        IsEnabled="{Binding SelectFavorite}"
+                        IsExpanded="{Binding SelectFavorite, Mode=TwoWay}"
+                        Visibility="Visible" Width="0"
+                        InlineModeThreshold="0"
+                                                SelectedIndex="{Binding CurrentFavorite, Mode=TwoWay}"
+                                                ItemsSource="{Binding Favorites}">
+                        </telerikInput:RadListPicker>
+                        <telerikInput:RadListPicker SelectedIndex="{Binding CurrentDayTime, Mode=TwoWay}"
+                                                ItemsSource="{Binding DayTimes}">
+                        </telerikInput:RadListPicker>-->
+
+                        <ComboBox VerticalAlignment="Top"
+                              ItemsSource="{Binding DayTimes}"
+                              SelectedIndex="{Binding CurrentDayTime, Mode=TwoWay}"
+>
+                            <!--<ComboBox.Items>
+                                <ComboBoxItem>Frühstück</ComboBoxItem>
+                                <ComboBoxItem>Frühstück 2</ComboBoxItem>
+                                <ComboBoxItem>Mittag</ComboBoxItem>
+                                <ComboBoxItem>Snack</ComboBoxItem>
+                                <ComboBoxItem>Pre Workout</ComboBoxItem>
+                                <ComboBoxItem>Post Workout</ComboBoxItem>
+                                <ComboBoxItem>Abendessen</ComboBoxItem>
+                                <ComboBoxItem>Snack</ComboBoxItem>
+                                <ComboBoxItem>Snack</ComboBoxItem>
+                            </ComboBox.Items>-->
+                        </ComboBox>
+
+                        <ScrollViewer HorizontalScrollMode="Disabled" Margin="0,80,0,0" HorizontalAlignment="Stretch">
+                            <StackPanel>
+
+                                <ListView SelectionChanged="listConsumed_SelectionChanged"
+									HorizontalAlignment="Stretch"
+
+                                    Margin="0, 0, 0, 0"
+                                    Name="listConsumed"
+                                    ItemsSource="{Binding Consumed}"
+                                    ItemTemplate="{StaticResource StandardConsumedTemplate}" SelectionMode="Multiple">
+                                    <ListView.ItemContainerTransitions>
+                                        <TransitionCollection>
+                                            <AddDeleteThemeTransition  ></AddDeleteThemeTransition>
+                                        </TransitionCollection>
+                                    </ListView.ItemContainerTransitions>
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <StackPanel.ChildrenTransitions>
+                                                    <TransitionCollection>
+                                                        <EdgeUIThemeTransition></EdgeUIThemeTransition>
+                                                    </TransitionCollection>
+                                                </StackPanel.ChildrenTransitions>
+                                            </StackPanel>
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                </ListView>
+
+                                <Grid Margin="0,20,0,0" Width="Auto">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150" />
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" TextWrapping="Wrap"
+                                           Text="Average"
+                                           Style="{StaticResource SubheaderTextBlockStyle}" Margin="0,5,5,5" />
+
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Energy" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="1" TextAlignment="Right" FontSize="24" Text="{Binding SummaryConsumedDaytime.SumkJoule}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="1" TextAlignment="Left" Text=" kJoule" Style="{StaticResource TitleTextBlockStyle}" />
+
+                                    <TextBlock Grid.Column="0" Grid.Row="2" Text="" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="2" TextAlignment="Right" FontSize="24" Text="{Binding SummaryConsumedDaytime.SumkCal}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="2" TextAlignment="Left" Text=" kCal" Style="{StaticResource TitleTextBlockStyle}" />
+
+                                    <TextBlock Grid.Column="1" Grid.Row="3" TextAlignment="Right" FontSize="24" Text="{Binding RemainingPlanPointsDaytime.SummeKCal}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="3" TextAlignment="Left" Text=" kCal (soll)" Style="{StaticResource TitleTextBlockStyle}" />
+
+                                    <TextBlock Grid.Column="0" Grid.Row="4" Text="Prot" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="4" TextAlignment="Right" Text="{Binding SummaryConsumedDaytime.SumProt}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="4" TextAlignment="Left" Text=" g" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="3" Grid.Row="4" TextAlignment="Right" Text="{Binding SummaryConsumedDaytime.SumProtP}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="4" Grid.Row="4" TextAlignment="Left" Text=" %" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="5" TextAlignment="Right" Text="{Binding RemainingPlanPointsDaytime.SumProt}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="5" TextAlignment="Left" Text=" g (soll)" Style="{StaticResource TitleTextBlockStyle}" />
+
+                                    <TextBlock Grid.Column="0" Grid.Row="6" Text="KH" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="6" TextAlignment="Right" Text="{Binding SummaryConsumedDaytime.SumKH}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="6" TextAlignment="Left" Text=" g" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="3" Grid.Row="6" TextAlignment="Right" Text="{Binding SummaryConsumedDaytime.SumKHP}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="4" Grid.Row="6" TextAlignment="Left" Text=" %" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="7" TextAlignment="Right" Text="{Binding RemainingPlanPointsDaytime.SumKH}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="7" TextAlignment="Left" Text=" g (soll)" Style="{StaticResource TitleTextBlockStyle}" />
+
+                                    <TextBlock Grid.Column="0" Grid.Row="8" Text="Fat" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="8" TextAlignment="Right" Text="{Binding SummaryConsumedDaytime.SumFat}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="8" TextAlignment="Left" Text=" g" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="3" Grid.Row="8" TextAlignment="Right" Text="{Binding SummaryConsumedDaytime.SumFatP}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="4" Grid.Row="8" TextAlignment="Left" Text=" %" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="9" TextAlignment="Right" Text="{Binding RemainingPlanPointsDaytime.SumFat}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="9" TextAlignment="Left" Text=" g (soll)" Style="{StaticResource TitleTextBlockStyle}" />
+
+                                    <TextBlock Grid.Column="0" Grid.Row="10" Text="Fat Sat." Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="10" TextAlignment="Right" Text="{Binding SummaryConsumedDaytime.SumFatSaturated}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="10" TextAlignment="Left" Text=" g" Style="{StaticResource TitleTextBlockStyle}" />
+
+                                    <TextBlock Grid.Column="0" Grid.Row="11" Text="Fiber" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="1" Grid.Row="11" TextAlignment="Right" Text="{Binding SummaryConsumedDaytime.Fiber}" Style="{StaticResource TitleTextBlockStyle}" />
+                                    <TextBlock Grid.Column="2" Grid.Row="11" TextAlignment="Left" Text=" g" Style="{StaticResource TitleTextBlockStyle}" />
+                                </Grid>
+                            </StackPanel>
+                        </ScrollViewer>
+
+                        <!--<bar:BindableApplicationBar VerticalAlignment="Bottom" IsVisible="True" IsMenuEnabled="True">
+                        <bar:BindableApplicationBarButton IconUri="/Assets/Images/Dark/appbar.delete.png" Text="Delete">
+                        </bar:BindableApplicationBarButton>
+                    </bar:BindableApplicationBar>-->
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection Width="690" Header="Lebensmittel Auswahl" DataContext="{Binding}">
+                <DataTemplate>
+                    <Grid Width="580">
+
+                        <SemanticZoom x:Name="Zoom" Grid.Row="1" Margin="0,80,0,0">
+                            <SemanticZoom.Transitions>
+                                <TransitionCollection>
+                                    <ContentThemeTransition />
+                                </TransitionCollection>
+                            </SemanticZoom.Transitions>
+                            <SemanticZoom.ZoomedInView>
+                                <GridView
+                                    ScrollViewer.IsScrollInertiaEnabled="False"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                    ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                        x:Name="itemGridView"
+                                        AutomationProperties.AutomationId="ItemGridView"
+                                        AutomationProperties.Name="Grouped Items"
+                                        Margin="0,0,0,0"
+                                        ScrollViewer.HorizontalScrollMode="Disabled"
+                                        ScrollViewer.VerticalScrollMode="Enabled"
+                                        ItemsSource="{Binding Source={StaticResource groupedItemsViewSource}}"
+                                        ItemTemplate="{StaticResource LebensmittelItemTemplate}"
+                                    SelectionMode="Single" SelectedItem="{Binding Lebensmittel, Mode=TwoWay}"
+                                    ShowsScrollingPlaceholders="True">
+
+                                    <GridView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <VirtualizingStackPanel Orientation="Vertical"></VirtualizingStackPanel>
+                                        </ItemsPanelTemplate>
+                                    </GridView.ItemsPanel>
+                                    <GridView.GroupStyle>
+                                        <GroupStyle>
+                                            <GroupStyle.HeaderTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="1,0,0,6">
+                                                        <TextBlock Text="{Binding Title}"
+                                                                   Style="{StaticResource SubheaderTextBlockStyle}"
+                                                                   AutomationProperties.Name="Group Title"></TextBlock>
+                                                        <!--<Button
+                                                                AutomationProperties.Name="Group Title"
+                                                                Content="{Binding Title}"
+                                                                Style="{StaticResource TextBlockButtonStyle}" />-->
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </GroupStyle.HeaderTemplate>
+                                            <GroupStyle.Panel>
+                                                <ItemsPanelTemplate>
+                                                    <VariableSizedWrapGrid Orientation="Vertical" Margin="0,0,80,0" />
+                                                </ItemsPanelTemplate>
+                                            </GroupStyle.Panel>
+                                        </GroupStyle>
+                                    </GridView.GroupStyle>
+                                </GridView>
+                            </SemanticZoom.ZoomedInView>
+                            <SemanticZoom.ZoomedOutView
+
+>
+                                <GridView
+                                    ItemsSource="{Binding Source={StaticResource groupedItemsViewSource}, Path=CollectionGroups}"
+                                    VerticalAlignment="Center" Margin="100 -100 0 0">
+                                    <GridView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <TextBlock HorizontalAlignment="Center"
+                                   Text="{Binding Group.Title}"
+                                   Style="{StaticResource SubheaderTextBlockStyle}"
+ />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridView.ItemTemplate>
+
+                                    <GridView.ItemContainerStyle>
+                                        <Style TargetType="GridViewItem">
+                                            <Setter Property="Margin" Value="4" />
+                                            <Setter Property="Padding" Value="5" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                                        </Style>
+                                    </GridView.ItemContainerStyle>
+
+                                    <GridView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapGrid ItemWidth="400" ItemHeight="70"
+                                                Orientation="Horizontal" VerticalChildrenAlignment="Center" MaximumRowsOrColumns="3"></WrapGrid>
+                                        </ItemsPanelTemplate>
+                                    </GridView.ItemsPanel>
+                                </GridView>
+                            </SemanticZoom.ZoomedOutView>
+                        </SemanticZoom>
+
+                        <Grid VerticalAlignment="Top" Height="Auto">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="150"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Command="{Binding AddLebensmittelCommand}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Add</Button>
+                            <TextBox Grid.Column="1" Text="{Binding LebensmittelMenge, Mode=TwoWay}"  Header="Menge" InputScope="Number"></TextBox>
+                            <TextBlock Grid.Column="2"
+                                   Text="{Binding Lebensmittel.Name,Mode=TwoWay}" Style="{StaticResource SubtitleTextBlockStyle}"
+                                   TextWrapping="Wrap"></TextBlock>
+
+                            <!--<Button
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            Command="{Binding AddLebensmittelCommand}"
+                                IsEnabled="{Binding canAddLebensmittel,Mode=TwoWay}"
+>
+                            <Image  Source="/Assets/Images/Dark/appbar.add.png"></Image></Button>-->
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+        <ProgressBar Visibility="{Binding Sync, Converter={StaticResource BooleanToVisibilityConverter}, Mode=TwoWay}" IsIndeterminate="{Binding Sync}" Grid.Row="2" VerticalAlignment="Top"   />
+
+    </Grid>
+</views:MvxStorePage>

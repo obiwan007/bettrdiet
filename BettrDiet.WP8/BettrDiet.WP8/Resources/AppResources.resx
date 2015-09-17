@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>en-US</value>
+    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  </data>
+  <data name="ApplicationTitle" xml:space="preserve">
+    <value>MY APPLICATION</value>
+  </data>
+  <data name="AppBarButtonText" xml:space="preserve">
+    <value>add</value>
+  </data>
+  <data name="AppBarMenuItemText" xml:space="preserve">
+    <value>Menu Item</value>
+  </data>
+  <data name="Main_achievments" xml:space="preserve">
+    <value>achievments</value>
+  </data>
+  <data name="Main_dailydata" xml:space="preserve">
+    <value>daily body stats</value>
+  </data>
+  <data name="Main_foodtracker" xml:space="preserve">
+    <value>food tracker</value>
+  </data>
+  <data name="Main_goals" xml:space="preserve">
+    <value>goals</value>
+  </data>
+  <data name="Main_Login" xml:space="preserve">
+    <value>login</value>
+  </data>
+  <data name="Main_Logout" xml:space="preserve">
+    <value>logout</value>
+  </data>
+  <data name="Main_pivothealth" xml:space="preserve">
+    <value>your health</value>
+  </data>
+  <data name="Main_pivotworkout" xml:space="preserve">
+    <value>workouts</value>
+  </data>
+  <data name="Main_quickinfo" xml:space="preserve">
+    <value>quick access</value>
+  </data>
+  <data name="Main_Register" xml:space="preserve">
+    <value>register</value>
+  </data>
+  <data name="Main_settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Main_trainingday" xml:space="preserve">
+    <value>my training day</value>
+  </data>
+  <data name="Main_trainingdaynew" xml:space="preserve">
+    <value>new training day</value>
+  </data>
+  <data name="Daily_abs" xml:space="preserve">
+    <value>abdominals</value>
+  </data>
+  <data name="Daily_biceps" xml:space="preserve">
+    <value>biceps</value>
+  </data>
+  <data name="Daily_calf" xml:space="preserve">
+    <value>calf</value>
+  </data>
+  <data name="Daily_calories" xml:space="preserve">
+    <value>consumed calories</value>
+  </data>
+  <data name="Daily_chest" xml:space="preserve">
+    <value>chest</value>
+  </data>
+  <data name="Daily_date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Daily_fat" xml:space="preserve">
+    <value>fat</value>
+  </data>
+  <data name="Daily_forearms" xml:space="preserve">
+    <value>forearms</value>
+  </data>
+  <data name="Daily_height" xml:space="preserve">
+    <value>height</value>
+  </data>
+  <data name="Daily_hips" xml:space="preserve">
+    <value>hips</value>
+  </data>
+  <data name="Daily_level" xml:space="preserve">
+    <value>your current fitness</value>
+  </data>
+  <data name="Daily_level1" xml:space="preserve">
+    <value>low</value>
+  </data>
+  <data name="Daily_level10" xml:space="preserve">
+    <value>super</value>
+  </data>
+  <data name="Daily_measure" xml:space="preserve">
+    <value>measure</value>
+  </data>
+  <data name="Daily_muscle" xml:space="preserve">
+    <value>muscle</value>
+  </data>
+  <data name="Daily_neck" xml:space="preserve">
+    <value>neck</value>
+  </data>
+  <data name="Daily_overview" xml:space="preserve">
+    <value>overview</value>
+  </data>
+  <data name="Daily_shoulders" xml:space="preserve">
+    <value>shoulders</value>
+  </data>
+  <data name="Daily_statistics" xml:space="preserve">
+    <value>statistics</value>
+  </data>
+  <data name="Daily_thighs" xml:space="preserve">
+    <value>thighs</value>
+  </data>
+  <data name="Daily_title" xml:space="preserve">
+    <value>daily data edit</value>
+  </data>
+  <data name="Daily_titleoverview" xml:space="preserve">
+    <value>diary</value>
+  </data>
+  <data name="Daily_waist" xml:space="preserve">
+    <value>waist</value>
+  </data>
+  <data name="Daily_water" xml:space="preserve">
+    <value>water</value>
+  </data>
+  <data name="Daily_weight" xml:space="preserve">
+    <value>weight</value>
+  </data>
+  <data name="Daily_writsts" xml:space="preserve">
+    <value>wrists</value>
+  </data>
+  <data name="Reg_accept" xml:space="preserve">
+    <value>accept</value>
+  </data>
+  <data name="Reg_account" xml:space="preserve">
+    <value>account</value>
+  </data>
+  <data name="Reg_agb" xml:space="preserve">
+    <value>privacy policy</value>
+  </data>
+  <data name="Reg_age" xml:space="preserve">
+    <value>age</value>
+  </data>
+  <data name="Reg_body" xml:space="preserve">
+    <value>body</value>
+  </data>
+  <data name="Reg_days" xml:space="preserve">
+    <value>workouts per week</value>
+  </data>
+  <data name="Reg_email" xml:space="preserve">
+    <value>your email adress</value>
+  </data>
+  <data name="Reg_emailtxt" xml:space="preserve">
+    <value>your email adress will be used to log you in later. you can not change it after you registered.</value>
+  </data>
+  <data name="Reg_endurance" xml:space="preserve">
+    <value>better endurance</value>
+  </data>
+  <data name="Reg_fat" xml:space="preserve">
+    <value>reduce fat</value>
+  </data>
+  <data name="Reg_female" xml:space="preserve">
+    <value>female</value>
+  </data>
+  <data name="Reg_height" xml:space="preserve">
+    <value>height</value>
+  </data>
+  <data name="Reg_male" xml:space="preserve">
+    <value>male</value>
+  </data>
+  <data name="Reg_mins" xml:space="preserve">
+    <value>minutes per workout</value>
+  </data>
+  <data name="Reg_muscle" xml:space="preserve">
+    <value>build muscle</value>
+  </data>
+  <data name="Reg_nickname" xml:space="preserve">
+    <value>nickname</value>
+  </data>
+  <data name="Reg_password" xml:space="preserve">
+    <value>password</value>
+  </data>
+  <data name="Reg_register" xml:space="preserve">
+    <value>Register Now!</value>
+  </data>
+  <data name="Reg_sex" xml:space="preserve">
+    <value>male or female?</value>
+  </data>
+  <data name="Reg_timing" xml:space="preserve">
+    <value>how much time do you have for workouts?</value>
+  </data>
+  <data name="Reg_title" xml:space="preserve">
+    <value>register</value>
+  </data>
+  <data name="Reg_train" xml:space="preserve">
+    <value>training</value>
+  </data>
+  <data name="Reg_trainfocus" xml:space="preserve">
+    <value>what is your workout goal?</value>
+  </data>
+  <data name="Reg_weight" xml:space="preserve">
+    <value>weight</value>
+  </data>
+  <data name="Goal_all" xml:space="preserve">
+    <value>Your Goals</value>
+  </data>
+  <data name="Goal_edit" xml:space="preserve">
+    <value>Edit Goal</value>
+  </data>
+  <data name="Nut_average" xml:space="preserve">
+    <value>average nutrition facts</value>
+  </data>
+  <data name="Nut_day" xml:space="preserve">
+    <value>day </value>
+  </data>
+  <data name="Nut_diary" xml:space="preserve">
+    <value>diary</value>
+  </data>
+  <data name="Nut_energy" xml:space="preserve">
+    <value>energy</value>
+  </data>
+  <data name="Nut_fat" xml:space="preserve">
+    <value>fat</value>
+  </data>
+  <data name="Nut_fatsat" xml:space="preserve">
+    <value>saturated fats</value>
+  </data>
+  <data name="Nut_fiber" xml:space="preserve">
+    <value>fiber</value>
+  </data>
+  <data name="Nut_fruit" xml:space="preserve">
+    <value>fruit</value>
+  </data>
+  <data name="Nut_kh" xml:space="preserve">
+    <value>carbs</value>
+  </data>
+  <data name="Nut_list" xml:space="preserve">
+    <value>food</value>
+  </data>
+  <data name="Nut_meal" xml:space="preserve">
+    <value>meal</value>
+  </data>
+  <data name="Nut_overview" xml:space="preserve">
+    <value>overview</value>
+  </data>
+  <data name="Nut_prot" xml:space="preserve">
+    <value>protein</value>
+  </data>
+  <data name="Nut_snacks" xml:space="preserve">
+    <value>snacks</value>
+  </data>
+  <data name="Nut_sollist" xml:space="preserve">
+    <value>quota/actual</value>
+  </data>
+  <data name="Nut_spice" xml:space="preserve">
+    <value>spice</value>
+  </data>
+  <data name="Nut_veg" xml:space="preserve">
+    <value>vegetables</value>
+  </data>
+  <data name="Main_data" xml:space="preserve">
+    <value>data</value>
+  </data>
+  <data name="Main_weight" xml:space="preserve">
+    <value>your latest weight</value>
+  </data>
+  <data name="Nut_food" xml:space="preserve">
+    <value>foodlist</value>
+  </data>
+</root>

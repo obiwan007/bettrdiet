@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{747706F4-ECBF-4D50-8D72-B0DDCC18395C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BettrDiet.Core</RootNamespace>
+    <AssemblyName>BettrDiet.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.cs" />
+    <Compile Include="Common\BettrFitDataSource.cs" />
+    <Compile Include="Common\InitMapper.cs" />
+    <Compile Include="Common\Localisation.cs" />
+    <Compile Include="Common\ObjectStorageHelper.cs" />
+    <Compile Include="Common\ServiceReference.cs" />
+    <Compile Include="Entities\AchievmentHistorVMy.cs" />
+    <Compile Include="Entities\AchievmentVM.cs" />
+    <Compile Include="Entities\AuthData.cs" />
+    <Compile Include="Entities\BlogCommentEntryVM.cs" />
+    <Compile Include="Entities\BlogPostVM.cs" />
+    <Compile Include="Entities\Equipment.cs" />
+    <Compile Include="Entities\EquipmentType.cs" />
+    <Compile Include="Entities\ExerciseMuscleEffectTypeVM.cs" />
+    <Compile Include="Entities\ExerciseType.cs" />
+    <Compile Include="Entities\ExerciseVM.cs" />
+    <Compile Include="Entities\Friendlist.cs" />
+    <Compile Include="Entities\FriendVM.cs" />
+    <Compile Include="Entities\IngredientVM.cs" />
+    <Compile Include="Entities\LebensmittelConsumedRangeVM.cs" />
+    <Compile Include="Entities\LebensmittelConsumedVM.cs" />
+    <Compile Include="Entities\LebensmittelPlanEntryVM.cs" />
+    <Compile Include="Entities\LebensmittelVM.cs" />
+    <Compile Include="Entities\LicenseVM.cs" />
+    <Compile Include="Entities\Message.cs" />
+    <Compile Include="Entities\MessageVM.cs" />
+    <Compile Include="Entities\MuscleGroup.cs" />
+    <Compile Include="Entities\NutritionPlan.cs" />
+    <Compile Include="Entities\NutritionPlanDay.cs" />
+    <Compile Include="Entities\NutritionPlanEntry.cs" />
+    <Compile Include="Entities\NutritionPlanFavorite.cs" />
+    <Compile Include="Entities\Picture.cs" />
+    <Compile Include="Entities\Plan1PointsVM.cs" />
+    <Compile Include="Entities\PlannedExerciseGroupVM.cs" />
+    <Compile Include="Entities\PlannedExerciseVM.cs" />
+    <Compile Include="Entities\PlannedWorkout.cs" />
+    <Compile Include="Entities\PlannedWorkoutDayVM.cs" />
+    <Compile Include="Entities\RegistrationItem.cs" />
+    <Compile Include="Entities\RezeptVM.cs" />
+    <Compile Include="Entities\SummaryData.cs" />
+    <Compile Include="Entities\TrainingDayVM.cs" />
+    <Compile Include="Entities\TrainingExerciseGroupVM.cs" />
+    <Compile Include="Entities\TrainingExerciseVM.cs" />
+    <Compile Include="Entities\UserDailyVM.cs" />
+    <Compile Include="Entities\UserGoalVM.cs" />
+    <Compile Include="Entities\UserVM.cs" />
+    <Compile Include="Entities\WorkoutTemplateDayVM.cs" />
+    <Compile Include="Entities\WorkoutTemplateSetVM.cs" />
+    <Compile Include="Entities\WorkoutTemplateVM.cs" />
+    <Compile Include="Events\ShakeEvent.cs" />
+    <Compile Include="Events\EmailEvent.cs" />
+    <Compile Include="Events\RateEvent.cs" />
+    <Compile Include="Events\NetworkEvent.cs" />
+    <Compile Include="Events\ShowAGBEvent.cs" />
+    <Compile Include="Events\ToastEvent.cs" />
+    <Compile Include="Events\PopupEvent.cs" />
+    <Compile Include="Events\SyncEvent.cs" />
+    <Compile Include="Events\LoginEvents.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\GoalEditViewModel.cs" />
+    <Compile Include="ViewModels\DailyDataEditViewModel.cs" />
+    <Compile Include="ViewModels\GoalOverviewViewModel.cs" />
+    <Compile Include="ViewModels\DailyDataOverviewViewModel.cs" />
+    <Compile Include="ViewModels\AboutViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\FeedbackViewModel.cs" />
+    <Compile Include="ViewModels\NavEntry.cs" />
+    <Compile Include="ViewModels\NutritionPlanCreateViewModel.cs" />
+    <Compile Include="ViewModels\NutritionPlanOverviewViewModel.cs" />
+    <Compile Include="ViewModels\NutritionPlanMainViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\FirstViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\SyncDataViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\BettrDiet.WP8\packages\AutoMapper.3.2.0-ci1005\lib\portable-windows8+net40+wp8+sl5+MonoAndroid+MonoTouch\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Chance.MvvmCross.Plugins.UserInteraction">
+      <HintPath>..\..\BettrDiet.WP8\packages\Chance.MvvmCross.Plugins.UserInteraction.1.1.1\lib\portable-win+net45+sl50+wp8+MonoAndroid+MonoTouch\Chance.MvvmCross.Plugins.UserInteraction.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.CrossCore">
+      <HintPath>..\..\BettrDiet.WP8\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\portable-win+net45+sl50+wp8+MonoAndroid+MonoTouch\Cirrious.CrossCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross">
+      <HintPath>..\..\BettrDiet.WP8\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\portable-win+net45+sl50+wp8+MonoAndroid+MonoTouch\Cirrious.MvvmCross.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Localization">
+      <HintPath>..\..\BettrDiet.WP8\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\portable-win+net45+sl50+wp8+MonoAndroid+MonoTouch\Cirrious.MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.File">
+      <HintPath>..\..\BettrDiet.WP8\packages\MvvmCross.HotTuna.Plugin.File.3.1.1\lib\portable-win+net45+sl50+wp8+MonoAndroid+MonoTouch\Cirrious.MvvmCross.Plugins.File.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Messenger">
+      <HintPath>..\..\BettrDiet.WP8\packages\MvvmCross.HotTuna.Plugin.Messenger.3.1.1\lib\portable-win+net45+sl50+wp8+MonoAndroid+MonoTouch\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BettrDiet.Portable\Common\WebAccess.csproj">
+      <Project>{9d331c19-51e2-4a8d-b432-cacab842a148}</Project>
+      <Name>WebAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

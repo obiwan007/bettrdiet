@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>qps-ploc</value>
+    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+<data name="ApplicationTitle" xml:space="preserve"><value>[F2971][!!_МÝ ÃÞÞĻÌĈÃТÍÔŃ_!!!!]</value></data><data name="AppBarButtonText" xml:space="preserve"><value>[2E4C3][!!_àđð_!!]</value></data><data name="AppBarMenuItemText" xml:space="preserve"><value>[2B782][!!_Мéηû Îτém_!!]</value></data><data name="Main_achievments" xml:space="preserve"><value>[F9E9E][!!_ãċђíèνmêηтš_!!]</value></data><data name="Main_dailydata" xml:space="preserve"><value>[11601][!!_ðáįľÿ ъóđў šτàτş_!!!!]</value></data><data name="Main_foodtracker" xml:space="preserve"><value>[220CD][!!_ƒõóď τŗáćķèŗ_!!]</value></data><data name="Main_goals" xml:space="preserve"><value>[D2B3F][!!_ğòàļš_!!]</value></data><data name="Main_Login" xml:space="preserve"><value>[FA4D0][!!_ļôğįй_!!]</value></data><data name="Main_Logout" xml:space="preserve"><value>[8167B][!!_ľòĝõûť_!!]</value></data><data name="Main_pivothealth" xml:space="preserve"><value>[5F28F][!!_ўôµř ħêâĺτĥ_!!]</value></data><data name="Main_pivotworkout" xml:space="preserve"><value>workouts</value></data><data name="Main_quickinfo" xml:space="preserve"><value>[B7DF5][!!_qùíċќ áĉĉèśś_!!]</value></data><data name="Main_Register" xml:space="preserve"><value>[247DF][!!_řèĝìŝτêŕ_!!]</value></data><data name="Main_settings" xml:space="preserve"><value>[B7178][!!_Šéттîήĝş_!!]</value></data><data name="Main_trainingday" xml:space="preserve"><value>[484E1][!!_mÿ τřâîήîήğ ďâУ_!!!!]</value></data><data name="Main_trainingdaynew" xml:space="preserve"><value>[DBC46][!!_ήêẁ τřãíήîήğ đáÿ_!!!!]</value></data><data name="Daily_abs" xml:space="preserve"><value>[6258D][!!_áъđòmîήãļş_!!]</value></data><data name="Daily_biceps" xml:space="preserve"><value>[B7909][!!_ъíċêρş_!!]</value></data><data name="Daily_calf" xml:space="preserve"><value>[403D5][!!_ĉãĺƒ_!!]</value></data><data name="Daily_calories" xml:space="preserve"><value>[C7AE2][!!_čõиśúméð ċáĺôŗíéş_!!!!!!]</value></data><data name="Daily_chest" xml:space="preserve"><value>[5D63B][!!_ċĥęšť_!!]</value></data><data name="Daily_date" xml:space="preserve"><value>[98A5B][!!_Ðàτé_!!]</value></data><data name="Daily_fat" xml:space="preserve"><value>[00218][!!_ƒâţ_!!]</value></data><data name="Daily_forearms" xml:space="preserve"><value>[8C3BE][!!_ƒôŗęàѓmş_!!]</value></data><data name="Daily_height" xml:space="preserve"><value>[DC365][!!_нéìġħт_!!]</value></data><data name="Daily_hips" xml:space="preserve"><value>[E261A][!!_ћįρŝ_!!]</value></data><data name="Daily_level" xml:space="preserve"><value>[10D6B][!!_ýòµř ĉµŕřéит ƒįťйêŝŝ_!!!!!!]</value></data><data name="Daily_level1" xml:space="preserve"><value>[0666F][!!_ļôẅ_!!]</value></data><data name="Daily_level10" xml:space="preserve"><value>[3523B][!!_ŝûþèŕ_!!]</value></data><data name="Daily_measure" xml:space="preserve"><value>[6A320][!!_мęáŝúřę_!!]</value></data><data name="Daily_muscle" xml:space="preserve"><value>[2C651][!!_mûŝĉľè_!!]</value></data><data name="Daily_neck" xml:space="preserve"><value>[D1CA1][!!_ήèċĸ_!!]</value></data><data name="Daily_overview" xml:space="preserve"><value>[089B6][!!_óνêřνįęẅ_!!]</value></data><data name="Daily_shoulders" xml:space="preserve"><value>[FB9F5][!!_ŝђóûļďéŕŝ_!!]</value></data><data name="Daily_statistics" xml:space="preserve"><value>[F4C3B][!!_şтâтíŝτįĉš_!!]</value></data><data name="Daily_thighs" xml:space="preserve"><value>[BF797][!!_ťћįġĥş_!!]</value></data><data name="Daily_title" xml:space="preserve"><value>[C4EC7][!!_ďáįĺý ďâтá èđîτ_!!!!]</value></data><data name="Daily_titleoverview" xml:space="preserve"><value>[251D4][!!_ďįãѓý_!!]</value></data><data name="Daily_waist" xml:space="preserve"><value>[EFD81][!!_ŵãîśτ_!!]</value></data><data name="Daily_water" xml:space="preserve"><value>[63982][!!_ŵâτęŗ_!!]</value></data><data name="Daily_weight" xml:space="preserve"><value>[6A97F][!!_ẅéîĝħť_!!]</value></data><data name="Daily_writsts" xml:space="preserve"><value>[2A290][!!_ẅŗįśťš_!!]</value></data><data name="Reg_accept" xml:space="preserve"><value>[6E45A][!!_áċĉêρţ_!!]</value></data><data name="Reg_account" xml:space="preserve"><value>[06A26][!!_ãććõûήţ_!!]</value></data><data name="Reg_agb" xml:space="preserve"><value>[0C82D][!!_þŗîνãćў рòľįċý_!!!!]</value></data><data name="Reg_age" xml:space="preserve"><value>[DCF63][!!_áģè_!!]</value></data><data name="Reg_body" xml:space="preserve"><value>[9F3A8][!!_вõđУ_!!]</value></data><data name="Reg_days" xml:space="preserve"><value>[9FD73][!!_ẃõřĸôµţş ρèŕ ẁéêк_!!!!!!]</value></data><data name="Reg_email" xml:space="preserve"><value>[2D86C][!!_ÿòûř émãìľ áđřéŝš_!!!!!!]</value></data><data name="Reg_emailtxt" xml:space="preserve"><value>[A1927][!!_ўõµŕ êмãîľ ãđѓęşś ẁîļĺ Бê ûŝéđ ťó łóġ ŷôµ įη ĺàтêѓ. ÿòú ĉáή иôţ čђãиğé îτ âƒţęŕ ýóû řéġîšťêřéď._!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</value></data><data name="Reg_endurance" xml:space="preserve"><value>[9B0F4][!!_ьęţτéř èήďúřâηĉè_!!!!]</value></data><data name="Reg_fat" xml:space="preserve"><value>[BD0C0][!!_ŗêđûċę ƒâт_!!]</value></data><data name="Reg_female" xml:space="preserve"><value>[F57D4][!!_ƒêмàľę_!!]</value></data><data name="Reg_height" xml:space="preserve"><value>[54E0C][!!_ћèìğнť_!!]</value></data><data name="Reg_male" xml:space="preserve"><value>[8FFA6][!!_мãĺè_!!]</value></data><data name="Reg_mins" xml:space="preserve"><value>[27835][!!_мìήûтêś рęŕ ẁôřķóµť_!!!!!!]</value></data><data name="Reg_muscle" xml:space="preserve"><value>[85B08][!!_ьûįľð мúśĉľé_!!]</value></data><data name="Reg_nickname" xml:space="preserve"><value>[A768D][!!_иîĉкйâмę_!!]</value></data><data name="Reg_password" xml:space="preserve"><value>[54E2C][!!_ρáŝŝẁòѓđ_!!]</value></data><data name="Reg_register" xml:space="preserve"><value>[6AADB][!!_Řéġíşтęѓ Ńòẁ!_!!]</value></data><data name="Reg_sex" xml:space="preserve"><value>[916CE][!!_mãĺé õŗ ƒémàłê?_!!!!]</value></data><data name="Reg_timing" xml:space="preserve"><value>[B7B8E][!!_ђôẅ mµĉĥ ţîмê ďô ўóù ĥãνê ƒóѓ ẁôѓķóùţŝ?_!!!!!!!!!!!!]</value></data><data name="Reg_title" xml:space="preserve"><value>[793C8][!!_ѓèğîşţéѓ_!!]</value></data><data name="Reg_train" xml:space="preserve"><value>[4A084][!!_ťѓáįйíηģ_!!]</value></data><data name="Reg_trainfocus" xml:space="preserve"><value>[04811][!!_ẅћàт įš ŷôúŗ ŵôŗќòúţ ģóàł?_!!!!!!!!]</value></data><data name="Reg_weight" xml:space="preserve"><value>[53D10][!!_ŵęįġнť_!!]</value></data><data name="Goal_all" xml:space="preserve"><value>[028E3][!!_Ỳõùŕ Ģóàĺš_!!]</value></data><data name="Goal_edit" xml:space="preserve"><value>[380B3][!!_Ęđíт Ğòàł_!!]</value></data></root>

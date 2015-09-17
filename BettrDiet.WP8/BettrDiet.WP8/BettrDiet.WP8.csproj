@@ -1,0 +1,1650 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7CBA0787-692B-4BE4-A9A2-FEC30E3586DA}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BettrDiet.WP8</RootNamespace>
+    <AssemblyName>BettrDiet.WP8</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>de;en;qps-ploc</SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>BettrDiet.WP8_$(Configuration)_$(Platform).xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>BettrDiet.WP8.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Label="MultilingualAppToolkit">
+    <ToolkitRevision>2</ToolkitRevision>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Views\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
+    <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
+    <Compile Include="Commands\RateThisAppCommand.cs" />
+    <Compile Include="Commands\SendAnEmailCommand.cs" />
+    <Compile Include="Controls\ActualSizePropertyProxy.cs" />
+    <Compile Include="Controls\BooleanNegationConverter.cs" />
+    <Compile Include="Controls\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Controls\LongListSelector.cs" />
+    <Compile Include="Controls\StringFormatConverter.cs" />
+    <Compile Include="DebugTrace.cs" />
+    <Compile Include="HowTo.xaml.cs">
+      <DependentUpon>HowTo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="Views\GoalOverview.xaml.cs">
+      <Generator>MSBuild:Compile</Generator>
+    </Compile>
+    <Compile Include="Views\GoalEdit.cs" />
+    <Compile Include="Views\DailyDataEdit.xaml.cs" />
+    <Compile Include="Views\DailyDataOverview.xaml.cs" />
+    <Compile Include="Views\Feedback.xaml.cs" />
+    <Compile Include="Views\Login.xaml.cs" />
+    <Compile Include="Views\NutritionPlanCreate.xaml.cs">
+      <DependentUpon>NutritionPlanCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NutritionPlanOverview.xaml.cs">
+      <DependentUpon>NutritionPlanOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NutritionPlanMain.xaml.cs">
+      <DependentUpon>NutritionPlanMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Setup.cs" />
+    <Compile Include="ViewModels\CommandSampleViewModel.cs" />
+    <Compile Include="ViewModels\DataItemViewModel.cs" />
+    <Compile Include="ViewModels\MainDataViewModel.cs" />
+    <Compile Include="Views\FirstView.xaml.cs">
+      <DependentUpon>FirstView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Register.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\DateTimePickerCancel.png" />
+    <Content Include="Assets\DateTimePickerOK.png" />
+    <Content Include="Assets\Images\bettrdietTextBigger.png" />
+    <Content Include="Assets\Images\Dark\appbar.acorn.png" />
+    <Content Include="Assets\Images\Dark\appbar.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.acrobat.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.aftereffects.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.audition.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.bridge.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.dreamweaver.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.encore.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.fireworks.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.flash.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.flashbuilder.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.illustrator.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.indesign.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.lightroom.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.photoshop.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.prelude.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.premierpro.png" />
+    <Content Include="Assets\Images\Dark\appbar.adobe.speedgrade.png" />
+    <Content Include="Assets\Images\Dark\appbar.alert.png" />
+    <Content Include="Assets\Images\Dark\appbar.alien.png" />
+    <Content Include="Assets\Images\Dark\appbar.align.center.png" />
+    <Content Include="Assets\Images\Dark\appbar.align.justify.png" />
+    <Content Include="Assets\Images\Dark\appbar.align.left.png" />
+    <Content Include="Assets\Images\Dark\appbar.align.right.png" />
+    <Content Include="Assets\Images\Dark\appbar.anchor.png" />
+    <Content Include="Assets\Images\Dark\appbar.app.favorite.png" />
+    <Content Include="Assets\Images\Dark\appbar.app.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.app.plus.png" />
+    <Content Include="Assets\Images\Dark\appbar.app.png" />
+    <Content Include="Assets\Images\Dark\appbar.app.remove.png" />
+    <Content Include="Assets\Images\Dark\appbar.arcade.button.png" />
+    <Content Include="Assets\Images\Dark\appbar.archive.png" />
+    <Content Include="Assets\Images\Dark\appbar.arrow.collapsed.png" />
+    <Content Include="Assets\Images\Dark\appbar.arrow.corner.up.right.png" />
+    <Content Include="Assets\Images\Dark\appbar.arrow.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.arrow.down.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.arrow.expand.png" />
+    <Content Include="Assets\Images\Dark\appbar.arrow.left.png" />
+    <Content Include="Assets\Images\Dark\appbar.arrow.left.right.png" />
+    <Content Include="Assets\Images\Dark\appbar.arrow.right.left.png" />
+    <Content Include="Assets\Images\Dark\appbar.arrow.right.png" />
+    <Content Include="Assets\Images\Dark\appbar.arrow.up.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.arrow.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.at.png" />
+    <Content Include="Assets\Images\Dark\appbar.axis.three.png" />
+    <Content Include="Assets\Images\Dark\appbar.baby.png" />
+    <Content Include="Assets\Images\Dark\appbar.barcode.png" />
+    <Content Include="Assets\Images\Dark\appbar.base.png" />
+    <Content Include="Assets\Images\Dark\appbar.base.select.png" />
+    <Content Include="Assets\Images\Dark\appbar.bath.png" />
+    <Content Include="Assets\Images\Dark\appbar.battery.0.png" />
+    <Content Include="Assets\Images\Dark\appbar.battery.1.png" />
+    <Content Include="Assets\Images\Dark\appbar.battery.2.png" />
+    <Content Include="Assets\Images\Dark\appbar.battery.3.png" />
+    <Content Include="Assets\Images\Dark\appbar.bed.png" />
+    <Content Include="Assets\Images\Dark\appbar.beer.guinness.png" />
+    <Content Include="Assets\Images\Dark\appbar.beer.png" />
+    <Content Include="Assets\Images\Dark\appbar.bike.parking.png" />
+    <Content Include="Assets\Images\Dark\appbar.bike.png" />
+    <Content Include="Assets\Images\Dark\appbar.billboard.png" />
+    <Content Include="Assets\Images\Dark\appbar.bing.png" />
+    <Content Include="Assets\Images\Dark\appbar.book.contact.png" />
+    <Content Include="Assets\Images\Dark\appbar.book.hardcover.open.png" />
+    <Content Include="Assets\Images\Dark\appbar.book.hardcover.open.writing.png" />
+    <Content Include="Assets\Images\Dark\appbar.book.list.png" />
+    <Content Include="Assets\Images\Dark\appbar.book.open.information.png" />
+    <Content Include="Assets\Images\Dark\appbar.book.open.png" />
+    <Content Include="Assets\Images\Dark\appbar.book.open.text.image.png" />
+    <Content Include="Assets\Images\Dark\appbar.book.open.text.png" />
+    <Content Include="Assets\Images\Dark\appbar.book.perspective.help.png" />
+    <Content Include="Assets\Images\Dark\appbar.book.perspective.png" />
+    <Content Include="Assets\Images\Dark\appbar.book.png" />
+    <Content Include="Assets\Images\Dark\appbar.book.side.png" />
+    <Content Include="Assets\Images\Dark\appbar.border.all.png" />
+    <Content Include="Assets\Images\Dark\appbar.border.bottom.png" />
+    <Content Include="Assets\Images\Dark\appbar.border.horizontal.png" />
+    <Content Include="Assets\Images\Dark\appbar.border.inner.png" />
+    <Content Include="Assets\Images\Dark\appbar.border.left.png" />
+    <Content Include="Assets\Images\Dark\appbar.border.none.png" />
+    <Content Include="Assets\Images\Dark\appbar.border.outside.png" />
+    <Content Include="Assets\Images\Dark\appbar.border.right.png" />
+    <Content Include="Assets\Images\Dark\appbar.border.top.png" />
+    <Content Include="Assets\Images\Dark\appbar.border.vertical.png" />
+    <Content Include="Assets\Images\Dark\appbar.box.layered.png" />
+    <Content Include="Assets\Images\Dark\appbar.box.png" />
+    <Content Include="Assets\Images\Dark\appbar.box.unfolded.png" />
+    <Content Include="Assets\Images\Dark\appbar.browser.chrome.png" />
+    <Content Include="Assets\Images\Dark\appbar.browser.ie.png" />
+    <Content Include="Assets\Images\Dark\appbar.browser.png" />
+    <Content Include="Assets\Images\Dark\appbar.browser.wire.png" />
+    <Content Include="Assets\Images\Dark\appbar.bug.png" />
+    <Content Include="Assets\Images\Dark\appbar.bug.remove.png" />
+    <Content Include="Assets\Images\Dark\appbar.cabinet.files.png" />
+    <Content Include="Assets\Images\Dark\appbar.cabinet.files.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.cabinet.in.png" />
+    <Content Include="Assets\Images\Dark\appbar.cabinet.out.png" />
+    <Content Include="Assets\Images\Dark\appbar.cabinet.png" />
+    <Content Include="Assets\Images\Dark\appbar.cabinet.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.calculator.png" />
+    <Content Include="Assets\Images\Dark\appbar.calendar.14.png" />
+    <Content Include="Assets\Images\Dark\appbar.calendar.31.png" />
+    <Content Include="Assets\Images\Dark\appbar.calendar.day.png" />
+    <Content Include="Assets\Images\Dark\appbar.calendar.dollar.png" />
+    <Content Include="Assets\Images\Dark\appbar.calendar.future.png" />
+    <Content Include="Assets\Images\Dark\appbar.calendar.month.png" />
+    <Content Include="Assets\Images\Dark\appbar.calendar.png" />
+    <Content Include="Assets\Images\Dark\appbar.calendar.range.png" />
+    <Content Include="Assets\Images\Dark\appbar.calendar.tomorrow.png" />
+    <Content Include="Assets\Images\Dark\appbar.calendar.week.png" />
+    <Content Include="Assets\Images\Dark\appbar.calendar.year.png" />
+    <Content Include="Assets\Images\Dark\appbar.camera.auto.png" />
+    <Content Include="Assets\Images\Dark\appbar.camera.flash.auto.png" />
+    <Content Include="Assets\Images\Dark\appbar.camera.flash.auto.selected.png" />
+    <Content Include="Assets\Images\Dark\appbar.camera.flash.off.png" />
+    <Content Include="Assets\Images\Dark\appbar.camera.flash.off.selected.png" />
+    <Content Include="Assets\Images\Dark\appbar.camera.flash.png" />
+    <Content Include="Assets\Images\Dark\appbar.camera.flash.selected.png" />
+    <Content Include="Assets\Images\Dark\appbar.camera.png" />
+    <Content Include="Assets\Images\Dark\appbar.camera.send.png" />
+    <Content Include="Assets\Images\Dark\appbar.camera.switch.invert.png" />
+    <Content Include="Assets\Images\Dark\appbar.camera.switch.png" />
+    <Content Include="Assets\Images\Dark\appbar.cancel.png" />
+    <Content Include="Assets\Images\Dark\appbar.candle.png" />
+    <Content Include="Assets\Images\Dark\appbar.candy.cane.png" />
+    <Content Include="Assets\Images\Dark\appbar.card.1.png" />
+    <Content Include="Assets\Images\Dark\appbar.card.2.png" />
+    <Content Include="Assets\Images\Dark\appbar.card.3.png" />
+    <Content Include="Assets\Images\Dark\appbar.card.4.png" />
+    <Content Include="Assets\Images\Dark\appbar.card.5.png" />
+    <Content Include="Assets\Images\Dark\appbar.card.6.png" />
+    <Content Include="Assets\Images\Dark\appbar.card.7.png" />
+    <Content Include="Assets\Images\Dark\appbar.card.8.png" />
+    <Content Include="Assets\Images\Dark\appbar.card.9.png" />
+    <Content Include="Assets\Images\Dark\appbar.card.png" />
+    <Content Include="Assets\Images\Dark\appbar.cards.club.png" />
+    <Content Include="Assets\Images\Dark\appbar.cards.diamond.png" />
+    <Content Include="Assets\Images\Dark\appbar.cards.heart.png" />
+    <Content Include="Assets\Images\Dark\appbar.cards.spade.png" />
+    <Content Include="Assets\Images\Dark\appbar.cart.png" />
+    <Content Include="Assets\Images\Dark\appbar.cd.eject.png" />
+    <Content Include="Assets\Images\Dark\appbar.cd.png" />
+    <Content Include="Assets\Images\Dark\appbar.cell.align.png" />
+    <Content Include="Assets\Images\Dark\appbar.cell.column.delete.png" />
+    <Content Include="Assets\Images\Dark\appbar.cell.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.cell.function.png" />
+    <Content Include="Assets\Images\Dark\appbar.cell.insert.above.png" />
+    <Content Include="Assets\Images\Dark\appbar.cell.insert.below.png" />
+    <Content Include="Assets\Images\Dark\appbar.cell.merge.png" />
+    <Content Include="Assets\Images\Dark\appbar.cell.row.delete.png" />
+    <Content Include="Assets\Images\Dark\appbar.cell.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.centerline.png" />
+    <Content Include="Assets\Images\Dark\appbar.chat.png" />
+    <Content Include="Assets\Images\Dark\appbar.check.png" />
+    <Content Include="Assets\Images\Dark\appbar.checkmark.cross.png" />
+    <Content Include="Assets\Images\Dark\appbar.checkmark.pencil.png" />
+    <Content Include="Assets\Images\Dark\appbar.checkmark.pencil.top.png" />
+    <Content Include="Assets\Images\Dark\appbar.checkmark.png" />
+    <Content Include="Assets\Images\Dark\appbar.checkmark.thick.png" />
+    <Content Include="Assets\Images\Dark\appbar.checkmark.thick.unchecked.png" />
+    <Content Include="Assets\Images\Dark\appbar.checkmark.uncrossed.png" />
+    <Content Include="Assets\Images\Dark\appbar.chess.bishop.png" />
+    <Content Include="Assets\Images\Dark\appbar.chess.horse.png" />
+    <Content Include="Assets\Images\Dark\appbar.chess.king.png" />
+    <Content Include="Assets\Images\Dark\appbar.chess.pawn.png" />
+    <Content Include="Assets\Images\Dark\appbar.chess.queen.png" />
+    <Content Include="Assets\Images\Dark\appbar.chess.rook.png" />
+    <Content Include="Assets\Images\Dark\appbar.chevron.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.chevron.left.png" />
+    <Content Include="Assets\Images\Dark\appbar.chevron.right.png" />
+    <Content Include="Assets\Images\Dark\appbar.chevron.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.chromakey.png" />
+    <Content Include="Assets\Images\Dark\appbar.church.png" />
+    <Content Include="Assets\Images\Dark\appbar.city.chicago.png" />
+    <Content Include="Assets\Images\Dark\appbar.city.png" />
+    <Content Include="Assets\Images\Dark\appbar.city.sanfrancisco.png" />
+    <Content Include="Assets\Images\Dark\appbar.city.seattle.png" />
+    <Content Include="Assets\Images\Dark\appbar.clean.png" />
+    <Content Include="Assets\Images\Dark\appbar.clear.inverse.png" />
+    <Content Include="Assets\Images\Dark\appbar.clear.inverse.reflect.horizontal.png" />
+    <Content Include="Assets\Images\Dark\appbar.clear.png" />
+    <Content Include="Assets\Images\Dark\appbar.clear.reflect.horizontal.png" />
+    <Content Include="Assets\Images\Dark\appbar.clipboard.paper.check.png" />
+    <Content Include="Assets\Images\Dark\appbar.clipboard.paper.png" />
+    <Content Include="Assets\Images\Dark\appbar.clipboard.paste.png" />
+    <Content Include="Assets\Images\Dark\appbar.clipboard.png" />
+    <Content Include="Assets\Images\Dark\appbar.clipboard.variant.edit.png" />
+    <Content Include="Assets\Images\Dark\appbar.clipboard.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.clipboard.variant.text.png" />
+    <Content Include="Assets\Images\Dark\appbar.clock.png" />
+    <Content Include="Assets\Images\Dark\appbar.close.png" />
+    <Content Include="Assets\Images\Dark\appbar.closedcaption.off.png" />
+    <Content Include="Assets\Images\Dark\appbar.closedcaption.png" />
+    <Content Include="Assets\Images\Dark\appbar.clothes.shirt.png" />
+    <Content Include="Assets\Images\Dark\appbar.clothes.tie.png" />
+    <Content Include="Assets\Images\Dark\appbar.cloud.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.cloud.delete.png" />
+    <Content Include="Assets\Images\Dark\appbar.cloud.download.png" />
+    <Content Include="Assets\Images\Dark\appbar.cloud.pause.png" />
+    <Content Include="Assets\Images\Dark\appbar.cloud.play.png" />
+    <Content Include="Assets\Images\Dark\appbar.cloud.png" />
+    <Content Include="Assets\Images\Dark\appbar.cloud.upload.png" />
+    <Content Include="Assets\Images\Dark\appbar.cloudirc.png" />
+    <Content Include="Assets\Images\Dark\appbar.code.xml.png" />
+    <Content Include="Assets\Images\Dark\appbar.cog.png" />
+    <Content Include="Assets\Images\Dark\appbar.cogs.png" />
+    <Content Include="Assets\Images\Dark\appbar.column.one.png" />
+    <Content Include="Assets\Images\Dark\appbar.column.three.png" />
+    <Content Include="Assets\Images\Dark\appbar.column.two.png" />
+    <Content Include="Assets\Images\Dark\appbar.companioncube.png" />
+    <Content Include="Assets\Images\Dark\appbar.cone.diagonal.png" />
+    <Content Include="Assets\Images\Dark\appbar.cone.png" />
+    <Content Include="Assets\Images\Dark\appbar.confirm.yes.no.png" />
+    <Content Include="Assets\Images\Dark\appbar.connect.png" />
+    <Content Include="Assets\Images\Dark\appbar.connection.1x.png" />
+    <Content Include="Assets\Images\Dark\appbar.connection.3g.png" />
+    <Content Include="Assets\Images\Dark\appbar.connection.4g.png" />
+    <Content Include="Assets\Images\Dark\appbar.connection.bluetooth.png" />
+    <Content Include="Assets\Images\Dark\appbar.connection.ev.png" />
+    <Content Include="Assets\Images\Dark\appbar.connection.quality.extremelylow.png" />
+    <Content Include="Assets\Images\Dark\appbar.connection.quality.high.png" />
+    <Content Include="Assets\Images\Dark\appbar.connection.quality.low.png" />
+    <Content Include="Assets\Images\Dark\appbar.connection.quality.medium.png" />
+    <Content Include="Assets\Images\Dark\appbar.connection.quality.veryhigh.png" />
+    <Content Include="Assets\Images\Dark\appbar.connection.quality.verylow.png" />
+    <Content Include="Assets\Images\Dark\appbar.connection.wifi.png" />
+    <Content Include="Assets\Images\Dark\appbar.connection.wifi.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.console.png" />
+    <Content Include="Assets\Images\Dark\appbar.contrast.png" />
+    <Content Include="Assets\Images\Dark\appbar.control.eject.png" />
+    <Content Include="Assets\Images\Dark\appbar.control.fastforward.png" />
+    <Content Include="Assets\Images\Dark\appbar.control.guide.png" />
+    <Content Include="Assets\Images\Dark\appbar.control.pause.png" />
+    <Content Include="Assets\Images\Dark\appbar.control.play.live.png" />
+    <Content Include="Assets\Images\Dark\appbar.control.play.png" />
+    <Content Include="Assets\Images\Dark\appbar.control.resume.png" />
+    <Content Include="Assets\Images\Dark\appbar.control.rewind.png" />
+    <Content Include="Assets\Images\Dark\appbar.control.stop.png" />
+    <Content Include="Assets\Images\Dark\appbar.controller.snes.png" />
+    <Content Include="Assets\Images\Dark\appbar.controller.xbox.png" />
+    <Content Include="Assets\Images\Dark\appbar.copyright.png" />
+    <Content Include="Assets\Images\Dark\appbar.corner.png" />
+    <Content Include="Assets\Images\Dark\appbar.coupon.png" />
+    <Content Include="Assets\Images\Dark\appbar.creativecommons.png" />
+    <Content Include="Assets\Images\Dark\appbar.creditcard.png" />
+    <Content Include="Assets\Images\Dark\appbar.crop.png" />
+    <Content Include="Assets\Images\Dark\appbar.crosshair.png" />
+    <Content Include="Assets\Images\Dark\appbar.crown.png" />
+    <Content Include="Assets\Images\Dark\appbar.cup.empty.png" />
+    <Content Include="Assets\Images\Dark\appbar.cup.full.png" />
+    <Content Include="Assets\Images\Dark\appbar.cup.half.png" />
+    <Content Include="Assets\Images\Dark\appbar.cup.paper.png" />
+    <Content Include="Assets\Images\Dark\appbar.cup.png" />
+    <Content Include="Assets\Images\Dark\appbar.cupcake.png" />
+    <Content Include="Assets\Images\Dark\appbar.currency.cent.png" />
+    <Content Include="Assets\Images\Dark\appbar.currency.dollar.free.png" />
+    <Content Include="Assets\Images\Dark\appbar.currency.dollar.png" />
+    <Content Include="Assets\Images\Dark\appbar.currency.euro.png" />
+    <Content Include="Assets\Images\Dark\appbar.currency.grivna.png" />
+    <Content Include="Assets\Images\Dark\appbar.currency.pound.png" />
+    <Content Include="Assets\Images\Dark\appbar.currency.rubles.png" />
+    <Content Include="Assets\Images\Dark\appbar.currency.rupee.png" />
+    <Content Include="Assets\Images\Dark\appbar.currency.yen.png" />
+    <Content Include="Assets\Images\Dark\appbar.cursor.default.outline.png" />
+    <Content Include="Assets\Images\Dark\appbar.cursor.default.png" />
+    <Content Include="Assets\Images\Dark\appbar.cursor.default.transform.horizontal.png" />
+    <Content Include="Assets\Images\Dark\appbar.cursor.hand.png" />
+    <Content Include="Assets\Images\Dark\appbar.cursor.information.png" />
+    <Content Include="Assets\Images\Dark\appbar.cursor.move.png" />
+    <Content Include="Assets\Images\Dark\appbar.cusor.pointer.png" />
+    <Content Include="Assets\Images\Dark\appbar.customerservice.png" />
+    <Content Include="Assets\Images\Dark\appbar.database.png" />
+    <Content Include="Assets\Images\Dark\appbar.debug.restart.png" />
+    <Content Include="Assets\Images\Dark\appbar.debug.step.into.png" />
+    <Content Include="Assets\Images\Dark\appbar.debug.step.out.png" />
+    <Content Include="Assets\Images\Dark\appbar.debug.step.over.png" />
+    <Content Include="Assets\Images\Dark\appbar.debug.stop.png" />
+    <Content Include="Assets\Images\Dark\appbar.deeplink.png" />
+    <Content Include="Assets\Images\Dark\appbar.deeplink.round.png" />
+    <Content Include="Assets\Images\Dark\appbar.delete.png" />
+    <Content Include="Assets\Images\Dark\appbar.devcenter.png" />
+    <Content Include="Assets\Images\Dark\appbar.diagram.png" />
+    <Content Include="Assets\Images\Dark\appbar.dial.png" />
+    <Content Include="Assets\Images\Dark\appbar.dimension.arrow.box.height.png" />
+    <Content Include="Assets\Images\Dark\appbar.dimension.arrow.box.width.png" />
+    <Content Include="Assets\Images\Dark\appbar.dimension.arrow.line.height.png" />
+    <Content Include="Assets\Images\Dark\appbar.dimension.arrow.line.height.short.png" />
+    <Content Include="Assets\Images\Dark\appbar.dimension.arrow.line.height.thick.png" />
+    <Content Include="Assets\Images\Dark\appbar.dimension.arrow.line.width.png" />
+    <Content Include="Assets\Images\Dark\appbar.dimension.arrow.line.width.short.png" />
+    <Content Include="Assets\Images\Dark\appbar.dimension.arrow.line.width.thick.png" />
+    <Content Include="Assets\Images\Dark\appbar.dimension.box.height.png" />
+    <Content Include="Assets\Images\Dark\appbar.dimension.box.width.png" />
+    <Content Include="Assets\Images\Dark\appbar.dimension.line.height.png" />
+    <Content Include="Assets\Images\Dark\appbar.dimension.line.height.short.png" />
+    <Content Include="Assets\Images\Dark\appbar.dimension.line.width.png" />
+    <Content Include="Assets\Images\Dark\appbar.dimension.line.width.short.png" />
+    <Content Include="Assets\Images\Dark\appbar.directions.png" />
+    <Content Include="Assets\Images\Dark\appbar.disconnect.png" />
+    <Content Include="Assets\Images\Dark\appbar.disk.download.png" />
+    <Content Include="Assets\Images\Dark\appbar.disk.png" />
+    <Content Include="Assets\Images\Dark\appbar.dnd.png" />
+    <Content Include="Assets\Images\Dark\appbar.door.enter.png" />
+    <Content Include="Assets\Images\Dark\appbar.door.leave.png" />
+    <Content Include="Assets\Images\Dark\appbar.door.lock.closed.png" />
+    <Content Include="Assets\Images\Dark\appbar.door.lock.open.png" />
+    <Content Include="Assets\Images\Dark\appbar.download.png" />
+    <Content Include="Assets\Images\Dark\appbar.drafting.centerline.png" />
+    <Content Include="Assets\Images\Dark\appbar.draw.brush.png" />
+    <Content Include="Assets\Images\Dark\appbar.draw.brush.reflection.png" />
+    <Content Include="Assets\Images\Dark\appbar.draw.button.png" />
+    <Content Include="Assets\Images\Dark\appbar.draw.marker.png" />
+    <Content Include="Assets\Images\Dark\appbar.draw.marker.reflection.png" />
+    <Content Include="Assets\Images\Dark\appbar.draw.paintbrush.png" />
+    <Content Include="Assets\Images\Dark\appbar.draw.pen.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.draw.pen.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.draw.pen.png" />
+    <Content Include="Assets\Images\Dark\appbar.draw.pen.reflection.png" />
+    <Content Include="Assets\Images\Dark\appbar.draw.pencil.png" />
+    <Content Include="Assets\Images\Dark\appbar.draw.pencil.reflection.png" />
+    <Content Include="Assets\Images\Dark\appbar.draw.pixel.fill.grid.png" />
+    <Content Include="Assets\Images\Dark\appbar.draw.pixel.grid.png" />
+    <Content Include="Assets\Images\Dark\appbar.dropper.png" />
+    <Content Include="Assets\Images\Dark\appbar.edit.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.edit.box.png" />
+    <Content Include="Assets\Images\Dark\appbar.edit.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.edit.png" />
+    <Content Include="Assets\Images\Dark\appbar.elevator.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.elevator.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.email.gmail.png" />
+    <Content Include="Assets\Images\Dark\appbar.email.hardedge.png" />
+    <Content Include="Assets\Images\Dark\appbar.email.minimal.png" />
+    <Content Include="Assets\Images\Dark\appbar.email.outlook.png" />
+    <Content Include="Assets\Images\Dark\appbar.email.png" />
+    <Content Include="Assets\Images\Dark\appbar.email.yahoo.png" />
+    <Content Include="Assets\Images\Dark\appbar.eye.hide.png" />
+    <Content Include="Assets\Images\Dark\appbar.eye.png" />
+    <Content Include="Assets\Images\Dark\appbar.facebook.connect.png" />
+    <Content Include="Assets\Images\Dark\appbar.facebook.disconnect.png" />
+    <Content Include="Assets\Images\Dark\appbar.fan.box.png" />
+    <Content Include="Assets\Images\Dark\appbar.ferry.png" />
+    <Content Include="Assets\Images\Dark\appbar.film.live.png" />
+    <Content Include="Assets\Images\Dark\appbar.film.png" />
+    <Content Include="Assets\Images\Dark\appbar.film.select.png" />
+    <Content Include="Assets\Images\Dark\appbar.filter.alphabetical.png" />
+    <Content Include="Assets\Images\Dark\appbar.filter.png" />
+    <Content Include="Assets\Images\Dark\appbar.finder.png" />
+    <Content Include="Assets\Images\Dark\appbar.fingerprint.png" />
+    <Content Include="Assets\Images\Dark\appbar.flag.bear.png" />
+    <Content Include="Assets\Images\Dark\appbar.flag.png" />
+    <Content Include="Assets\Images\Dark\appbar.flag.texas.png" />
+    <Content Include="Assets\Images\Dark\appbar.flag.wavy.png" />
+    <Content Include="Assets\Images\Dark\appbar.folder.ellipsis.png" />
+    <Content Include="Assets\Images\Dark\appbar.folder.lock.png" />
+    <Content Include="Assets\Images\Dark\appbar.folder.open.png" />
+    <Content Include="Assets\Images\Dark\appbar.folder.people.png" />
+    <Content Include="Assets\Images\Dark\appbar.folder.png" />
+    <Content Include="Assets\Images\Dark\appbar.folder.puzzle.png" />
+    <Content Include="Assets\Images\Dark\appbar.folder.star.png" />
+    <Content Include="Assets\Images\Dark\appbar.food.apple.png" />
+    <Content Include="Assets\Images\Dark\appbar.food.png" />
+    <Content Include="Assets\Images\Dark\appbar.food.silverware.cross.png" />
+    <Content Include="Assets\Images\Dark\appbar.food.silverware.png" />
+    <Content Include="Assets\Images\Dark\appbar.foot.png" />
+    <Content Include="Assets\Images\Dark\appbar.forklift.load.png" />
+    <Content Include="Assets\Images\Dark\appbar.forklift.png" />
+    <Content Include="Assets\Images\Dark\appbar.form.basic.png" />
+    <Content Include="Assets\Images\Dark\appbar.form.editable.png" />
+    <Content Include="Assets\Images\Dark\appbar.forrst.png" />
+    <Content Include="Assets\Images\Dark\appbar.forsale.png" />
+    <Content Include="Assets\Images\Dark\appbar.fullscreen.box.png" />
+    <Content Include="Assets\Images\Dark\appbar.fullscreen.png" />
+    <Content Include="Assets\Images\Dark\appbar.futurama.bender.png" />
+    <Content Include="Assets\Images\Dark\appbar.futurama.fry.png" />
+    <Content Include="Assets\Images\Dark\appbar.gas.png" />
+    <Content Include="Assets\Images\Dark\appbar.gauge.0.png" />
+    <Content Include="Assets\Images\Dark\appbar.gauge.100.png" />
+    <Content Include="Assets\Images\Dark\appbar.gauge.25.png" />
+    <Content Include="Assets\Images\Dark\appbar.gauge.50.png" />
+    <Content Include="Assets\Images\Dark\appbar.gauge.75.png" />
+    <Content Include="Assets\Images\Dark\appbar.gender.both.png" />
+    <Content Include="Assets\Images\Dark\appbar.gender.female.png" />
+    <Content Include="Assets\Images\Dark\appbar.gender.male.png" />
+    <Content Include="Assets\Images\Dark\appbar.gift.png" />
+    <Content Include="Assets\Images\Dark\appbar.globe.png" />
+    <Content Include="Assets\Images\Dark\appbar.globe.wire.png" />
+    <Content Include="Assets\Images\Dark\appbar.google.png" />
+    <Content Include="Assets\Images\Dark\appbar.googleplus.png" />
+    <Content Include="Assets\Images\Dark\appbar.grade.a.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.grade.a.plus.png" />
+    <Content Include="Assets\Images\Dark\appbar.grade.a.png" />
+    <Content Include="Assets\Images\Dark\appbar.grade.b.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.grade.b.plus.png" />
+    <Content Include="Assets\Images\Dark\appbar.grade.b.png" />
+    <Content Include="Assets\Images\Dark\appbar.grade.c.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.grade.c.plus.png" />
+    <Content Include="Assets\Images\Dark\appbar.grade.c.png" />
+    <Content Include="Assets\Images\Dark\appbar.grade.d.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.grade.d.plus.png" />
+    <Content Include="Assets\Images\Dark\appbar.grade.d.png" />
+    <Content Include="Assets\Images\Dark\appbar.grade.e.png" />
+    <Content Include="Assets\Images\Dark\appbar.grade.f.png" />
+    <Content Include="Assets\Images\Dark\appbar.graph.bar.png" />
+    <Content Include="Assets\Images\Dark\appbar.graph.boxplot.png" />
+    <Content Include="Assets\Images\Dark\appbar.graph.histogram.description.png" />
+    <Content Include="Assets\Images\Dark\appbar.graph.histogram.png" />
+    <Content Include="Assets\Images\Dark\appbar.graph.line.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.graph.line.png" />
+    <Content Include="Assets\Images\Dark\appbar.graph.line.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.greek.sigma.lowercase.png" />
+    <Content Include="Assets\Images\Dark\appbar.greek.sigma.uppercase.png" />
+    <Content Include="Assets\Images\Dark\appbar.grid.png" />
+    <Content Include="Assets\Images\Dark\appbar.group.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.group.delete.png" />
+    <Content Include="Assets\Images\Dark\appbar.group.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.group.png" />
+    <Content Include="Assets\Images\Dark\appbar.handicap.in.png" />
+    <Content Include="Assets\Images\Dark\appbar.handicap.out.png" />
+    <Content Include="Assets\Images\Dark\appbar.handicap.png" />
+    <Content Include="Assets\Images\Dark\appbar.hardware.cpu.png" />
+    <Content Include="Assets\Images\Dark\appbar.hardware.headphones.bluetooth.png" />
+    <Content Include="Assets\Images\Dark\appbar.hardware.headphones.png" />
+    <Content Include="Assets\Images\Dark\appbar.hardware.headset.png" />
+    <Content Include="Assets\Images\Dark\appbar.hardware.mouse.png" />
+    <Content Include="Assets\Images\Dark\appbar.hat.santa.png" />
+    <Content Include="Assets\Images\Dark\appbar.heart.break.png" />
+    <Content Include="Assets\Images\Dark\appbar.heart.cross.png" />
+    <Content Include="Assets\Images\Dark\appbar.heart.outline.png" />
+    <Content Include="Assets\Images\Dark\appbar.heart.png" />
+    <Content Include="Assets\Images\Dark\appbar.home.empty.png" />
+    <Content Include="Assets\Images\Dark\appbar.home.garage.arrow.close.png" />
+    <Content Include="Assets\Images\Dark\appbar.home.garage.arrow.open.png" />
+    <Content Include="Assets\Images\Dark\appbar.home.garage.open.png" />
+    <Content Include="Assets\Images\Dark\appbar.home.garage.png" />
+    <Content Include="Assets\Images\Dark\appbar.home.gps.png" />
+    <Content Include="Assets\Images\Dark\appbar.home.location.pin.png" />
+    <Content Include="Assets\Images\Dark\appbar.home.location.round.png" />
+    <Content Include="Assets\Images\Dark\appbar.home.people.none.png" />
+    <Content Include="Assets\Images\Dark\appbar.home.people.png" />
+    <Content Include="Assets\Images\Dark\appbar.home.png" />
+    <Content Include="Assets\Images\Dark\appbar.home.question.png" />
+    <Content Include="Assets\Images\Dark\appbar.home.variant.enter.png" />
+    <Content Include="Assets\Images\Dark\appbar.home.variant.leave.png" />
+    <Content Include="Assets\Images\Dark\appbar.home.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.hourglass.png" />
+    <Content Include="Assets\Images\Dark\appbar.icecream.bar.png" />
+    <Content Include="Assets\Images\Dark\appbar.ie.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.ants.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.backlight.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.beach.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.broken.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.export.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.focus.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.gallery.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.hdr.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.landscape.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.macro.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.multiple.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.night.landscape.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.night.person.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.night.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.night.portrait.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.portrait.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.redeye.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.select.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.snow.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.sports.png" />
+    <Content Include="Assets\Images\Dark\appbar.image.sunset.png" />
+    <Content Include="Assets\Images\Dark\appbar.inbox.in.png" />
+    <Content Include="Assets\Images\Dark\appbar.inbox.out.png" />
+    <Content Include="Assets\Images\Dark\appbar.inbox.png" />
+    <Content Include="Assets\Images\Dark\appbar.infinite.png" />
+    <Content Include="Assets\Images\Dark\appbar.information.circle.png" />
+    <Content Include="Assets\Images\Dark\appbar.information.png" />
+    <Content Include="Assets\Images\Dark\appbar.input.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.input.keyboard.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.input.keyboard.png" />
+    <Content Include="Assets\Images\Dark\appbar.input.pen.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.input.pen.png" />
+    <Content Include="Assets\Images\Dark\appbar.input.png" />
+    <Content Include="Assets\Images\Dark\appbar.input.question.png" />
+    <Content Include="Assets\Images\Dark\appbar.interface.button.png" />
+    <Content Include="Assets\Images\Dark\appbar.interface.dropdown.png" />
+    <Content Include="Assets\Images\Dark\appbar.interface.list.png" />
+    <Content Include="Assets\Images\Dark\appbar.interface.password.png" />
+    <Content Include="Assets\Images\Dark\appbar.interface.textbox.png" />
+    <Content Include="Assets\Images\Dark\appbar.iphone.png" />
+    <Content Include="Assets\Images\Dark\appbar.journal.png" />
+    <Content Include="Assets\Images\Dark\appbar.key.old.png" />
+    <Content Include="Assets\Images\Dark\appbar.key.png" />
+    <Content Include="Assets\Images\Dark\appbar.lamp.desk.png" />
+    <Content Include="Assets\Images\Dark\appbar.lamp.desk.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.lamp.png" />
+    <Content Include="Assets\Images\Dark\appbar.lamp.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.language.csharp.png" />
+    <Content Include="Assets\Images\Dark\appbar.language.java.png" />
+    <Content Include="Assets\Images\Dark\appbar.language.java.text.png" />
+    <Content Include="Assets\Images\Dark\appbar.language.python.png" />
+    <Content Include="Assets\Images\Dark\appbar.language.python.text.png" />
+    <Content Include="Assets\Images\Dark\appbar.laptop.png" />
+    <Content Include="Assets\Images\Dark\appbar.lavalamp.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.arrange.bringforward.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.arrange.bringtofront.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.arrange.sendbackward.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.arrange.sendtoback.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.arrange.solid.bringforward.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.arrange.solid.bringtofront.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.arrange.solid.sendbackward.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.arrange.solid.sendtoback.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.delete.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.perspective.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.thick.png" />
+    <Content Include="Assets\Images\Dark\appbar.layer.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.layout.body.png" />
+    <Content Include="Assets\Images\Dark\appbar.layout.collapse.left.png" />
+    <Content Include="Assets\Images\Dark\appbar.layout.collapse.left.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.layout.collapse.right.png" />
+    <Content Include="Assets\Images\Dark\appbar.layout.collapse.right.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.layout.expand.left.png" />
+    <Content Include="Assets\Images\Dark\appbar.layout.expand.left.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.layout.expand.right.png" />
+    <Content Include="Assets\Images\Dark\appbar.layout.expand.right.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.layout.header.png" />
+    <Content Include="Assets\Images\Dark\appbar.layout.png" />
+    <Content Include="Assets\Images\Dark\appbar.layout.sidebar.png" />
+    <Content Include="Assets\Images\Dark\appbar.leaderboard.png" />
+    <Content Include="Assets\Images\Dark\appbar.lifesaver.png" />
+    <Content Include="Assets\Images\Dark\appbar.lightbulb.coil.png" />
+    <Content Include="Assets\Images\Dark\appbar.lightbulb.hue.on.png" />
+    <Content Include="Assets\Images\Dark\appbar.lightbulb.hue.png" />
+    <Content Include="Assets\Images\Dark\appbar.lightbulb.png" />
+    <Content Include="Assets\Images\Dark\appbar.lightning.png" />
+    <Content Include="Assets\Images\Dark\appbar.lines.horizontal.4.png" />
+    <Content Include="Assets\Images\Dark\appbar.link.png" />
+    <Content Include="Assets\Images\Dark\appbar.linkedin.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.add.above.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.add.below.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.check.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.create.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.delete.inline.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.delete.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.gear.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.hidden.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.merge.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.one.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.reorder.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.reorder.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.reorder.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.select.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.star.png" />
+    <Content Include="Assets\Images\Dark\appbar.list.two.png" />
+    <Content Include="Assets\Images\Dark\appbar.location.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.location.checkin.png" />
+    <Content Include="Assets\Images\Dark\appbar.location.circle.png" />
+    <Content Include="Assets\Images\Dark\appbar.location.delete.png" />
+    <Content Include="Assets\Images\Dark\appbar.location.foursquare.png" />
+    <Content Include="Assets\Images\Dark\appbar.location.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.location.png" />
+    <Content Include="Assets\Images\Dark\appbar.location.round.png" />
+    <Content Include="Assets\Images\Dark\appbar.lock.png" />
+    <Content Include="Assets\Images\Dark\appbar.logic.and.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.logic.and.png" />
+    <Content Include="Assets\Images\Dark\appbar.logic.or.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.logic.or.png" />
+    <Content Include="Assets\Images\Dark\appbar.loop.png" />
+    <Content Include="Assets\Images\Dark\appbar.magnify.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.magnify.arrow.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.magnify.arrow.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.magnify.back.png" />
+    <Content Include="Assets\Images\Dark\appbar.magnify.forward.png" />
+    <Content Include="Assets\Images\Dark\appbar.magnify.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.magnify.png" />
+    <Content Include="Assets\Images\Dark\appbar.man.sensor.png" />
+    <Content Include="Assets\Images\Dark\appbar.man.suitcase.fast.png" />
+    <Content Include="Assets\Images\Dark\appbar.man.suitcase.png" />
+    <Content Include="Assets\Images\Dark\appbar.man.suitcase.run.png" />
+    <Content Include="Assets\Images\Dark\appbar.man.walk.png" />
+    <Content Include="Assets\Images\Dark\appbar.map.aerial.highway.png" />
+    <Content Include="Assets\Images\Dark\appbar.map.aerial.png" />
+    <Content Include="Assets\Images\Dark\appbar.map.folds.png" />
+    <Content Include="Assets\Images\Dark\appbar.map.gps.png" />
+    <Content Include="Assets\Images\Dark\appbar.map.location.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.map.location.png" />
+    <Content Include="Assets\Images\Dark\appbar.map.png" />
+    <Content Include="Assets\Images\Dark\appbar.map.satellite.png" />
+    <Content Include="Assets\Images\Dark\appbar.map.treasure.png" />
+    <Content Include="Assets\Images\Dark\appbar.marketplace.old.png" />
+    <Content Include="Assets\Images\Dark\appbar.marketplace.png" />
+    <Content Include="Assets\Images\Dark\appbar.markup.png" />
+    <Content Include="Assets\Images\Dark\appbar.martini.png" />
+    <Content Include="Assets\Images\Dark\appbar.marvel.avengers.png" />
+    <Content Include="Assets\Images\Dark\appbar.marvel.captainamerica.png" />
+    <Content Include="Assets\Images\Dark\appbar.marvel.ironman.mask.png" />
+    <Content Include="Assets\Images\Dark\appbar.marvel.ironman.png" />
+    <Content Include="Assets\Images\Dark\appbar.marvel.shield.png" />
+    <Content Include="Assets\Images\Dark\appbar.marvel.shield.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.measure.celcius.png" />
+    <Content Include="Assets\Images\Dark\appbar.measure.centimeter.png" />
+    <Content Include="Assets\Images\Dark\appbar.measure.farenheit.png" />
+    <Content Include="Assets\Images\Dark\appbar.measure.foot.png" />
+    <Content Include="Assets\Images\Dark\appbar.measure.inch.png" />
+    <Content Include="Assets\Images\Dark\appbar.measure.kilometer.png" />
+    <Content Include="Assets\Images\Dark\appbar.measure.meter.png" />
+    <Content Include="Assets\Images\Dark\appbar.measure.mile.png" />
+    <Content Include="Assets\Images\Dark\appbar.medical.pill.broken.png" />
+    <Content Include="Assets\Images\Dark\appbar.medical.pill.png" />
+    <Content Include="Assets\Images\Dark\appbar.medical.pulse.png" />
+    <Content Include="Assets\Images\Dark\appbar.message.png" />
+    <Content Include="Assets\Images\Dark\appbar.message.profanity.png" />
+    <Content Include="Assets\Images\Dark\appbar.message.send.png" />
+    <Content Include="Assets\Images\Dark\appbar.message.smiley.png" />
+    <Content Include="Assets\Images\Dark\appbar.microphone.google.png" />
+    <Content Include="Assets\Images\Dark\appbar.microphone.png" />
+    <Content Include="Assets\Images\Dark\appbar.microsoft.tag.png" />
+    <Content Include="Assets\Images\Dark\appbar.minecraft.civcraft.png" />
+    <Content Include="Assets\Images\Dark\appbar.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.money.png" />
+    <Content Include="Assets\Images\Dark\appbar.monitor.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.monitor.delete.png" />
+    <Content Include="Assets\Images\Dark\appbar.monitor.film.png" />
+    <Content Include="Assets\Images\Dark\appbar.monitor.identify.png" />
+    <Content Include="Assets\Images\Dark\appbar.monitor.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.monitor.play.png" />
+    <Content Include="Assets\Images\Dark\appbar.monitor.png" />
+    <Content Include="Assets\Images\Dark\appbar.monitor.to.png" />
+    <Content Include="Assets\Images\Dark\appbar.mono.png" />
+    <Content Include="Assets\Images\Dark\appbar.moon.first.quarter.png" />
+    <Content Include="Assets\Images\Dark\appbar.moon.full.png" />
+    <Content Include="Assets\Images\Dark\appbar.moon.new.png" />
+    <Content Include="Assets\Images\Dark\appbar.moon.png" />
+    <Content Include="Assets\Images\Dark\appbar.moon.sleep.png" />
+    <Content Include="Assets\Images\Dark\appbar.moon.third.quarter.png" />
+    <Content Include="Assets\Images\Dark\appbar.moon.waning.crescent.png" />
+    <Content Include="Assets\Images\Dark\appbar.moon.waning.gibbous.png" />
+    <Content Include="Assets\Images\Dark\appbar.moon.waxing.crescent.png" />
+    <Content Include="Assets\Images\Dark\appbar.moon.waxing.gibbous.png" />
+    <Content Include="Assets\Images\Dark\appbar.movie.clapper.png" />
+    <Content Include="Assets\Images\Dark\appbar.movie.clapper.select.png" />
+    <Content Include="Assets\Images\Dark\appbar.movie.clapper.solid.png" />
+    <Content Include="Assets\Images\Dark\appbar.movie.clapper.solid.select.png" />
+    <Content Include="Assets\Images\Dark\appbar.music.live.png" />
+    <Content Include="Assets\Images\Dark\appbar.music.png" />
+    <Content Include="Assets\Images\Dark\appbar.music.select.png" />
+    <Content Include="Assets\Images\Dark\appbar.music.wifi.png" />
+    <Content Include="Assets\Images\Dark\appbar.navigate.next.png" />
+    <Content Include="Assets\Images\Dark\appbar.navigate.previous.png" />
+    <Content Include="Assets\Images\Dark\appbar.network.disconnect.png" />
+    <Content Include="Assets\Images\Dark\appbar.network.home.disconnect.png" />
+    <Content Include="Assets\Images\Dark\appbar.network.home.png" />
+    <Content Include="Assets\Images\Dark\appbar.network.png" />
+    <Content Include="Assets\Images\Dark\appbar.network.port.disconnect.png" />
+    <Content Include="Assets\Images\Dark\appbar.network.port.png" />
+    <Content Include="Assets\Images\Dark\appbar.network.server.connecting.png" />
+    <Content Include="Assets\Images\Dark\appbar.network.server.disconnect.png" />
+    <Content Include="Assets\Images\Dark\appbar.network.server.png" />
+    <Content Include="Assets\Images\Dark\appbar.new.png" />
+    <Content Include="Assets\Images\Dark\appbar.new.window.png" />
+    <Content Include="Assets\Images\Dark\appbar.newspaper.png" />
+    <Content Include="Assets\Images\Dark\appbar.nfc.png" />
+    <Content Include="Assets\Images\Dark\appbar.noentry.png" />
+    <Content Include="Assets\Images\Dark\appbar.notification.above.multiple.png" />
+    <Content Include="Assets\Images\Dark\appbar.notification.above.png" />
+    <Content Include="Assets\Images\Dark\appbar.notification.multiple.png" />
+    <Content Include="Assets\Images\Dark\appbar.notification.png" />
+    <Content Include="Assets\Images\Dark\appbar.notification.star.png" />
+    <Content Include="Assets\Images\Dark\appbar.nyan.png" />
+    <Content Include="Assets\Images\Dark\appbar.office.365.png" />
+    <Content Include="Assets\Images\Dark\appbar.office.access.png" />
+    <Content Include="Assets\Images\Dark\appbar.office.excel.png" />
+    <Content Include="Assets\Images\Dark\appbar.office.infopath.png" />
+    <Content Include="Assets\Images\Dark\appbar.office.lync.png" />
+    <Content Include="Assets\Images\Dark\appbar.office.onenote.png" />
+    <Content Include="Assets\Images\Dark\appbar.office.outlook.png" />
+    <Content Include="Assets\Images\Dark\appbar.office.png" />
+    <Content Include="Assets\Images\Dark\appbar.office.powerpoint.png" />
+    <Content Include="Assets\Images\Dark\appbar.office.project.png" />
+    <Content Include="Assets\Images\Dark\appbar.office.publisher.png" />
+    <Content Include="Assets\Images\Dark\appbar.office.sharepoint.png" />
+    <Content Include="Assets\Images\Dark\appbar.office.visio.png" />
+    <Content Include="Assets\Images\Dark\appbar.office.word.png" />
+    <Content Include="Assets\Images\Dark\appbar.opacity.png" />
+    <Content Include="Assets\Images\Dark\appbar.ornament.png" />
+    <Content Include="Assets\Images\Dark\appbar.ornament.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.os.android.png" />
+    <Content Include="Assets\Images\Dark\appbar.os.arm.png" />
+    <Content Include="Assets\Images\Dark\appbar.os.blackberry.png" />
+    <Content Include="Assets\Images\Dark\appbar.os.chromium.png" />
+    <Content Include="Assets\Images\Dark\appbar.os.gnome.png" />
+    <Content Include="Assets\Images\Dark\appbar.os.ios.png" />
+    <Content Include="Assets\Images\Dark\appbar.os.ubuntu.png" />
+    <Content Include="Assets\Images\Dark\appbar.os.windows.8.png" />
+    <Content Include="Assets\Images\Dark\appbar.os.windows.png" />
+    <Content Include="Assets\Images\Dark\appbar.os.windows.rt.png" />
+    <Content Include="Assets\Images\Dark\appbar.os.windowsphone.png" />
+    <Content Include="Assets\Images\Dark\appbar.os.windowsphone.round.png" />
+    <Content Include="Assets\Images\Dark\appbar.os.x64.png" />
+    <Content Include="Assets\Images\Dark\appbar.os.x86.png" />
+    <Content Include="Assets\Images\Dark\appbar.outlet.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.0.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.1.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.2.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.3.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.4.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.5.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.6.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.7.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.8.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.9.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.arrow.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.bold.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.break.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.check.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.code.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.copy.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.corner.bookmark.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.corner.break.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.corner.cells.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.corner.folded.grid.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.corner.folded.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.corner.folded.text.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.corner.grid.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.corner.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.corner.text.break.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.corner.text.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.cross.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.delete.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.download.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.duplicate.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.edit.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.excel.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.file.gif.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.file.gif.tag.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.file.pdf.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.file.pdf.tag.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.heart.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.heartbreak.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.hidden.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.image.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.jpg.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.location.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.location.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.multiple.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.music.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.new.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.onenote.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.pdf.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.png.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.powerpoint.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.question.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.search.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.select.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.small.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.solid.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.solid.cross.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.solid.move.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.solid.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.text.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.upload.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.word.png" />
+    <Content Include="Assets\Images\Dark\appbar.page.xml.png" />
+    <Content Include="Assets\Images\Dark\appbar.palmtree.png" />
+    <Content Include="Assets\Images\Dark\appbar.palmtree.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.paper.png" />
+    <Content Include="Assets\Images\Dark\appbar.paperclip.png" />
+    <Content Include="Assets\Images\Dark\appbar.paperclip.rotated.png" />
+    <Content Include="Assets\Images\Dark\appbar.paw.png" />
+    <Content Include="Assets\Images\Dark\appbar.paypal.png" />
+    <Content Include="Assets\Images\Dark\appbar.people.arrow.left.png" />
+    <Content Include="Assets\Images\Dark\appbar.people.arrow.right.png" />
+    <Content Include="Assets\Images\Dark\appbar.people.checkbox.png" />
+    <Content Include="Assets\Images\Dark\appbar.people.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.people.left.png" />
+    <Content Include="Assets\Images\Dark\appbar.people.magnify.png" />
+    <Content Include="Assets\Images\Dark\appbar.people.multiple.magnify.png" />
+    <Content Include="Assets\Images\Dark\appbar.people.multiple.png" />
+    <Content Include="Assets\Images\Dark\appbar.people.png" />
+    <Content Include="Assets\Images\Dark\appbar.people.profile.png" />
+    <Content Include="Assets\Images\Dark\appbar.people.right.png" />
+    <Content Include="Assets\Images\Dark\appbar.people.sensor.png" />
+    <Content Include="Assets\Images\Dark\appbar.people.sensor.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.people.status.png" />
+    <Content Include="Assets\Images\Dark\appbar.people.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.percent.off.png" />
+    <Content Include="Assets\Images\Dark\appbar.phone.hangup.png" />
+    <Content Include="Assets\Images\Dark\appbar.phone.png" />
+    <Content Include="Assets\Images\Dark\appbar.phone.voicemail.png" />
+    <Content Include="Assets\Images\Dark\appbar.pie.png" />
+    <Content Include="Assets\Images\Dark\appbar.pie.quarter.png" />
+    <Content Include="Assets\Images\Dark\appbar.pin.png" />
+    <Content Include="Assets\Images\Dark\appbar.pin.remove.png" />
+    <Content Include="Assets\Images\Dark\appbar.places.png" />
+    <Content Include="Assets\Images\Dark\appbar.plane.png" />
+    <Content Include="Assets\Images\Dark\appbar.plane.rotated.135.png" />
+    <Content Include="Assets\Images\Dark\appbar.plane.rotated.45.png" />
+    <Content Include="Assets\Images\Dark\appbar.plant.png" />
+    <Content Include="Assets\Images\Dark\appbar.pokeball.png" />
+    <Content Include="Assets\Images\Dark\appbar.potion.png" />
+    <Content Include="Assets\Images\Dark\appbar.power.png" />
+    <Content Include="Assets\Images\Dark\appbar.present.png" />
+    <Content Include="Assets\Images\Dark\appbar.printer.blank.png" />
+    <Content Include="Assets\Images\Dark\appbar.printer.png" />
+    <Content Include="Assets\Images\Dark\appbar.printer.text.png" />
+    <Content Include="Assets\Images\Dark\appbar.progress.png" />
+    <Content Include="Assets\Images\Dark\appbar.projector.png" />
+    <Content Include="Assets\Images\Dark\appbar.projector.screen.png" />
+    <Content Include="Assets\Images\Dark\appbar.protractor.png" />
+    <Content Include="Assets\Images\Dark\appbar.puzzle.png" />
+    <Content Include="Assets\Images\Dark\appbar.puzzle.round.png" />
+    <Content Include="Assets\Images\Dark\appbar.qr.png" />
+    <Content Include="Assets\Images\Dark\appbar.question.png" />
+    <Content Include="Assets\Images\Dark\appbar.quill.png" />
+    <Content Include="Assets\Images\Dark\appbar.quote.left.png" />
+    <Content Include="Assets\Images\Dark\appbar.quote.right.png" />
+    <Content Include="Assets\Images\Dark\appbar.radar.png" />
+    <Content Include="Assets\Images\Dark\appbar.radar.screen.png" />
+    <Content Include="Assets\Images\Dark\appbar.radioactive.png" />
+    <Content Include="Assets\Images\Dark\appbar.redo.curve.png" />
+    <Content Include="Assets\Images\Dark\appbar.redo.png" />
+    <Content Include="Assets\Images\Dark\appbar.redo.point.png" />
+    <Content Include="Assets\Images\Dark\appbar.refresh.clockwise.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.refresh.clockwise.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.refresh.counterclockwise.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.refresh.counterclockwise.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.refresh.png" />
+    <Content Include="Assets\Images\Dark\appbar.religion.christianity.png" />
+    <Content Include="Assets\Images\Dark\appbar.religion.islamic.png" />
+    <Content Include="Assets\Images\Dark\appbar.religion.judaism.png" />
+    <Content Include="Assets\Images\Dark\appbar.repeat.png" />
+    <Content Include="Assets\Images\Dark\appbar.reply.calendar.png" />
+    <Content Include="Assets\Images\Dark\appbar.reply.email.png" />
+    <Content Include="Assets\Images\Dark\appbar.reply.people.png" />
+    <Content Include="Assets\Images\Dark\appbar.reset.png" />
+    <Content Include="Assets\Images\Dark\appbar.return.png" />
+    <Content Include="Assets\Images\Dark\appbar.ribbon.png" />
+    <Content Include="Assets\Images\Dark\appbar.ribbon.wave.png" />
+    <Content Include="Assets\Images\Dark\appbar.ring.png" />
+    <Content Include="Assets\Images\Dark\appbar.rocket.png" />
+    <Content Include="Assets\Images\Dark\appbar.rocket.rotated.45.png" />
+    <Content Include="Assets\Images\Dark\appbar.rss.png" />
+    <Content Include="Assets\Images\Dark\appbar.ruler.png" />
+    <Content Include="Assets\Images\Dark\appbar.sailboat.png" />
+    <Content Include="Assets\Images\Dark\appbar.save.png" />
+    <Content Include="Assets\Images\Dark\appbar.scale.png" />
+    <Content Include="Assets\Images\Dark\appbar.scale.unbalanced.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.a.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.b.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.c.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.d.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.e.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.f.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.g.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.h.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.i.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.j.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.k.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.l.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.m.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.n.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.o.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.p.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.q.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.r.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.s.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.t.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.u.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.v.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.w.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.x.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.y.png" />
+    <Content Include="Assets\Images\Dark\appbar.scrabble.z.png" />
+    <Content Include="Assets\Images\Dark\appbar.sd.micro.png" />
+    <Content Include="Assets\Images\Dark\appbar.sd.png" />
+    <Content Include="Assets\Images\Dark\appbar.section.collapse.all.png" />
+    <Content Include="Assets\Images\Dark\appbar.section.collapse.png" />
+    <Content Include="Assets\Images\Dark\appbar.section.expand.all.png" />
+    <Content Include="Assets\Images\Dark\appbar.section.expand.png" />
+    <Content Include="Assets\Images\Dark\appbar.server.png" />
+    <Content Include="Assets\Images\Dark\appbar.settings.png" />
+    <Content Include="Assets\Images\Dark\appbar.share.open.png" />
+    <Content Include="Assets\Images\Dark\appbar.share.png" />
+    <Content Include="Assets\Images\Dark\appbar.shield.alert.png" />
+    <Content Include="Assets\Images\Dark\appbar.shield.png" />
+    <Content Include="Assets\Images\Dark\appbar.shopping.png" />
+    <Content Include="Assets\Images\Dark\appbar.shotglass.png" />
+    <Content Include="Assets\Images\Dark\appbar.shuffle.png" />
+    <Content Include="Assets\Images\Dark\appbar.sidebar.left.collapse.png" />
+    <Content Include="Assets\Images\Dark\appbar.sidebar.left.expand.png" />
+    <Content Include="Assets\Images\Dark\appbar.sidebar.right.collapse.png" />
+    <Content Include="Assets\Images\Dark\appbar.sidebar.right.expand.png" />
+    <Content Include="Assets\Images\Dark\appbar.sign.caution.png" />
+    <Content Include="Assets\Images\Dark\appbar.sign.interstate.75.png" />
+    <Content Include="Assets\Images\Dark\appbar.sign.interstate.94.png" />
+    <Content Include="Assets\Images\Dark\appbar.sign.interstate.95.png" />
+    <Content Include="Assets\Images\Dark\appbar.sign.interstate.png" />
+    <Content Include="Assets\Images\Dark\appbar.sign.parking.png" />
+    <Content Include="Assets\Images\Dark\appbar.sign.stop.png" />
+    <Content Include="Assets\Images\Dark\appbar.simcard.micro.png" />
+    <Content Include="Assets\Images\Dark\appbar.simcard.png" />
+    <Content Include="Assets\Images\Dark\appbar.skydrive.download.png" />
+    <Content Include="Assets\Images\Dark\appbar.skydrive.png" />
+    <Content Include="Assets\Images\Dark\appbar.skydrive.upload.png" />
+    <Content Include="Assets\Images\Dark\appbar.sleep.png" />
+    <Content Include="Assets\Images\Dark\appbar.slice.png" />
+    <Content Include="Assets\Images\Dark\appbar.smiley.angry.png" />
+    <Content Include="Assets\Images\Dark\appbar.smiley.cry.png" />
+    <Content Include="Assets\Images\Dark\appbar.smiley.frown.png" />
+    <Content Include="Assets\Images\Dark\appbar.smiley.glasses.png" />
+    <Content Include="Assets\Images\Dark\appbar.smiley.grin.png" />
+    <Content Include="Assets\Images\Dark\appbar.smiley.grumpy.png" />
+    <Content Include="Assets\Images\Dark\appbar.smiley.happy.png" />
+    <Content Include="Assets\Images\Dark\appbar.smiley.kiki.png" />
+    <Content Include="Assets\Images\Dark\appbar.smiley.squint.png" />
+    <Content Include="Assets\Images\Dark\appbar.smiley.tounge.png" />
+    <Content Include="Assets\Images\Dark\appbar.smiley.what.png" />
+    <Content Include="Assets\Images\Dark\appbar.snowflake.png" />
+    <Content Include="Assets\Images\Dark\appbar.snowman.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.aim.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.aim.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.amazon.appstore.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.amazon.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.apple.appstore.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.apple.mobileme.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.apple.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.appnet.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.artcom.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.arto.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.aws.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.baidu.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.basecamp.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.bebo.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.behance.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.blogger.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.cloudapp.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.coding4fun.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.delicious.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.deviantart.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.digg.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.digg.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.disqus.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.dribbble.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.dropbox.download.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.dropbox.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.dropbox.upload.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.drupal.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.engadget.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.etsy.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.evernote.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.facebook.heart.break.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.facebook.heart.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.facebook.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.facebook.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.foursquare.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.gdgt.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.github.octocat.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.github.octocat.solid.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.github.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.grooveshark.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.indiegogo.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.jira.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.kickstarter.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.lastfm.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.line.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.linkedin.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.linkedin.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.microsoft.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.nuget.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.openid.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.picasa.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.pinterest.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.playstation.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.rdio.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.reddit.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.sharethis.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.skype.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.slashdot.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.soundcloud.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.spotify.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.stackoverflow.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.theverge.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.trello.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.tumblr.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.twitter.hashtag.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.twitter.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.twitter.retweet.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.uservoice.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.vimeo.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.wikipedia.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.wordpress.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.wordpress.variant.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.xing.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.yahoo.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.ycombinator.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.yelp.png" />
+    <Content Include="Assets\Images\Dark\appbar.social.zappos.png" />
+    <Content Include="Assets\Images\Dark\appbar.sort.alphabetical.ascending.png" />
+    <Content Include="Assets\Images\Dark\appbar.sort.alphabetical.descending.png" />
+    <Content Include="Assets\Images\Dark\appbar.sort.alphabetical.png" />
+    <Content Include="Assets\Images\Dark\appbar.sort.numeric.ascending.png" />
+    <Content Include="Assets\Images\Dark\appbar.sort.numeric.descending.png" />
+    <Content Include="Assets\Images\Dark\appbar.sort.numeric.png" />
+    <Content Include="Assets\Images\Dark\appbar.sort.png" />
+    <Content Include="Assets\Images\Dark\appbar.sound.0.png" />
+    <Content Include="Assets\Images\Dark\appbar.sound.1.png" />
+    <Content Include="Assets\Images\Dark\appbar.sound.2.png" />
+    <Content Include="Assets\Images\Dark\appbar.sound.3.png" />
+    <Content Include="Assets\Images\Dark\appbar.sound.left.right.png" />
+    <Content Include="Assets\Images\Dark\appbar.sound.mute.png" />
+    <Content Include="Assets\Images\Dark\appbar.sound.stereo.png" />
+    <Content Include="Assets\Images\Dark\appbar.sound.stereo.stack.png" />
+    <Content Include="Assets\Images\Dark\appbar.source.fork.png" />
+    <Content Include="Assets\Images\Dark\appbar.source.pull.png" />
+    <Content Include="Assets\Images\Dark\appbar.speakerphone.png" />
+    <Content Include="Assets\Images\Dark\appbar.sport.football.png" />
+    <Content Include="Assets\Images\Dark\appbar.stairs.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.stairs.down.reflect.horizontal.png" />
+    <Content Include="Assets\Images\Dark\appbar.stairs.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.stairs.up.reflect.horizontal.png" />
+    <Content Include="Assets\Images\Dark\appbar.stamp.at.png" />
+    <Content Include="Assets\Images\Dark\appbar.stamp.empty.png" />
+    <Content Include="Assets\Images\Dark\appbar.stamp.png" />
+    <Content Include="Assets\Images\Dark\appbar.star.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.star.delete.png" />
+    <Content Include="Assets\Images\Dark\appbar.star.invincible.png" />
+    <Content Include="Assets\Images\Dark\appbar.star.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.star.png" />
+    <Content Include="Assets\Images\Dark\appbar.star.remove.png" />
+    <Content Include="Assets\Images\Dark\appbar.starwars.jedi.png" />
+    <Content Include="Assets\Images\Dark\appbar.starwars.rebel.png" />
+    <Content Include="Assets\Images\Dark\appbar.starwars.sith.png" />
+    <Content Include="Assets\Images\Dark\appbar.steam.png" />
+    <Content Include="Assets\Images\Dark\appbar.stock.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.stock.png" />
+    <Content Include="Assets\Images\Dark\appbar.stock.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.stocking.png" />
+    <Content Include="Assets\Images\Dark\appbar.stop.png" />
+    <Content Include="Assets\Images\Dark\appbar.store.png" />
+    <Content Include="Assets\Images\Dark\appbar.stream.png" />
+    <Content Include="Assets\Images\Dark\appbar.suitcase.png" />
+    <Content Include="Assets\Images\Dark\appbar.switch.off.png" />
+    <Content Include="Assets\Images\Dark\appbar.symbol.braces.png" />
+    <Content Include="Assets\Images\Dark\appbar.symbol.bracket.png" />
+    <Content Include="Assets\Images\Dark\appbar.table.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.table.delete.png" />
+    <Content Include="Assets\Images\Dark\appbar.table.png" />
+    <Content Include="Assets\Images\Dark\appbar.table.select.png" />
+    <Content Include="Assets\Images\Dark\appbar.table.unselect.png" />
+    <Content Include="Assets\Images\Dark\appbar.tablet.windows.png" />
+    <Content Include="Assets\Images\Dark\appbar.tag.label.png" />
+    <Content Include="Assets\Images\Dark\appbar.tag.png" />
+    <Content Include="Assets\Images\Dark\appbar.tardis.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.align.center.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.align.justify.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.align.left.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.align.right.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.bold.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.italic.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.overline.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.sans.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.script.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.serif.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.size.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.size.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.size.plus.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.size.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.size.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.strikethrough.png" />
+    <Content Include="Assets\Images\Dark\appbar.text.underline.png" />
+    <Content Include="Assets\Images\Dark\appbar.thermometer.celcius.png" />
+    <Content Include="Assets\Images\Dark\appbar.thermometer.digital.png" />
+    <Content Include="Assets\Images\Dark\appbar.thermometer.fahrenheit.png" />
+    <Content Include="Assets\Images\Dark\appbar.thermometer.honeywell.png" />
+    <Content Include="Assets\Images\Dark\appbar.thermometer.kelvin.png" />
+    <Content Include="Assets\Images\Dark\appbar.thermometer.png" />
+    <Content Include="Assets\Images\Dark\appbar.thermometer.signs.png" />
+    <Content Include="Assets\Images\Dark\appbar.thumb.up.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.thumb.up.delete.png" />
+    <Content Include="Assets\Images\Dark\appbar.thumb.up.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.thumbs.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.thumbs.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.ticket.png" />
+    <Content Include="Assets\Images\Dark\appbar.tiles.four.png" />
+    <Content Include="Assets\Images\Dark\appbar.tiles.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.tiles.nine.png" />
+    <Content Include="Assets\Images\Dark\appbar.tiles.plus.png" />
+    <Content Include="Assets\Images\Dark\appbar.tiles.sixteen.png" />
+    <Content Include="Assets\Images\Dark\appbar.timer.1.png" />
+    <Content Include="Assets\Images\Dark\appbar.timer.2.png" />
+    <Content Include="Assets\Images\Dark\appbar.timer.3.png" />
+    <Content Include="Assets\Images\Dark\appbar.timer.4.png" />
+    <Content Include="Assets\Images\Dark\appbar.timer.5.png" />
+    <Content Include="Assets\Images\Dark\appbar.timer.alert.png" />
+    <Content Include="Assets\Images\Dark\appbar.timer.check.png" />
+    <Content Include="Assets\Images\Dark\appbar.timer.forward.png" />
+    <Content Include="Assets\Images\Dark\appbar.timer.pause.png" />
+    <Content Include="Assets\Images\Dark\appbar.timer.play.png" />
+    <Content Include="Assets\Images\Dark\appbar.timer.png" />
+    <Content Include="Assets\Images\Dark\appbar.timer.record.png" />
+    <Content Include="Assets\Images\Dark\appbar.timer.rewind.png" />
+    <Content Include="Assets\Images\Dark\appbar.timer.stop.png" />
+    <Content Include="Assets\Images\Dark\appbar.tools.png" />
+    <Content Include="Assets\Images\Dark\appbar.tournament.bracket.down.png" />
+    <Content Include="Assets\Images\Dark\appbar.tournament.bracket.left.png" />
+    <Content Include="Assets\Images\Dark\appbar.tournament.bracket.png" />
+    <Content Include="Assets\Images\Dark\appbar.tournament.bracket.right.png" />
+    <Content Include="Assets\Images\Dark\appbar.tournament.bracket.up.png" />
+    <Content Include="Assets\Images\Dark\appbar.tower.png" />
+    <Content Include="Assets\Images\Dark\appbar.train.png" />
+    <Content Include="Assets\Images\Dark\appbar.train.track.png" />
+    <Content Include="Assets\Images\Dark\appbar.train.tunnel.png" />
+    <Content Include="Assets\Images\Dark\appbar.transform.flip.horizontal.png" />
+    <Content Include="Assets\Images\Dark\appbar.transform.flip.vertical.png" />
+    <Content Include="Assets\Images\Dark\appbar.transform.rotate.clockwise.png" />
+    <Content Include="Assets\Images\Dark\appbar.transform.rotate.counterclockwise.png" />
+    <Content Include="Assets\Images\Dark\appbar.transform.rotate.left.png" />
+    <Content Include="Assets\Images\Dark\appbar.transform.rotate.right.png" />
+    <Content Include="Assets\Images\Dark\appbar.transit.arrive.png" />
+    <Content Include="Assets\Images\Dark\appbar.transit.bus.png" />
+    <Content Include="Assets\Images\Dark\appbar.transit.car.accident.png" />
+    <Content Include="Assets\Images\Dark\appbar.transit.car.png" />
+    <Content Include="Assets\Images\Dark\appbar.transit.congestion.png" />
+    <Content Include="Assets\Images\Dark\appbar.transit.connection.departure.png" />
+    <Content Include="Assets\Images\Dark\appbar.transit.connection.png" />
+    <Content Include="Assets\Images\Dark\appbar.transit.construction.png" />
+    <Content Include="Assets\Images\Dark\appbar.transit.depart.png" />
+    <Content Include="Assets\Images\Dark\appbar.transit.distance.from.png" />
+    <Content Include="Assets\Images\Dark\appbar.transit.distance.to.png" />
+    <Content Include="Assets\Images\Dark\appbar.transit.hazard.png" />
+    <Content Include="Assets\Images\Dark\appbar.tree.leaf.png" />
+    <Content Include="Assets\Images\Dark\appbar.tree.leaf.three.png" />
+    <Content Include="Assets\Images\Dark\appbar.tree.pine.png" />
+    <Content Include="Assets\Images\Dark\appbar.tree.png" />
+    <Content Include="Assets\Images\Dark\appbar.trophy.png" />
+    <Content Include="Assets\Images\Dark\appbar.truck.png" />
+    <Content Include="Assets\Images\Dark\appbar.tux.png" />
+    <Content Include="Assets\Images\Dark\appbar.tv.news.png" />
+    <Content Include="Assets\Images\Dark\appbar.tv.png" />
+    <Content Include="Assets\Images\Dark\appbar.tv.remote.png" />
+    <Content Include="Assets\Images\Dark\appbar.tv.syfy.png" />
+    <Content Include="Assets\Images\Dark\appbar.type.bit.png" />
+    <Content Include="Assets\Images\Dark\appbar.type.boolean.png" />
+    <Content Include="Assets\Images\Dark\appbar.type.null.png" />
+    <Content Include="Assets\Images\Dark\appbar.undo.curve.png" />
+    <Content Include="Assets\Images\Dark\appbar.undo.png" />
+    <Content Include="Assets\Images\Dark\appbar.undo.point.png" />
+    <Content Include="Assets\Images\Dark\appbar.unlock.keyhole.png" />
+    <Content Include="Assets\Images\Dark\appbar.unlock.png" />
+    <Content Include="Assets\Images\Dark\appbar.upload.png" />
+    <Content Include="Assets\Images\Dark\appbar.usb.drive.png" />
+    <Content Include="Assets\Images\Dark\appbar.usb.png" />
+    <Content Include="Assets\Images\Dark\appbar.user.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.user.delete.png" />
+    <Content Include="Assets\Images\Dark\appbar.user.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.user.png" />
+    <Content Include="Assets\Images\Dark\appbar.user.tie.png" />
+    <Content Include="Assets\Images\Dark\appbar.vector.circle.png" />
+    <Content Include="Assets\Images\Dark\appbar.vector.group.png" />
+    <Content Include="Assets\Images\Dark\appbar.vector.group.removed.png" />
+    <Content Include="Assets\Images\Dark\appbar.vector.line.curve.png" />
+    <Content Include="Assets\Images\Dark\appbar.vector.line.png" />
+    <Content Include="Assets\Images\Dark\appbar.vector.line.spline.png" />
+    <Content Include="Assets\Images\Dark\appbar.vector.pen.add.png" />
+    <Content Include="Assets\Images\Dark\appbar.vector.pen.convert.png" />
+    <Content Include="Assets\Images\Dark\appbar.vector.pen.minus.png" />
+    <Content Include="Assets\Images\Dark\appbar.vector.pen.png" />
+    <Content Include="Assets\Images\Dark\appbar.vector.polygon.png" />
+    <Content Include="Assets\Images\Dark\appbar.vector.rectangle.png" />
+    <Content Include="Assets\Images\Dark\appbar.vector.star.png" />
+    <Content Include="Assets\Images\Dark\appbar.video.gallery.png" />
+    <Content Include="Assets\Images\Dark\appbar.video.highdefinition.png" />
+    <Content Include="Assets\Images\Dark\appbar.video.png" />
+    <Content Include="Assets\Images\Dark\appbar.video.send.png" />
+    <Content Include="Assets\Images\Dark\appbar.video.standarddefinition.png" />
+    <Content Include="Assets\Images\Dark\appbar.vip.lowercase.png" />
+    <Content Include="Assets\Images\Dark\appbar.vip.png" />
+    <Content Include="Assets\Images\Dark\appbar.visualstudio.news.png" />
+    <Content Include="Assets\Images\Dark\appbar.visualstudio.png" />
+    <Content Include="Assets\Images\Dark\appbar.warning.circle.png" />
+    <Content Include="Assets\Images\Dark\appbar.warning.png" />
+    <Content Include="Assets\Images\Dark\appbar.water.droplet.alert.png" />
+    <Content Include="Assets\Images\Dark\appbar.water.droplet.png" />
+    <Content Include="Assets\Images\Dark\appbar.water.droplet.reflection.png" />
+    <Content Include="Assets\Images\Dark\appbar.weather.chance.png" />
+    <Content Include="Assets\Images\Dark\appbar.weather.overcast.png" />
+    <Content Include="Assets\Images\Dark\appbar.weather.rain.png" />
+    <Content Include="Assets\Images\Dark\appbar.weather.snow.png" />
+    <Content Include="Assets\Images\Dark\appbar.weather.station.png" />
+    <Content Include="Assets\Images\Dark\appbar.weather.sun.png" />
+    <Content Include="Assets\Images\Dark\appbar.weather.sun.rise.png" />
+    <Content Include="Assets\Images\Dark\appbar.weather.sun.set.png" />
+    <Content Include="Assets\Images\Dark\appbar.weather.symbol.png" />
+    <Content Include="Assets\Images\Dark\appbar.weather.thunder.png" />
+    <Content Include="Assets\Images\Dark\appbar.webcam.png" />
+    <Content Include="Assets\Images\Dark\appbar.window.casement.closed.png" />
+    <Content Include="Assets\Images\Dark\appbar.window.casement.png" />
+    <Content Include="Assets\Images\Dark\appbar.window.closed.png" />
+    <Content Include="Assets\Images\Dark\appbar.window.maximize.png" />
+    <Content Include="Assets\Images\Dark\appbar.window.minimize.png" />
+    <Content Include="Assets\Images\Dark\appbar.window.png" />
+    <Content Include="Assets\Images\Dark\appbar.window.restore.png" />
+    <Content Include="Assets\Images\Dark\appbar.window.simple.png" />
+    <Content Include="Assets\Images\Dark\appbar.windowsphone.png" />
+    <Content Include="Assets\Images\Dark\appbar.xbox.png" />
+    <Content Include="Assets\Images\Dark\appbar.youtube.play.png" />
+    <Content Include="Assets\Images\Dark\appbar.youtube.png" />
+    <Content Include="Assets\Images\Dark\appbar.zune.png" />
+    <Content Include="Assets\Images\tileLogoTrans.png" />
+    <Content Include="README_FIRST.txt" />
+    <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
+    <None Include="BettrDiet.WP8_2014_03_10_11_16_06.sap" />
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml" />
+    <Content Include="Assets\AGB_de.html" />
+    <Content Include="Assets\AGB_en.html" />
+    <Content Include="Assets\Images\11324686_l.jpg" />
+    <Content Include="Assets\Images\15282406_l.jpg" />
+    <Content Include="Assets\Images\18344583_l.jpg" />
+    <Content Include="Assets\Images\19259869_l.jpg" />
+    <Content Include="Assets\Images\20599536_l.jpg" />
+    <Content Include="Assets\Images\21142620_l.jpg" />
+    <Content Include="Assets\Images\21315909_l.jpg" />
+    <Content Include="Assets\Images\8460417_l.jpg" />
+    <Content Include="Assets\Images\8684442_l.jpg" />
+    <Content Include="Assets\Images\copy_round.png" />
+    <Content Include="Assets\Images\newspaper.png" />
+    <Content Include="Assets\Images\paste_round.png" />
+    <Content Include="Assets\Images\sport_round.png" />
+    <Content Include="Assets\Images\target_round.png" />
+    <Content Include="ServiceReferences.ClientConfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\AlignmentGrid.png" />
+    <Content Include="Assets\ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\bettrdietLogoTextBigger.png" />
+    <Content Include="Assets\Images\tileLogo.png" />
+    <Content Include="Assets\Images\tiny.png" />
+    <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileMedium.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileSmall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\IconicTileMediumLarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\IconicTileSmall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\CompanyLogo.png" />
+    <Content Include="Assets\Images\Frame.png" />
+    <Content Include="Assets\Images\FrameThumbnail.png" />
+    <Content Include="Assets\Images\LeftArrow.png" />
+    <Content Include="Assets\Images\RightArrow.png" />
+    <Content Include="ToDo-MvvmCross\_ Windows Phone UI.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AppBarUtils">
+      <HintPath>..\packages\AppBarUtils.2.4\lib\windowsphone8\AppBarUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="BindableApplicationBar">
+      <HintPath>..\packages\BindableApplicationBar.1.1.0.0\lib\wp8\BindableApplicationBar.dll</HintPath>
+    </Reference>
+    <Reference Include="Chance.MvvmCross.Plugins.UserInteraction">
+      <HintPath>..\packages\Chance.MvvmCross.Plugins.UserInteraction.1.1.1\lib\portable-win+net45+sl50+wp8+MonoAndroid+MonoTouch\Chance.MvvmCross.Plugins.UserInteraction.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.CrossCore">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\wp8\Cirrious.CrossCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.CrossCore.WindowsPhone">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\wp8\Cirrious.CrossCore.WindowsPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross">
+      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\wp8\Cirrious.MvvmCross.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Localization">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\wp8\Cirrious.MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.File, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.1.1\lib\wp8\Cirrious.MvvmCross.Plugins.File.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.File.WindowsPhone">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.1.1\lib\wp8\Cirrious.MvvmCross.Plugins.File.WindowsPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Messenger, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Messenger.3.1.1\lib\wp8\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.WindowsPhone">
+      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\wp8\Cirrious.MvvmCross.WindowsPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="JeffWilcox.PhoneThemeManager">
+      <HintPath>..\packages\PhoneThemeManager.2.0\lib\windowsphone8\JeffWilcox.PhoneThemeManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Advertising.Mobile, Version=6.2.960.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="microsoft.advertising.mobile.ui, Version=6.2.960.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Interactions, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unofficial.Blend.Interactivity.1.0.0\lib\wp8\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Controls.Maps, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+      <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unofficial.Blend.Interactivity.1.0.0\lib\wp8\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.BackgroundAgentTools, Version=2013.3.1317.3040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWP\2013.3.1317.3040\Telerik.Windows.BackgroundAgentTools.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Behaviors, Version=2013.3.1317.3040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWP\2013.3.1317.3040\Telerik.Windows.Behaviors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Chart, Version=2013.3.1317.3040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWP\2013.3.1317.3040\Telerik.Windows.Controls.Chart.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data, Version=2013.3.1317.3040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWP\2013.3.1317.3040\Telerik.Windows.Controls.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataVisualization, Version=2013.3.1317.3040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWP\2013.3.1317.3040\Telerik.Windows.Controls.DataVisualization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2013.3.1317.3040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWP\2013.3.1317.3040\Telerik.Windows.Controls.Input.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Primitives, Version=2013.3.1317.3040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWP\2013.3.1317.3040\Telerik.Windows.Controls.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Core, Version=2013.3.1317.3040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWP\2013.3.1317.3040\Telerik.Windows.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2013.3.1317.3040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWP\2013.3.1317.3040\Telerik.Windows.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\About.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="HowTo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\HubTileResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GoalOverview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GoalEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DailyDataEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DailyDataOverview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Feedback.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NutritionPlanCreate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NutritionPlanOverview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NutritionPlanMain.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FirstView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Register.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AppResources.de.resx">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.de.xlf</DependentUpon>
+      <culture>de</culture>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AppResources.en.resx">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.en.xlf</DependentUpon>
+      <culture>en</culture>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AppResources.qps-ploc.resx">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.qps-ploc.xlf</DependentUpon>
+      <culture>qps-ploc</culture>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BettrDiet.Portable\Common\WebAccess.csproj">
+      <Project>{9D331C19-51E2-4A8D-B432-CACAB842A148}</Project>
+      <Name>WebAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BettrDiet\BettrDiet.Core\BettrDiet.Core.csproj">
+      <Project>{747706F4-ECBF-4D50-8D72-B0DDCC18395C}</Project>
+      <Name>BettrDiet.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <XliffResource Include="Resources\AppResources.de.xlf">
+      <Generator>XliffResxGenerator</Generator>
+      <LastGenOutput>AppResources.de.resx</LastGenOutput>
+    </XliffResource>
+    <XliffResource Include="Resources\AppResources.en.xlf">
+      <Generator>XliffResxGenerator</Generator>
+      <LastGenOutput>AppResources.en.resx</LastGenOutput>
+    </XliffResource>
+    <XliffResource Include="Resources\AppResources.qps-ploc.xlf">
+      <Generator>XliffResxGenerator</Generator>
+      <LastGenOutput>AppResources.qps-ploc.resx</LastGenOutput>
+    </XliffResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.WindowsPhone.targets" Label="MultilingualAppToolkitForWindowsPhone" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+</Project>
